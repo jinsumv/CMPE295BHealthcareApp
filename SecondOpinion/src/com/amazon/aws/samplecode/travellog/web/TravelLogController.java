@@ -79,7 +79,7 @@ public class TravelLogController {
      *
      * @param model the spring model for the request
      */
-    @RequestMapping(value="/home.do", method=RequestMethod.HEAD)
+    @RequestMapping(value="/home_backup.do", method=RequestMethod.HEAD)
     public void doHealthCheck(HttpServletResponse response) {
         response.setContentLength(0);
         response.setStatus(HttpServletResponse.SC_OK);
@@ -89,7 +89,7 @@ public class TravelLogController {
      * The main request handler that builds out the home page for the journal
      * @param model the spring model for the request
      */
-    @RequestMapping(value="/home.do", method={RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value="/home_backup.do", method={RequestMethod.GET, RequestMethod.POST})
     public void doHome (ModelMap model) {
         Journal journal = dao.getJournal();
         List<User> users = dao.getUsers();
@@ -132,13 +132,13 @@ public class TravelLogController {
 
         model.addAttribute("entries",entries);
     }
-
+    
     /**
      * If we have a login failure this request mapping flags the error to be shown
      * in the UI.
      * @param model the spring model for the request
      */
-    @RequestMapping ("/loginFailure.do")
+    @RequestMapping ("/loginFailure_backup.do")
     public ModelAndView doLoginFailure (ModelMap map) {
         map.addAttribute("popupScreen","login_div");
         doHome(map);
@@ -199,7 +199,7 @@ public class TravelLogController {
         return;
     }
 
-    @RequestMapping("/createAccount.do")
+    @RequestMapping("/createAccount_backup.do")
     public ModelAndView doCreateAccount (User user,  BindingResult result, ModelMap map,
       @RequestParam("password2") String password2) {
 
@@ -439,9 +439,9 @@ public class TravelLogController {
         return new ModelAndView("redirect:home.do");
     }
 
-    @RequestMapping("/logout.do")
+    @RequestMapping("/logout_backup.do")
     public void doLogout (HttpServletResponse response) throws IOException {
-        response.sendRedirect("home.do");
+        response.sendRedirect("signin.do");
     }
 
     @RequestMapping("/backupRestore.do")

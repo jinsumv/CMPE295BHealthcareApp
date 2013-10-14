@@ -11,7 +11,7 @@
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <link href="css/main.css" media="screen" rel="stylesheet" type="text/css"/>
-    <title>Healthcare App</title>
+    <title>${journal.title}</title>
 
 
     <!-- Popup related includes -->
@@ -33,51 +33,56 @@
     <script type="text/javascript" src="dwr/engine.js"></script>
     <!-- End DWR includes -->
 
-	<link rel="stylesheet" href="css/style.css" type="text/css" />
 
     <script type="text/javascript" src="js/travellog.js"></script>
     
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+
   </head>
   
   <body class="body">
+  
 	<header class="mainheader">
           <img src="images/Header.jpg">		
+	  
 	</header>
 
  	<div class="mainContent">
-		<div class="home_content">
-		<section class ="home_topcontent" >
-		<section class="menu_icons">
+	  <div class="content">
+		 <article class="topcontent">
+			<header>
+			  <h2><a href="#" title="First Post"></a></h2>
+			</header>
+			<b>Already have an account?</b>
+			<p>
+			<form action="j_spring_security_check" name="loginForm" method="post">
+				<c:if test="${popupScreen!=null}">
+					<div class="popupFieldLabel">
+						<div class="error"><br/>Bad username/password</div>
+					</div>
+				</c:if>
+  			  <input type="text" name="j_username" placeholder="Email Eg:test@gmail.com" autofocus required style='width: 100%'/><br><br>
+  			  <input type="password" name="j_password" placeholder="Password" autofocus required style='width: 100%'/><br><br>
+ 			  <a class="saveButton" href="javascript:" onclick="document.loginForm.submit()">
+ 			  	<input type="image" src="images/Login.jpg" name="Submit Form" width="100%" height="50px" />
+ 			  </a>
+			</form>			
+		  	
+		  <p>
+		  	<form action="Register_form.asp">
+		  	   <b> New user?</b><br>
+				<input type="image" src="images/Register.jpg" name="Create New Account" width="100%" height="50px">
+			</form>
+		</p>
 		
-			<a href="#">
-			<img class="menuimage" src="images/profile.png" /></a>
-			   			
-			<a href="#">
-			<img class="menuimage" src="images/newsfeed.png"/></a>
-		</section>
-		<section class="menu_icons">			
-			<a href="#">
-			<img class="menuimage" src="images/message.png"/></a>
-						
-			<a href="#">
-			<img class="menuimage" src="images/AskQtn.jpg"/></a>
-		</section>
-		<section class="menu_icons" id="search">		
-			<a href="#">
-			<img class="menuimage" src="images/search.png"/></a>	
-		</section>			    				
- 	</section>
+		<p><a href="Forgot_Password.asp">Forgot Password? - Help Center</a>
+	 </article>
 	</div>
-	</div>
-
-    <div class="signOut">
-	    <sec:authorize ifAllGranted="ROLE_ADMIN">
-        	<a href="<c:url value="/j_spring_security_logout"/>">Sign out</a>
-       	</sec:authorize>
-    </div>
+     </div>
+	
 	<footer class="mainFooter">
-	  <p>Copyright &copy; <a href="#" title="2ndhtml"></a></p>
+	  <p>Copyright &copy; <a href="#" title="1sthtml">payal.com</a></p>
 	</footer>
 	<script src="js/main.js" type="text/javascript"></script>
 </body>
-</html>
+</html>  

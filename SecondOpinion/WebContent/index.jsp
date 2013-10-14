@@ -1,1 +1,1 @@
-<%response.sendRedirect("home.do");%>
+<%response.sendRedirect("signin.do");%>
