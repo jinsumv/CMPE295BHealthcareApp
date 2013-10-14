@@ -63,7 +63,7 @@
 			<img class="menuimage" src="images/AskQtn.jpg"/></a>
 		</section>
 		<section class="menu_icons" id="search">		
-			<a href="#">
+			<a href="searchdoc.do">
 			<img class="menuimage" src="images/search.png"/></a>	
 		</section>			    				
  	</section>

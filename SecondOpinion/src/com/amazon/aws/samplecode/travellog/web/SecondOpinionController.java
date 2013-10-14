@@ -134,6 +134,11 @@ public class SecondOpinionController {
 
     }
 
+    @RequestMapping(value="/searchdoc.do", method={RequestMethod.GET})
+    public void doSearch (ModelMap model) {
+   
+    }  
+    
     @RequestMapping("/logout.do")
     public void doLogout (HttpServletResponse response) throws IOException {
         response.sendRedirect("signin.do");
