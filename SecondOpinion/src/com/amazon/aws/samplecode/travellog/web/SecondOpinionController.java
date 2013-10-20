@@ -86,6 +86,16 @@ public class SecondOpinionController {
    
     }    
 
+    @RequestMapping(value="/forgotpassword.do", method={RequestMethod.GET})
+    public void doForgotPassword (ModelMap model) {
+        
+    }   
+
+    @RequestMapping(value="/registration.do", method={RequestMethod.GET})
+    public void doRegistration (ModelMap model) {
+        
+    } 
+    
     /**
      * If we have a login failure this request mapping flags the error to be shown
      * in the UI.

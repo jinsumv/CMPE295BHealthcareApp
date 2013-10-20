@@ -44,7 +44,6 @@
   
 	<header class="mainheader">
           <img src="images/Header.jpg">		
-	  
 	</header>
 
  	<div class="mainContent">
@@ -53,30 +52,16 @@
 			<header>
 			  <h2><a href="#" title="First Post"></a></h2>
 			</header>
-			<b>Already have an account?</b>
+			<b>Forgot your password?</b>
 			<p>
-			<form action="j_spring_security_check" name="loginForm" method="post">
-				<c:if test="${popupScreen!=null}">
-					<div class="popupFieldLabel">
-						<div class="error"><br/>Bad username/password</div>
-					</div>
-				</c:if>
-  			  <input type="text" name="j_username" placeholder="Email Eg:test@gmail.com" autofocus required style='width: 100%'/><br><br>
-  			  <input type="password" name="j_password" placeholder="Password" autofocus required style='width: 100%'/><br><br>
- 			  <a class="saveButton" href="javascript:" onclick="document.loginForm.submit()">
- 			  	<input type="image" src="images/Login.jpg" name="Submit Form" width="100%" height="50px" />
- 			  </a>
+			<i>Provide your email you used to sign up and we will send you a link to reset it.<br><br>
+			<form action="forgotpassword_form.asp">
+  			  <input type="email" name="email" placeholder="Email Eg:test@gmail.com" autofocus style='width: 100%'required /><br><br>
+ 			  <input type="image" src="images/resetPasswordEmailBtn.jpg" name="Forgot Password Form" width="100%" height="50px" />
 			</form>			
-		  	
-		  <p>
-		  	   <b> New user?</b><br>
-			   <a href="registration.do"><img src="images/Register.jpg" name="Create New Account" width="100%" height="50px"/></a>
-		</p>
-		
-		<p><a href="forgotpassword.do">Forgot Password? - Help Center</a>
-	 </article>
-	</div>
-     </div>
+		 </article>
+	  </div>
+    </div>
 	
 	<footer class="mainFooter">
 	  <p>Copyright &copy; <a href="#" title="1sthtml">payal.com</a></p>

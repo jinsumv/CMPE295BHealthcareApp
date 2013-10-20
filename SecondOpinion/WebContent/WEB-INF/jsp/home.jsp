@@ -8,7 +8,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page import="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter"%><html><head>
 
-
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <link href="css/main.css" media="screen" rel="stylesheet" type="text/css"/>
     <title>Healthcare App</title>
