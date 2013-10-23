@@ -41,7 +41,7 @@
   
   <body class="body">
 	<header class="mainheader">
-       <img src="images/Header.jpg">	   
+       <%@include file="header.jsp" %>   
 		
 	 	<nav>
 	  		<ul>
@@ -54,15 +54,15 @@
 	</header>
 
     <div class="mainContent">
-	    <div class="home_content">
-			<section class ="home_topcontent" >
+	    <div class="content">
+			<section class ="topcontent" >
 				<form>
 					<input name="search" placeholder="Search a Doctor" autofocus>
 					<input type="submit" value="Search">
 				</form>	
  			</section>
 
- 	         <section class="home_bottomcontent">
+ 	         <section class="bottomcontent">
  	         	<p> Top Doctor Specialities </p>
  	         	<ul class= "list_Deptmt">
  	         		<a href="#">

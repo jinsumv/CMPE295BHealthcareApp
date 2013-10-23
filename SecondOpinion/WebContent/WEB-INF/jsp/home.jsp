@@ -40,31 +40,45 @@
   
   <body class="body">
 	<header class="mainheader">
-          <img src="images/Header.jpg">		
+          <%@include file="header.jsp" %>	
 	</header>
 
  	<div class="mainContent">
-		<div class="home_content">
-		<section class ="home_topcontent" >
-		<section class="menu_icons">
-		
-			<a href="#">
-			<img class="menuimage" src="images/profile.png" /></a>
-			   			
-			<a href="#">
-			<img class="menuimage" src="images/newsfeed.png"/></a>
-		</section>
-		<section class="menu_icons">			
-			<a href="#">
-			<img class="menuimage" src="images/message.png"/></a>
-						
-			<a href="#">
-			<img class="menuimage" src="images/AskQtn.jpg"/></a>
-		</section>
-		<section class="menu_icons" id="search">		
-			<a href="searchdoc.do">
-			<img class="menuimage" src="images/search.png"/></a>	
-		</section>			    				
+		<div class="content">
+		<section class ="topcontent" >
+		<table>
+			<tr>
+				<td>
+					<a href="patientprofile.do">
+					<img class="menuimage" src="images/profile.png" /></a>
+				</td>
+				<td>
+					<a href="#">
+					<img class="menuimage" src="images/newsfeed.png"/></a>
+				</td>
+				
+			<tr>
+			<tr>
+				<td>
+					<a href="#">
+					<img class="menuimage" src="images/message.png"/></a>
+				</td>
+				<td>
+					<a href="askquestion.do">
+					<img class="menuimage" src="images/AskQtn.jpg"/></a>
+				</td>
+			<tr>
+			<tr>
+				<td>
+					<a href="searchdoc.do">
+					<img class="menuimage" src="images/search.png"/></a>	
+				</td>
+				<td>
+					<a href="doctorprofile.do">
+					<img class="menuimage" src="images/docprofile.png"/></a>	
+				</td>
+			<tr>
+		</table>		    				
  	</section>
 	</div>
 	</div>

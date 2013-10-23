@@ -42,55 +42,42 @@
       <div id = "main_container">	
            <div id = "header" >
 	       <header class="mainheader">
-                   <img src="images/Header.jpg">
-	 	<nav>
+                   <%@include file="header.jsp" %>
+	 	    <nav>
 	  		<ul>
 		  		<li class="active"><a href="#">Select a Doctor</a></li>
 		  		<li><a href="#">My Questions</a></li>
 		  		<li><a href="#">My Profile</a></li>
 	  		</ul>
-		</nav>		
+		    </nav>		
 	       </header>
 	   </div>
 
 	   <div id = "body" >
               <div class="mainContent">
-	           <div class="home_content">
-	                 <section class ="home_topcontent" >
-				   <article class = "userprofile_top" >
-					<section id ="profile_pic">		
-					    <img class="userpic" src="images/search.png"/>
-					</section>	
-					<section id = "userinf">
-					    <p> Dr Susan </p>
-					    <p> Pediatrics </p>
-					    <p> Board Certified </p>
-					    <p> Santa Clara </p>
-		                        </section>			    				
-				  </article> 	
- 	                 </section>
+	           <div class="content">
+	              <section class ="topcontent" >
+				    <article class = "userprofile_top" >
+					 
+					 <section id ="profile_pic">		
+					    <img class="userpic" src="images/doctor1.jpg" width="90" height="90"/>
+					 </section>	
+					
+					 <section id = "userinf">
+					    <label id="docname"><b>Dr. Susan A. Mitchell</b></label><br>
+						<label id="specialisation"><i>Pediatrics<i></label><br>
+						<label id="achievements"><i>Board Certified<i></label><br>
+		             </section>			    				
+				    </article> 	
+ 	              </section>
 
-
-
-
-
-		        <article class= "bottomcontent">
+		          <article class= "bottomcontent">
 				  <header><h2>Ask your question to the Doctor</h2></header>			  	  
   			          <input class = "notes" type="text" name="notes"  autofocus required><br>
  			          <input type="submit" name="Submit Question" value="Submit Question">
-		        </article>  
-
-
-
-
-
-
-
-
-
-
-                   </div>
-              </div>
+		          </article>  
+			</div>
+           </div>
           </div>
 
           <div id = "footer">
@@ -99,7 +86,5 @@
 	        </footer>
 	  </div>
       </div>
-	
-   </body>
-
+	</body>
 </html>
