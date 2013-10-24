@@ -71,7 +71,7 @@
 			<div class="patient">
 			<b>Sign Up</b> Volunteer! Your opportunity to server and connect with your patients for FREE!</p>
 			<p>
-			<form action="patientsignup.do" method="POST">
+			<form action="patientsignup.do" method="post">
   			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com" autofocus style='width: 100%'required ><br>
   			  <input type="text" name="pwd" placeholder="New Password" style='width: 100%' required><br><br>
 			  <input type="image" src="images/SignUpBtn.jpg" name="Submit Form" width="100%" height="50px" />
@@ -81,7 +81,7 @@
 			<div class="doc">
 			<b>Sign Up</b> Its helpful, private, and FREE!</p>
 			<p>
-			<form action="docsignup.do" method="POST">
+			<form action="docsignup.do" method="post">
   			  <input type="text" name="fname" placeholder="First Name" style='width: 48%' autofocus required> 
 			  <input type="text" name="lname" placeholder="Last Name" style='width: 48%' required><br>
   			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com" style='width: 100%' required><br>

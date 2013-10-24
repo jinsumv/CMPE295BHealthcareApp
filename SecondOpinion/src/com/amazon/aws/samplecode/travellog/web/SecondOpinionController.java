@@ -2,22 +2,14 @@ package com.amazon.aws.samplecode.travellog.web;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -26,20 +18,11 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.amazon.aws.samplecode.travellog.aws.S3PhotoUtil;
-import com.amazon.aws.samplecode.travellog.aws.TravelLogSNSManager;
 import com.amazon.aws.samplecode.travellog.dao.TravelLogDAO;
-import com.amazon.aws.samplecode.travellog.entity.Comment;
-import com.amazon.aws.samplecode.travellog.entity.Entry;
-import com.amazon.aws.samplecode.travellog.entity.Journal;
-import com.amazon.aws.samplecode.travellog.entity.Photo;
 import com.amazon.aws.samplecode.travellog.entity.User;
-import com.amazon.aws.samplecode.travellog.util.Configuration;
-import com.amazon.aws.samplecode.travellog.util.DataExtractor;
-import com.amazon.aws.samplecode.travellog.util.DataLoader;
+
 
 /**
  * This is the core of the TravelLog functionality.  It's a Spring controller implemented
