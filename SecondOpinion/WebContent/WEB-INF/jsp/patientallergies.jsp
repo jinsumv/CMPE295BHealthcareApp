@@ -83,8 +83,8 @@
 		</div>
 	</div>
 	
-    <div id = "footer">
-	<!--  	<footer >
+   <!--   <div id = "footer">
+	 	<footer >
 	  		<p>Copyright &copy; <a href="#" title="2ndhtml"></a></p>
 		</footer> -->
 	</div>
