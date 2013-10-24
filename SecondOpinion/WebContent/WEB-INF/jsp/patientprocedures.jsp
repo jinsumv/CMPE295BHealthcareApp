@@ -53,7 +53,7 @@
 			<section class ="topcontent" >
 				   <article class = "userprofile_top" >
 					<section id ="profile_pic">		
-							<img class="userpic" src="images/search.png"/>
+							<img class="userpic" src="images/Jinsu.jpg"/>
 					</section>	
 					<section id = "userinf">
 					<p> Name: Jinsu </p>
@@ -66,7 +66,7 @@
 				  <article class= "bottomcontent">
 				  <header><h2 class = "heading" >Procedures </h2></header>
 				  <p> <em> Complete your Procedure details.</em> </p>
-				  <a href="#"><img id="addimage" src="images/add.png" /></a>
+				  <a href="patientaddprocedures.do"><img id="addimage" src="images/add.png" /></a>
 				  </article>  
 				  
                   <article class= "bottomcontent">
@@ -84,9 +84,9 @@
 	</div>
 	
     <div id = "footer">
-		<footer >
+	<!--  	<footer >
 	  		<p>Copyright &copy; <a href="#" title="2ndhtml"></a></p>
-		</footer>
+		</footer> -->
 	</div>
 	</div>
 	

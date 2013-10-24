@@ -296,3 +296,14 @@ a:hover, a:active {
 	content: "-"; 
 	margin-top: -4px;
 }
+.userpic {   
+	height:8em;
+    width:8em; 
+}
+.usermaininfo {
+	color: #000305;
+	font-size: 75.5%; 
+	//font-family: Arial, 'Lucida Sans Unicode';
+	margin-top: 1em;
+	margin-bottom: 1em;
+}

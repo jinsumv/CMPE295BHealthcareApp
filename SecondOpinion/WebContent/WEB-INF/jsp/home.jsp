@@ -88,9 +88,9 @@
         	<a href="<c:url value="/j_spring_security_logout"/>">Sign out</a>
        	</sec:authorize>
     </div>
-	<footer class="mainFooter">
+	<!-- <footer class="mainFooter">
 	  <p>Copyright &copy; <a href="#" title="2ndhtml"></a></p>
-	</footer>
+	</footer>  -->
 	<script src="js/main.js" type="text/javascript"></script>
 </body>
 </html>

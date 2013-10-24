@@ -131,9 +131,9 @@
   </div>
 </div>
 	
-	<footer class="mainFooter">
+	<!--   <footer class="mainFooter">
 	  <p>Copyright &copy; <a href="#" title="1sthtml">payal.com</a></p>
-	</footer>
+	</footer> -->
 	<script src="js/main.js" type="text/javascript"></script>
 </body>
 </html>  

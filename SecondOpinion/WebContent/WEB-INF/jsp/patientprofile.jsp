@@ -53,7 +53,7 @@
 			<section class ="topcontent" >
 				   <article class = "userprofile_top" >
 					<section id ="profile_pic">		
-							<img class="userpic" src="images/search.png"/>
+							<img class="userpic" src="images/Jinsu.jpg"/>
 					</section>	
 					<section id = "userinf">
 					<p> Name: Jinsu </p>
@@ -83,6 +83,9 @@
 				  <tr>
 				   <td class = "userdetails" >
 				    <a  href="patientprocedures.do"> Procedures</a> </td></tr>
+				  <tr>
+				   <td class = "userdetails" >
+				    <a  href="patientfileupload.do"> Upload Health Documents</a> </td></tr>
 				 </table>
 			</article>  
 				  				
@@ -92,9 +95,9 @@
 	</div>
 	
     <div id = "footer">
-		<footer >
+	<!-- 	<footer >
 	  		<p>Copyright &copy; <a href="#" title="2ndhtml"></a></p>
-		</footer>
+		</footer> -->
 	</div>
 	</div>
 	

@@ -110,8 +110,8 @@
  </div>
 
 
-	<footer class="mainFooter">
+<!--  	<footer class="mainFooter">
 	  <p>Copyright &copy; <a href="#" title="3rdhtml"></a></p>
-	</footer>
+	</footer>  -->
 </body>
 </html>

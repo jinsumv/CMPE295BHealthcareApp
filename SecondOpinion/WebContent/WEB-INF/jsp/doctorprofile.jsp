@@ -164,8 +164,8 @@
 </section>
 </div></div>
 
-	<footer class="mainFooter">
+<!--  	<footer class="mainFooter">
 	  <p>Copyright &copy; <a href="#" title="2ndhtml"></a></p>
-	</footer>
+	</footer> -->
 	 </body>
 </html>
