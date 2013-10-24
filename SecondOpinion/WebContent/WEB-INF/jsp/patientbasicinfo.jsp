@@ -51,18 +51,18 @@
  		<div class="mainContent">
 			<div class="content">
 			<section class ="topcontent" >
-				   <article class = "userprofile_top" >
-					<section id ="profile_pic">		
+				   <div class = "userprofile_top" >
+					<div id ="profile_pic">		
 							<img class="userpic" src="images/Jinsu.jpg"/>
-					</section>	
-					<section id = "userinf">
-					<p> Name: Jinsu </p>
-					<p> Age: 29 </p>
+					</div>	
+					<div id = "userinf">
+					<p > Name: Jinsu </p>
+					<p > Age: 29 </p>
 					<p> Gender: Female </p>
-					<p> Location: Santa Clara </p>
-					</section>	
-				  </article> 	
-			</section>	  
+					<p > Location: Santa Clara </p>
+					</div>	
+				  </div> 	
+			</section>	 
 				  <article class= "bottomcontent">
 				  <header><h2 class = "heading" >Basic Information </h2></header>
 				  <p> <em> Complete your details. </em> </p>

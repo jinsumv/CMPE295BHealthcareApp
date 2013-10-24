@@ -141,6 +141,10 @@ public class SecondOpinionController {
     public void doPatientBasicInfo (ModelMap model) {
    
     }
+    @RequestMapping(value="/patientfileupload.do", method={RequestMethod.GET})
+    public void doPatientDoFileUpload (ModelMap model) {
+   
+    }
     
     @RequestMapping(value="/patientmedication.do", method={RequestMethod.GET})
     public void doPatientMedication (ModelMap model) {
@@ -159,6 +163,25 @@ public class SecondOpinionController {
     
     @RequestMapping(value="/patientprocedures.do", method={RequestMethod.GET})
     public void doPatientProcedures (ModelMap model) {
+   
+    }
+    @RequestMapping(value="/patientaddmedication.do", method={RequestMethod.GET})
+    public void doPatientAddMedication (ModelMap model) {
+   
+    }
+    
+    @RequestMapping(value="/patientaddsymptoms.do", method={RequestMethod.GET})
+    public void doPatientAddSymptoms (ModelMap model) {
+   
+    }
+    
+    @RequestMapping(value="/patientaddallergy.do", method={RequestMethod.GET})
+    public void doPatientAddAllergies (ModelMap model) {
+   
+    }
+    
+    @RequestMapping(value="/patientaddprocedures.do", method={RequestMethod.GET})
+    public void doPatientAddProcedures (ModelMap model) {
    
     }
     

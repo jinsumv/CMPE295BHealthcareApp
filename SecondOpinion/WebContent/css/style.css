@@ -81,9 +81,9 @@ a:hover, a:active {
 
 .topcontent {
 	background-color: #FFF;	
-	//border-raduis: 5px;
-	padding: 3% 5%;
-	margin-top: 2%;
+	/* border-raduis: 5px; */
+	/* padding: 3% 5%; */
+	/* margin-top: 2%; */
 }
 
 .bottomcontent {
@@ -184,18 +184,22 @@ a:hover, a:active {
 	float:left;
 }
 
-.userprofile_top section {
-	display: inline-block
-}
-#userinf {
-	margin-left: 1em
-}
+ .userprofile_top div {
+ position:realtive;
+	}
+
+
 #profile_pic {
-	height: 8.5em;
-    width:9.5em; 
-    margin-left: 1em;
-    margin-right:1em;
-    margin-top:2em;
+	position:absolute;
+	top: 0;
+	right:0;
+	width:200px;
+} 
+##userinf {
+	position:absolute;
+	top: 0;
+	left:0;
+	width:200px;
 }
 
 #addimage {
@@ -296,14 +300,17 @@ a:hover, a:active {
 	content: "-"; 
 	margin-top: -4px;
 }
-.userpic {   
-	height:8em;
-    width:8em; 
+.userpic {  
+	/* margin-top: 0em; */
+	height:9em;
+    width:9em; 
+    margin-left: 1em;
+    margin-top: 5em;
+    margin-bottom: 3em;
 }
 .usermaininfo {
-	color: #000305;
-	font-size: 75.5%; 
-	//font-family: Arial, 'Lucida Sans Unicode';
-	margin-top: 1em;
-	margin-bottom: 1em;
+	
+	margin-top: 2em;
+	
 }
+
