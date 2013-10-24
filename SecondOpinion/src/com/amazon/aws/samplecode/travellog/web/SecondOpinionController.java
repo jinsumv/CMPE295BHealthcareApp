@@ -143,11 +143,51 @@ public class SecondOpinionController {
         return new ModelAndView("redirect:home.do");
 
     }
-
+    
+    @RequestMapping(value="/doctorprofile.do", method={RequestMethod.GET})
+    public void doDoctorProfile (ModelMap model) {
+   
+    }
+    
+    @RequestMapping(value="/patientprofile.do", method={RequestMethod.GET})
+    public void doPatientProfile (ModelMap model) {
+   
+    }
+    
+    @RequestMapping(value="/patientbasicinfo.do", method={RequestMethod.GET})
+    public void doPatientBasicInfo (ModelMap model) {
+   
+    }
+    
+    @RequestMapping(value="/patientmedication.do", method={RequestMethod.GET})
+    public void doPatientMedication (ModelMap model) {
+   
+    }
+    
+    @RequestMapping(value="/patientsymptoms.do", method={RequestMethod.GET})
+    public void doPatientSymptoms (ModelMap model) {
+   
+    }
+    
+    @RequestMapping(value="/patientallergies.do", method={RequestMethod.GET})
+    public void doPatientAllergies (ModelMap model) {
+   
+    }
+    
+    @RequestMapping(value="/patientprocedures.do", method={RequestMethod.GET})
+    public void doPatientProcedures (ModelMap model) {
+   
+    }
+    
     @RequestMapping(value="/searchdoc.do", method={RequestMethod.GET})
     public void doSearch (ModelMap model) {
    
     }  
+    
+    @RequestMapping(value="/askquestion.do", method={RequestMethod.GET})
+    public void doAskQuestion (ModelMap model) {
+   
+    }
     
     @RequestMapping("/logout.do")
     public void doLogout (HttpServletResponse response) throws IOException {

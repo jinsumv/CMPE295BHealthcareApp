@@ -8,10 +8,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page import="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter"%><html><head>
 
-
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <link href="css/main.css" media="screen" rel="stylesheet" type="text/css"/>
-    <title>${journal.title}</title>
+    <title>Healthcare App</title>
 
 
     <!-- Popup related includes -->
@@ -33,39 +32,63 @@
     <script type="text/javascript" src="dwr/engine.js"></script>
     <!-- End DWR includes -->
 
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
 
     <script type="text/javascript" src="js/travellog.js"></script>
     
-    <link rel="stylesheet" href="css/style.css" type="text/css" />
-
   </head>
   
   <body class="body">
-  
-	<header class="mainheader">
-          <%@include file="header.jsp" %>	
-	</header>
-
- 	<div class="mainContent">
-	  <div class="content">
-		 <article class="topcontent">
-			<header>
-			  <h2><a href="#" title="First Post"></a></h2>
-			</header>
-			<b>Forgot your password?</b>
-			<p>
-			<i>Provide your email you used to sign up and we will send you a link to reset it.<br><br>
-			<form action="forgotpassword_form.asp">
-  			  <input type="email" name="email" placeholder="Email Eg:test@gmail.com" autofocus style='width: 100%'required /><br><br>
- 			  <input type="image" src="images/resetPasswordEmailBtn.jpg" name="Forgot Password Form" width="100%" height="50px" />
-			</form>			
-		 </article>
-	  </div>
-    </div>
+	<div id = "main_container">
 	
-	<footer class="mainFooter">
-	  <p>Copyright &copy; <a href="#" title="1sthtml">payal.com</a></p>
-	</footer>
-	<script src="js/main.js" type="text/javascript"></script>
-</body>
-</html>  
+	<div id = "header" >
+		<header class="mainheader">
+        	<%@include file="header.jsp" %>	
+		</header>
+	</div>
+
+	<div id = "body" >
+ 		<div class="mainContent">
+			<div class="content">
+			<section class ="topcontent" >
+				   <article class = "userprofile_top" >
+					<section id ="profile_pic">		
+							<img class="userpic" src="images/search.png"/>
+					</section>	
+					<section id = "userinf">
+					<p> Name: Jinsu </p>
+					<p> Age: 29 </p>
+					<p> Gender: Female </p>
+					<p> Location: Santa Clara </p>
+					</section>	
+				  </article> 	
+			</section>	  
+				  <article class= "bottomcontent">
+				  <header><h2 class = "heading"> Allergies </h2></header>
+				  <p><em> Complete your Allergy details. </em> </p>
+				  <a href="#"><img id="addimage" src="images/add.png" /></a>
+				  </article>  
+				  
+				  <article class= "bottomcontent">
+				  <table class = "usertable" >
+				   <tr>
+				   <td class = "borderbottom" > <a  href="#"> Ibuprofen </a> </td></tr>
+				   <tr>
+				   <td class = "borderbottom">  <a  href="#"> Motrin </a> </td></tr>
+				  </table>
+				  </article>
+				  			
+ 			
+			</div>
+		</div>
+	</div>
+	
+    <div id = "footer">
+		<footer >
+	  		<p>Copyright &copy; <a href="#" title="2ndhtml"></a></p>
+		</footer>
+	</div>
+	</div>
+	
+	</body>
+</html>

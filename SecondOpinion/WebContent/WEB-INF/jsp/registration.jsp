@@ -59,7 +59,7 @@
   <body class="body">
   
 	<header class="mainheader">
-          <img src="images/Header.jpg">		
+          <%@include file="header.jsp" %>	
 	</header>
 
  	<div class="mainContent">
