@@ -40,7 +40,7 @@
   
   <body class="body">
 	<header class="mainheader">
-          <%@include file="header.jsp" %>	
+          <img src="images/Header.jpg">	
 	</header>
 
  	<div class="mainContent">

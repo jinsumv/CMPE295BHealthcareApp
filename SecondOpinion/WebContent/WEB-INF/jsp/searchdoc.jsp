@@ -43,6 +43,7 @@
 	<header class="mainheader">
        <%@include file="header.jsp" %>   
 		
+		<!--  
 	 	<nav>
 	  		<ul>
 		  		<li class="active"><a href="#">Search a doctor</a></li>
@@ -51,60 +52,39 @@
 		  		<li><a href="#">Contact Us</a></li>
 	  		</ul>
 		</nav>
+		-->
 	</header>
 
-    <div class="mainContent">
-	    <div class="content">
-			<section class ="topcontent" >
-				<form>
-					<input name="search" placeholder="Search a Doctor" autofocus>
-					<input type="submit" value="Search">
-				</form>	
- 			</section>
-
- 	         <section class="bottomcontent">
- 	         	<p> Top Doctor Specialities </p>
- 	         	<ul class= "list_Deptmt">
- 	         		<a href="#">
- 	         			<li>Allergy and Immunology</li></a>
- 	         		<a href="#">
- 	         	    <li>Anaesthetics</li></a>
- 	         	    <a href="#">
- 	         	    <li>Pathology</li></a>
- 	         	    <a href="#">
- 	         	    <li>Cardiology</li></a>
- 	         	    <a href="#">
- 	         	    <li>Endocrinology</li></a>
- 	         	    <a href="#">
- 	         	    <li>Gastroenterology</li></a>
- 	         	    <a href="#">
- 	         	    <li>Internal Medicine</li></a>
- 	         	    <a href="#">
- 	         	    <li>Neurology</li></a>
- 	         	    <a href="#">
- 	         	    <li>Neurosurgery</li></a>
- 	         	    <a href="#">
- 	         	    <li>Opthalmology</li></a>
- 	         	    <a href="#">
- 	         	    <li>Orthopaedics</li></a>
- 	         	    <a href="#">
- 	         	    <li>Pediatrics</li></a>
- 	         	    <a href="#">
- 	         	    <li>Neonatology</li></a>
- 	         	    <a href="#">
- 	         	    <li>Plastic Surgery</li></a>
- 	         	    <a href="#">	
- 	         	    <li>Radiology</li></a>
- 	         	    <a href="#">
- 	         	    <li>Radiotherapy</li></a>
- 	         	    <a href="#">
- 	         	    <li>General Surgery</li></a>
- 	         	    <a href="#">
- 	         	    <li>Urology</li></a>
- 	         	    <a href="#">
- 	         	    <li>Vascular Surgery</li></a>
-	</ul>
-			 </section>
+    <div class="mainContent" style="padding:10px;">
+	    <form>
+			<input name="search" placeholder="Type a speciality" autofocus style="width:50%">
+			<input type="submit" value="Search">
+		</form>	
+		<div class="specializationlist">
+		   <section>
+ 	         	<h2> Top Doctor Specialities </h2><br>
+ 	         	<ul>
+ 	         		<li><a href="doctorsearchlist.do">Allergy and Immunology</a></li>
+ 	         		<li><a href="#">Anaesthetics</a></li>
+ 	         	    <li><a href="#">Pathology</a></li>
+ 	         	    <li><a href="#">Cardiology</a></li>
+ 	         	    <li><a href="#">Endocrinology</a></li>
+ 	         	    <li><a href="#">Gastroenterology</a></li>
+ 	         	    <li><a href="#">Internal Medicine</a></li>
+ 	         	    <li><a href="#">Neurology</a></li>
+ 	         	    <li><a href="#">Neurosurgery</a></li>
+ 	         	    <li><a href="#">Opthalmology</a></li>
+ 	         	    <li><a href="#">Orthopaedics</a></li>
+ 	         	    <li><a href="#">Pediatrics</a></li>
+ 	         	    <li><a href="#">Neonatology</a></li>
+ 	         	    <li><a href="#">Plastic Surgery</a></li>
+ 	         	    <li><a href="#">Radiology</a></li>
+ 	         	    <li><a href="#">Radiotherapy</a></li>
+ 	         	    <li><a href="#">General Surgery</a></li>
+ 	         	    <li><a href="#">Urology</a></li>
+ 	         	    <li><a href="#">Vascular Surgery</a></li>
+			</ul>
+		 </section>
 
  </div>
  </div>

@@ -54,27 +54,26 @@
  	<div class="mainContent">
 		<div class="content">
 		<section class ="topcontent" >
-			<a href="#">
-			
-			<div class="doc_details">
+		
+		<div id="doc_pic" class="doc_details">
 			<div style="float:left;">
 			<img src="images/doctor1.jpg" alt="doc profile" width="92" height="92"/></a> 	
 			</div>
 			
-			<div style="float:right;padding-left:20px;">	
+			<div id="docinf" style="float:right;padding-left:20px;padding-top:10px;">	
 			<label id="docname"><b>Dr. Susan A. Mitchell</b></label><br>
 			<label id="specialisation"><i>Pediatrics</i></label><br>
 			<label id="achievements"><i>Board Certified</i></label><br>
 			</div>
-			</div>
+		</div>
 			
-			<div style="padding-top:10px;padding-bottom:10px;">
+		<div style="padding-top:10px;padding-bottom:10px;">
 			<img src="images/FollowBtn.png" alt="follow doc" width="152" height="35"/></a>
 			<img src="images/SendmsgBtn.png" alt="send " width="152" height="35"/></a>
-			</div>
+		</div>
 			
-			<div style="float:left;background-color:#E1E1E8;width:152px;height:50px;color:blue;font-size:18px;text-align: center; font-weight: bold;">125 <br> FOLLOWERS</div>
-			<div style="margin-left:160px;background-color:#E1E1E8;width:152px;height:50px;color:blue;font-size:18px;vertical-align:middle;text-align: center; font-weight: bold;">12 <br> REVIEWS</div>
+		<div style="float:left;background-color:#E1E1E8;width:152px;height:50px;color:blue;font-size:18px;text-align: center; font-weight: bold;">125 <br> FOLLOWERS</div>
+		<div style="margin-left:160px;background-color:#E1E1E8;width:152px;height:50px;color:blue;font-size:18px;vertical-align:middle;text-align: center; font-weight: bold;">12 <br> REVIEWS</div>
 		</section>
 		
 <section class="bottomcontent">

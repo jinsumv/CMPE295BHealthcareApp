@@ -39,46 +39,43 @@
   </head>
   
   <body class="body">
-	<div id = "main_container">
-	
-	<div id = "header" >
-		<header class="mainheader">
-        	<%@include file="header.jsp" %>	
-		</header>
-	</div>
+	<header class="mainheader">
+	<%@include file="header.jsp" %>
+	</header>
 
-	<div id = "body" >
- 		<div class="mainContent">
-			<div class="content">
-			<section class ="topcontent" >
-				   <%@include file="patientinfo.jsp" %>		
-			</section>	
-				  <article class= "bottomcontent">
-				  <header><h2 class = "heading"> Allergies </h2></header>
-				  <p><em> Complete your Allergy details. </em> </p>
-				  <a href="patientaddallergy.do"><img id="addimage" src="images/add.png" /></a>
-				  </article>  
-				  
-				  <article class= "bottomcontent">
-				  <table class = "usertable" >
-				   <tr>
-				   <td class = "borderbottom" > <a  href="#"> Ibuprofen </a> </td></tr>
-				   <tr>
-				   <td class = "borderbottom">  <a  href="#"> Motrin </a> </td></tr>
-				  </table>
-				  </article>
-				  			
- 			
-			</div>
+ 	<div class="mainContent" style="padding:10px;">
+		<form>
+					<input name="search" placeholder="Type a doctor's name" autofocus style="width:50%">
+					<input type="submit" value="Search">
+		</form>	<br>
+		
+		 <div class="doclist">
+		  <ul>
+			<li>
+			  <img src="images/doctor1.jpg" width=100px height=100px>
+			  <h3>Dr. Susan A. Mitchell</h3>
+			  <p>Dental<br>DDS. FADSA<br>Rating - 5</p>
+			</li>
+			  
+			<li>
+			  <img src="images/doctor1.jpg" width=100px height=100px>
+			  <h3>Dr. Susan A. Mitchell</h3>
+			  <p>Dental<br>DDS. FADSA<br>Rating - 5</p>
+			</li>
+
+			<li>
+			  <img src="images/doctor1.jpg" width=100px height=100px>
+			  <h3>Dr. Susan A. Mitchell</h3>
+			  <p>Dental<br>DDS. FADSA<br>Rating - 5</p>
+			</li>
+
+			<li>
+			  <img src="images/doctor1.jpg" width=100px height=100px>
+			  <h3>Dr. Susan A. Mitchell</h3>
+			  <p>Dental<br>DDS. FADSA<br>Rating - 5</p>
+			</li>
+		  </ul>
 		</div>
-	</div>
-	
-   <!--   <div id = "footer">
-	 	<footer >
-	  		<p>Copyright &copy; <a href="#" title="2ndhtml"></a></p>
-		</footer> -->
-	</div>
-	</div>
-	
-	</body>
+  </div>
+ </body>
 </html>

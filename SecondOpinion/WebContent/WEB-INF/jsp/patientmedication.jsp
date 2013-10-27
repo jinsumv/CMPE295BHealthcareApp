@@ -51,17 +51,7 @@
  		<div class="mainContent">
 			<div class="content">
 			<section class ="topcontent" >
-				   <div class = "userprofile_top" >
-					<div id ="profile_pic">		
-							<img class="userpic" src="images/Jinsu.jpg"/>
-					</div>	
-					<div id = "userinf">
-					<p > Name: Jinsu </p>
-					<p > Age: 29 </p>
-					<p> Gender: Female </p>
-					<p > Location: Santa Clara </p>
-					</div>	
-				  </div> 	
+				   <%@include file="patientinfo.jsp" %>	 	
 			</section>	
 				  <article class= "bottomcontent">
 				  <header><h2 class = "heading">Medication </h2></header>

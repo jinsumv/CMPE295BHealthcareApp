@@ -9,90 +9,75 @@ body {
 	text-align: left;
 	height: 100%;
 }
-
 a {
 	text-decoration: none;
 }
-
 a:link, a:visited {
 	color: #CF5C3F;
 }
-
 a:hover, a:active {
 	background-color: #CF5C3F;
 	color: black;
 }
-
 .body {
 	margin: 0 auto;
 	width: 100%;
 	clear: both;
 }
-
 .mainheader img {
 	width: 100%;
 	height: 50px;
 	//margin-top: 2%;   //equivalent to margin: 2% 0% or margin: 2% 0% 2% 0%  margin-bottom: 2%;
 	//border-radius: 5px;
 }
-
 .mainheader nav {
 	background-color: #666;
 	height: 40px;
 	border-radius: 5px;	
 }
-
 .mainheader nav ul {
 	list-style: none;
 	margin: 0 auto;
 }
-
 .mainheader nav ul li {
 	float: left;
 	display: inline;
 }
-
 .mainheader nav a:link, .mainheader nav a:visited {
 	color: white;
 	display: inline-block;
 	padding: 10px 25px;
 	height:20px;
 }
-
 .mainheader nav a:hover, .mainheader nav a:active, 
 .mainheader nav .active a:link, .mainheader nav .active a:visited {
 	background-color: #CF5C3F;
 	text-shadow: none;
 }
-
 .mainheader nav ul li a {
 	border-radius: 5px;	
 }
-
 .mainContent {
 	line-height: 25px;
 	//border-radius: 5px;
 }
-
 .content {
 	width: 100%;
 	float: left;
 }
-
 .topcontent {
 	background-color: #FFF;	
 	/* border-raduis: 5px; */
 	/* padding: 3% 5%; */
 	/* margin-top: 2%; */
+	padding: 10px;
 }
-
 .bottomcontent {
 	background-color: #FFF;	
 	border-raduis: 5px;
 	padding: 3% 5%;
 	margin-top: 2%;
 }
-
 .top-sidebar {
 	width: 21%;
 	float: left;
@@ -104,13 +89,11 @@ a:hover, a:active {
 	padding-top: 2%;
 	padding-right: 3%;
 }
-
 .post-info {
 	font-style: italic;
 	color: #999;
 	font-size: 90%;
 }
-
 .middle-sidebar {
 	width: 21%;
 	float: left;
@@ -120,7 +103,6 @@ a:hover, a:active {
 	margin-bottom: 2%;
 	padding: 2% 3%;
 }
-
 .bottom-sidebar {
 	width: 21%;
 	float: left;
@@ -130,7 +112,6 @@ a:hover, a:active {
 	padding: 2% 3%;
 	border-raduis: 5px;
 }
-
 .mainFooter {
 	width: 100%;
 	float: left;
@@ -140,14 +121,12 @@ a:hover, a:active {
 	//margin-top: 2%;   //equivalent to margin: 2% 0% or margin: 2% 0% 2% 0%  margin-bottom: 2%;
 	//border-radius: 5px;
 }
-
 .mainFooter p {
 	width: 92%;
 	height: 10px;
 	margin: 10px auto;
 	color: #FFF;
 }
-
 .menuimage {
     height: 100px;
     width:100px; 
@@ -165,9 +144,6 @@ a:hover, a:active {
 	margin-left:10em;
 	
 }
-.list_Deptmt {
-	list-style:none;
-}
 #fileupload_icons {
 	text-align:center;
 }
@@ -183,25 +159,21 @@ a:hover, a:active {
 	background-color: #666;
 	float:left;
 }
-
  .userprofile_top div {
  position:realtive;
 	}
-
-
 #profile_pic {
 	position:absolute;
 	top: 0;
 	right:0;
 	width:200px;
-} 
+}
 ##userinf {
 	position:absolute;
 	top: 0;
 	left:0;
 	width:200px;
 }
-
 #addimage {
 	text-align:center;
     width: 8em; 
@@ -240,7 +212,6 @@ a:hover, a:active {
 	height: 3em;
 	border: 1px solid black;
 }
-
 .doc_details {
     display:inline-block;  
     margin-left:3em;
@@ -251,18 +222,15 @@ a:hover, a:active {
 	width: 50%;
 	float: left;
 }
-
 .bottomcontent details {
 	border: 1px solid #E1E1E1; 
 	border-radius: 5px; box-shadow: 0 1px 4px rgba(0, 0, 0, .4); 
 	color: #363636; 
 	margin: 0 0 .4em; padding: 1%;
 }
-
 .bottomcontent details[open] {
 	background: #E1E1E1;
 }
-
 .bottomcontent summary {
 	background: -webkit-linear-gradient(top, #FAFAFA 50%, #E1E1E1 50%); 
 	border-radius: 5px; cursor: pointer; 
@@ -273,7 +241,6 @@ a:hover, a:active {
 	position: relative; 
 	width: 102%;
 }
-
 .bottomcontent summary:hover, details[open] summary {
 	background: #E1E1E1;
 }
@@ -281,7 +248,6 @@ a:hover, a:active {
 .bottomcontent summary::-webkit-details-marker {
 	display: none
 }
-
 .bottomcontent summary:before{
 	border-radius: 5px; 
 	content: "+"; 
@@ -295,22 +261,103 @@ a:hover, a:active {
 	text-align: center; 
 	width: 20px;
 }
-
 .bottomcontent details[open] summary:before {
 	content: "-"; 
 	margin-top: -4px;
 }
 .userpic {  
 	/* margin-top: 0em; */
-	height:9em;
-    width:9em; 
-    margin-left: 1em;
-    margin-top: 5em;
-    margin-bottom: 3em;
+	height:92px;
+    width:92px; 
 }
 .usermaininfo {
-	
-	margin-top: 2em;
-	
+	margin-top: 2em;	
 }
 
+/*Specialization lIst*/
+.specializationlist div {
+  width: 200px;
+  margin: 30px;
+}
+
+.specializationlist h2 {
+  font: 400 30px/1.5 Helvetica, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.specializationlist ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.specializationlist li {
+  font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+  border-bottom: 1px solid #ccc;
+}
+
+.specializationlist li:last-child {
+  border: none;
+}
+
+.specializationlist li a {
+  text-decoration: none;
+  color: #CF5C3F;
+
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+  display: block;
+  width: 100%;
+}
+
+.specializationlist li a:hover {
+  font-size: 30px;
+  background: #FFF;
+  color: #000;
+}
+
+.specializationlist li {
+  padding: 10px;
+  overflow: auto;
+}
+
+.specializationlist li:hover {
+  background: #FFF;
+  cursor: pointer;
+}
+
+/* DocList */
+* {margin: 0; padding: 0;}
+.doclist div {
+  margin: 5px;
+}
+.doclist ul {
+  list-style-type: none;
+  width: 100%;
+}
+.doclist h3 {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+.doclist li img {
+  float: left;
+  margin: 0 15px 0 0;
+}
+.doclist li p {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+.doclist li {
+  padding: 10px;
+  overflow: auto;
+}
+.doclist li:hover {
+  font-size: 30px;
+  background: #FFF;
+  cursor: pointer;
+  -moz-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}

@@ -200,6 +200,11 @@ public class SecondOpinionController {
         response.sendRedirect("signin.do");
     }
 
+    @RequestMapping(value="/doctorsearchlist.do", method={RequestMethod.GET})
+    public void doDocSearchList (ModelMap model) {
+   
+    }  
+    
     @Autowired
     public void setTravelLogDAO (TravelLogDAO dao) {
         this.dao = dao;

@@ -57,18 +57,7 @@
               <div class="mainContent">
 	           <div class="content">
 	              <section class ="topcontent" >
-				    <article class = "userprofile_top" >
-					 
-					 <section id ="profile_pic">		
-					    <img class="userpic" src="images/doctor1.jpg" width="90" height="90"/>
-					 </section>	
-					
-					 <section id = "userinf">
-					    <label id="docname"><b>Dr. Susan A. Mitchell</b></label><br>
-						<label id="specialisation"><i>Pediatrics<i></label><br>
-						<label id="achievements"><i>Board Certified<i></label><br>
-		             </section>			    				
-				    </article> 	
+				     <%@include file="patientinfo.jsp" %> 	
  	              </section>
 
 		          <article class= "bottomcontent">
