@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.secondopinion.common.model.Patient;
+import com.secondopinion.common.model.PatientFile;
 import com.secondopinion.common.model.PatientMedication;
 import com.secondopinion.common.model.User;
 
@@ -240,6 +241,34 @@ public class PatientDaoImpl implements PatientDao{
 				} catch (SQLException e) {}
 			}
 		}		
+	}
+
+	@Override
+	public void insertPatientFile(Patient patient, PatientFile patientFile) {
+		String sql = "INSERT INTO patient_file " +
+				"(PATIENT_ID, FILE_NAME, DESCRIPTION, FILE_URL) VALUES (?, ?, ?, ?)";
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, patient.getPatientId());
+			ps.setString(2, patientFile.fileName);
+			ps.setString(3, patientFile.description);
+			ps.setString(3, patientFile.fileUrl);
+			ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
 	}
 
 }
