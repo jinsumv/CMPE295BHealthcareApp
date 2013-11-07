@@ -1,6 +1,5 @@
 package com.secondopinion.common.controller;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,15 +7,14 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.secondopinion.common.model.FileUpload;
 import com.secondopinion.common.model.Patient;
 import com.secondopinion.common.model.PatientMedication;
 import com.secondopinion.common.model.User;
@@ -94,26 +92,13 @@ public class PatientController {
 		
 		return new ModelAndView("redirect:patientbasicinfo.do");
     }
+    	
     
     @RequestMapping(value="/patientfileupload.do", method={RequestMethod.GET})
-	public void doPatientFileUpload(ModelMap model) {
+    public void doPatientDoFileUpload (ModelMap model) {
     	Patient patient = patientService.getCurrentPatient();
 		model.addAttribute("patient", patient);
     }
-
-	@RequestMapping(value="/patientnewfileupload.do", method={RequestMethod.POST})
-	public ModelAndView doPatientNewFileUpload(ModelMap model, @RequestParam("file_description") String fileDescription,
-									   @RequestParam("file") MultipartFile file) throws IOException {
-		Patient patient = patientService.getCurrentPatient();
-		System.out.println("Patient: " + patient.getName() + " uploaded a file.");
-		System.out.println("Description: " + fileDescription);
-		System.out.println("Original file name: " + file.getOriginalFilename());
-		
-		FileUpload fileUpload = new FileUpload(file, fileDescription);
-		patientService.addPatientFile(patient, fileUpload);
-		
-		return new ModelAndView("redirect:patientfileupload.do");
-	}
     
     @RequestMapping(value="/patientmedication.do", method={RequestMethod.GET})
     public void doPatientMedication (ModelMap model) {

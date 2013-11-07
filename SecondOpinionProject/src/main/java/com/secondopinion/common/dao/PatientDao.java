@@ -3,7 +3,6 @@ package com.secondopinion.common.dao;
 import java.util.List;
 
 import com.secondopinion.common.model.Patient;
-import com.secondopinion.common.model.PatientFile;
 import com.secondopinion.common.model.PatientMedication;
 import com.secondopinion.common.model.User;
 
@@ -16,5 +15,4 @@ public interface PatientDao {
 	void insertPatientMedication(Patient patient,
 			PatientMedication patientMedication);
 	void deletePatientMedication(int medicationId);
-	void insertPatientFile(Patient patient, PatientFile patientFile);
 }

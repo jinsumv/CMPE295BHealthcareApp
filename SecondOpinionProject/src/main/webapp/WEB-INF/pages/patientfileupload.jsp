@@ -52,19 +52,11 @@
 		<h3 class = "heading"> Upload your health documents</h3>
 		<p> Store your health document to share with your doctor</p>
 		<p> <em> You private information are safe and secure</em> </p>
-		
+		<section id="fileupload_icons">		
+			<a href="#">
+			<img class="menuimage" src="images/upload.png"/></a>	
+		</section>			    				
  	</section>
- 	<section id="fileupload_form">	
-			<form action="patientnewfileupload.do" method="post" enctype="multipart/form-data">
-    			<input type="text" name="file_description" />
-    		    <input type="file" name="file" />
-    			<input type="submit" name="Upload" value="Upload"/>
-			</form>
-		</section>
-	<section>
-		<h3> Uploaded Documents</h3>
-		
-	</section>	
 	</div></div></div>
 	
     <!--  <div id = "footer">

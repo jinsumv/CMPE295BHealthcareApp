@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import com.secondopinion.common.dao.PatientDao;
 import com.secondopinion.common.dao.UserDao;
-import com.secondopinion.common.model.FileUpload;
 import com.secondopinion.common.model.Patient;
 import com.secondopinion.common.model.PatientMedication;
 import com.secondopinion.common.model.User;
@@ -49,13 +48,8 @@ public class PatientService {
 		patientDao.insertPatientMedication(patient, patientMedication);
 	}
 	
-	public void addPatientFile(Patient patient, FileUpload fileUpload) {
-		// TODO Talk to S3 and upload the file to S3
-		
-		// TODO: Talk to PatientDao and insert DB record
-	}
-	
 	public void removePatientMedication(int medicationId) {
 		patientDao.deletePatientMedication(medicationId);
 	}
+
 }

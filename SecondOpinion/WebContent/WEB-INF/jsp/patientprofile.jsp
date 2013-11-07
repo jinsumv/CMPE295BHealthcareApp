@@ -55,7 +55,7 @@
 			</section>	  
 				  
 		    <article class= "bottomcontent">
-				  <p> <h2 class = "heading">Complete your profile</h2> </p>
+				  <p> <h2 class = "heading"> Complete your profile</h2> </p>
 				 <p> <em> You private information are safe and secure</em> </p>
 				  <table class = "usertable">
 				  <tr>
