@@ -53,10 +53,9 @@
 		<p> Store your health document to share with your doctor</p>
 		<p> <em> You private information are safe and secure</em> </p>
 		
-		
  	</section>
  	<section id="fileupload_form">	
-			<form action="upload" method="post" enctype="multipart/form-data">
+			<form action="patientnewfileupload.do" method="post" enctype="multipart/form-data">
     			<input type="text" name="file_description" />
     		    <input type="file" name="file" />
     			<input type="submit" name="Upload" value="Upload"/>

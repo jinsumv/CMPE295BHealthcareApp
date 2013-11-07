@@ -1,5 +1,11 @@
 package com.secondopinion.common.model;
 
+
+/**
+ * Represents a file uploaded by patient.
+ * 
+ * @author jinsu
+ */
 public class PatientFile {
 	public final int patientFileId;
 	public final int patientId;
