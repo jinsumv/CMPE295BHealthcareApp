@@ -48,7 +48,7 @@
 		<table>
 			<tr>
 				<td>
-					<a href="patientprofile.do">
+					<a href="doctorprofile.do">
 					<img class="menuimage" src="images/profile.png" /></a>
 				</td>
 				<td>
@@ -59,21 +59,21 @@
 			<tr>
 			<tr>
 				<td>
-					<a href="listmessages.do">
+					<a href="#">
 					<img class="menuimage" src="images/message.png"/></a>
 				</td>
 				<td>
-					<a href="askquestion.do">
+					<a href="#">
 					<img class="menuimage" src="images/AskQtn.jpg"/></a>
 				</td>
 			<tr>
 			<tr>
 				<td>
-					<a href="searchdoc.do">
+					<a href="#">
 					<img class="menuimage" src="images/search.png"/></a>	
 				</td>
 				<td>
-					<a href="doctorprofile.do">
+					<a href="#">
 					<img class="menuimage" src="images/docprofile.png"/></a>	
 				</td>
 			<tr>

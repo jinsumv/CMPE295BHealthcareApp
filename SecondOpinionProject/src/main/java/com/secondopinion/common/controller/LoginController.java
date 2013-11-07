@@ -1,14 +1,22 @@
 package com.secondopinion.common.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.secondopinion.common.model.Patient;
+import com.secondopinion.common.service.DoctorService;
+import com.secondopinion.common.service.PatientService;
  
 @Controller
 public class LoginController {
+	
+	@Autowired
+    PatientService patientService;
  
 	@RequestMapping(value="/welcome.do", method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
@@ -17,8 +25,13 @@ public class LoginController {
 		String name = user.getUsername();
 	
 		model.addAttribute("username", name);
-		model.addAttribute("message", "Spring Security login + database example");
-		return "home";
+		Patient patient = patientService.getCurrentPatient();
+		if (patient != null) {
+			return "home";
+		}
+		else {
+			return "doctorhome";
+		}
  
 	}
  

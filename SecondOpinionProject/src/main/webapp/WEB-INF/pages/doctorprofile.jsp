@@ -60,9 +60,9 @@
 			</div>
 			
 			<div id="docinf" style="float:right;padding-left:20px;padding-top:10px;">	
-			<label id="docname"><b>Dr. Susan A. Mitchell</b></label><br>
-			<label id="specialisation"><i>Pediatrics</i></label><br>
-			<label id="achievements"><i>Board Certified</i></label><br>
+			<label id="docname"><b>Dr. ${doctor.name}</b></label><br>
+			<label id="specialisation"><i>${doctor.areaOfPractice}</i></label><br>
+			<label id="achievements"><i>${doctor.achievements}</i></label><br>
 			</div>
 		</div>
 			

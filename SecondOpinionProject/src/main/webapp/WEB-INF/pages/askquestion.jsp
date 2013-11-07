@@ -60,9 +60,12 @@
  	              </section>
 
 		          <article class= "bottomcontent">
-				  <header><h2>Ask your question to the Doctor</h2></header>			  	  
-  			          <input class = "notes" type="text" name="notes"  autofocus required><br>
+				  <header><h2>Ask your question to the Doctor</h2></header>	
+				  	  <form name="askForm" action="addNewQuestion.do" method="post">		  	  
+  			          <input type="text" name="title" placeholder="Title" autofocus required><br><br>
+  			          <input class = "notes" type="text" name="question" placeholder="Question" required><br><br>
  			          <input type="submit" name="Submit Question" value="Submit Question">
+ 			          </form>
 		          </article>  
 			</div>
            </div>

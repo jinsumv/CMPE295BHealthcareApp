@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.secondopinion.common.model.Doctor;
 import com.secondopinion.common.model.Patient;
 import com.secondopinion.common.model.User;
+import com.secondopinion.common.service.DoctorService;
 import com.secondopinion.common.service.PatientService;
 import com.secondopinion.common.service.UserService;
 
@@ -33,7 +35,7 @@ public class DoctorController {
     UserService userService;
     
     @Autowired
-    PatientService patientService;
+    DoctorService doctorService;
     
     @RequestMapping(value = "/doctorsignup.do", method = RequestMethod.POST)
     public ModelAndView doPatientAccount (ModelMap map,
@@ -42,32 +44,32 @@ public class DoctorController {
       @RequestParam("fullname") String fullName,
       @RequestParam("dateofbirth") String dateOfBirth,
       @RequestParam("gender") String gender,
-      @RequestParam("location") String location) throws ParseException {
+      @RequestParam("qualifyingdegree") String qualifyingDegree,
+      @RequestParam("areaofpractice") String areaOfPractice,
+      @RequestParam("licensenumber") String licenseNumber,
+      @RequestParam("achievements") String achievements) throws ParseException {
 
     	User user = new User( -1, email, password, true);
         user = userService.createUser(user);
         
         SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy");
         Date dob = dateFormatter.parse(dateOfBirth);
-        Patient patient = new Patient(-1, -1, fullName, dob, gender, location);
-    	patientService.createPatient(user, patient);
+        Doctor doctor = new Doctor(-1, -1, fullName, dob, gender, qualifyingDegree, areaOfPractice, licenseNumber, achievements);
+        
+        doctorService.createDoctor(user, doctor);
         return new ModelAndView("redirect:welcome.do");
     }
     
     @RequestMapping(value="/doctorprofile.do", method={RequestMethod.GET})
     public void doDoctorProfile (ModelMap model) {
-   
+    	Doctor doctor = doctorService.getCurrentDoctor();
+		model.addAttribute("doctor", doctor);
     }
     
     @RequestMapping(value="/searchdoc.do", method={RequestMethod.GET})
     public void doSearch (ModelMap model) {
    
     }  
-    
-    @RequestMapping(value="/askquestion.do", method={RequestMethod.GET})
-    public void doAskQuestion (ModelMap model) {
-   
-    }
 
     @RequestMapping(value="/doctorsearchlist.do", method={RequestMethod.GET})
     public void doDocSearchList (ModelMap model) {

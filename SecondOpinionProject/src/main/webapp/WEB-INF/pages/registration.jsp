@@ -86,50 +86,52 @@
 			<div class="doc">
 			<b>Sign Up</b> Its helpful, private, and FREE!</p>
 			<p>
-			<form action="docsignup.do" method="post">
-  			  <input type="text" name="fname" placeholder="First Name" style='width: 48%' autofocus required> 
-			  <input type="text" name="lname" placeholder="Last Name" style='width: 48%' required><br>
-  			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com" style='width: 100%' required><br>
-  			  <input type="text" name="pwd" placeholder="New Password" style='width: 100%' required><br>
-			  <select name="degree" style='width: 100%' required>
+			<form action="doctorsignup.do" method="post">
+  			  <input type="text" name="fullname" placeholder="Full Name" style='width: 48%' autofocus required><br><br>
+  			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com" style='width: 100%' required><br><br>
+  			  <input type="password" name="pwd" placeholder="New Password" style='width: 100%' required><br><br>
+  			  <input type="text" name="dateofbirth" placeholder="Date of Birth (MM/DD/YYYY)" style='width: 100%' required ><br><br>
+  			  Genger&nbsp;&nbsp;&nbsp;
+  			  <input type="radio" name="gender" value="Male" checked >&nbsp;Male&nbsp;&nbsp;
+  			  <input type="radio" name="gender" value="Female" >&nbsp;Female<br><br>
+  			  <select name="qualifyingdegree" style='width: 100%' required>
 				<option value="">Qualifying degree</option>
-				<option value="0">MD</option>
-				<option value="1">MDCM</option>
-				<option value="2">DO</option>
-				<option value="3">MBBS</option>
-				<option value="4">MBChB</option>
-				<option value="5">DMD</option>
-				<option value="6">DDS</option>
-				<option value="7">DPM</option>
-				<option value="8">PsYD</option>
-				<option value="9">PhD</option>
-				<option value="10">PharmaD</option>
-			 </select><br>
-			 <select name="area" style='width: 100%' required>
+				<option value="MD">MD</option>
+				<option value="MDCM">MDCM</option>
+				<option value="DO">DO</option>
+				<option value="MBBS">MBBS</option>
+				<option value="MBChB">MBChB</option>
+				<option value="DMD">DMD</option>
+				<option value="DDS">DDS</option>
+				<option value="DPM">DPM</option>
+				<option value="PsYD">PsYD</option>
+				<option value="PhD">PhD</option>
+				<option value="PharmaD">PharmaD</option>
+			 </select><br><br>
+			 <select name="areaofpractice" style='width: 100%' required>
 				<option value="">Area of practice</option>
-				<option value="0">Allergy and Immunology</option>
-				<option value="1">Anaesthetics</option>
-				<option value="2">Pathology</option>
-				<option value="3">Cardiology</option>
-				<option value="4">Endocrinology</option>
-				<option value="5">Gastroenterology</option>
-				<option value="6">Internal Medicine</option>
-				<option value="7">Neurology</option>
-				<option value="8">Neurosurgery</option>
-				<option value="9">Opthalmology</option>
-				<option value="10">Orthopaedics</option>
-				<option value="11">Pediatrics</option>
-				<option value="12">Neonatology</option>
-				<option value="13">Plastic Surgery</option>
-				<option value="14">Radiology</option>
-				<option value="15">Radiotherapy</option>
-				<option value="16">General Surgery</option>
-				<option value="17">Urology</option>
-				<option value="18">Vascular Surgery</option>
-			</select><br>
-				
-			<input type="text" name="license" placeholder="Professional License #" style='width: 100%' required><br><br>
-			<img src="images/DocSignUpBtn.jpg" name="Submit Form" width="100%" height="50px" />
+				<option value="Allergy and Immunology">Allergy and Immunology</option>
+				<option value="Anaesthetics">Anaesthetics</option>
+				<option value="Pathology">Pathology</option>
+				<option value="Cardiology">Cardiology</option>
+				<option value="Endocrinology">Endocrinology</option>
+				<option value="Gastroenterology">Gastroenterology</option>
+				<option value="Internal Medicine">Internal Medicine</option>
+				<option value="Neurology">Neurology</option>
+				<option value="Neurosurgery">Neurosurgery</option>
+				<option value="Opthalmology">Opthalmology</option>
+				<option value="Orthopaedics">Orthopaedics</option>
+				<option value="Pediatrics">Pediatrics</option>
+				<option value="Neonatology">Neonatology</option>
+				<option value="Plastic Surgery">Plastic Surgery</option>
+				<option value="Radiology">Radiology</option>
+				<option value="General Surgery">General Surgery</option>
+				<option value="Urology">Urology</option>
+				<option value="Vascular Surgery">Vascular Surgery</option>
+			</select><br><br>
+			<input type="text" name="licensenumber" placeholder="Professional License #" style='width: 100%' required><br><br>
+			<input type="text" name="achievements" placeholder="Achievements" style='width: 100%'><br><br>
+			<input type="image" src="images/DocSignUpBtn.jpg" name="Submit Form" width="100%" height="50px" />
 		</form></p>
     	</div>
 	</div>
