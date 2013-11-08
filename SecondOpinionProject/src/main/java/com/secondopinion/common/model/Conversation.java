@@ -11,6 +11,9 @@ public class Conversation {
 	Date updateDate;
 	boolean unAnswered;
 	
+	Patient patient;
+	Doctor doctor;
+	
 	public Conversation(int conversationId, int patientId, Integer doctorId,
 			String title, Date startDate, Date updateDate, boolean unAnswered) {
 		super();
@@ -43,6 +46,17 @@ public class Conversation {
 	public boolean isUnAnswered() {
 		return unAnswered;
 	}
-
 	
+	public Patient getPatient() {
+		return patient;
+	}
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+	public Doctor getDoctor() {
+		return doctor;
+	}
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
 }

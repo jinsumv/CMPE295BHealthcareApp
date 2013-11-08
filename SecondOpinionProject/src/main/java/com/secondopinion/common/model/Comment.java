@@ -9,6 +9,8 @@ public class Comment {
 	String text;
 	Date commentDate;
 	
+	Person commenter;
+	
 	public Comment(int commentId, int conversationId, int userId, String text,
 			Date commentDate) {
 		super();
@@ -32,6 +34,12 @@ public class Comment {
 	}
 	public Date getCommentDate() {
 		return commentDate;
+	}
+	public Person getCommenter() {
+		return commenter;
+	}
+	public void setCommenter(Person commenter) {
+		this.commenter = commenter;
 	}
 	
 }

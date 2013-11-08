@@ -40,8 +40,8 @@ public class ConversationDaoImpl implements ConversationDao{
 			else 
 				ps.setNull(2, Types.INTEGER);
 			ps.setString(3, conversation.getTitle());
-			ps.setDate(4, new java.sql.Date(conversation.getStartDate().getTime()));
-			ps.setDate(5, new java.sql.Date(conversation.getUpdateDate().getTime()));
+			ps.setTimestamp(4, new java.sql.Timestamp(conversation.getStartDate().getTime()));
+			ps.setTimestamp(5, new java.sql.Timestamp(conversation.getUpdateDate().getTime()));
 			ps.setBoolean(6, conversation.isUnAnswered());
 			ps.executeUpdate();
 			ps.close();
@@ -71,7 +71,7 @@ public class ConversationDaoImpl implements ConversationDao{
 			ps.setInt(1, conversation.getConversationId());
 			ps.setInt(2, comment.getUserId());
 			ps.setString(3, comment.getText());
-			ps.setDate(4, new java.sql.Date(comment.getCommentDate().getTime()));
+			ps.setTimestamp(4, new java.sql.Timestamp(comment.getCommentDate().getTime()));
 			ps.executeUpdate();
 			ps.close();
  
@@ -162,7 +162,7 @@ public class ConversationDaoImpl implements ConversationDao{
 
 	@Override
 	public List<Comment> getCommentsForConversationId(int conversationId) {
-		String sql = "SELECT * FROM comment WHERE CONVERSATION_ID=? ORDER BY COMMENT_DATE DESC";
+		String sql = "SELECT * FROM comment WHERE CONVERSATION_ID=? ORDER BY COMMENT_DATE ASC";
 		 
 		Connection conn = null;
  
@@ -206,6 +206,44 @@ public class ConversationDaoImpl implements ConversationDao{
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, patientId);
+			List<Conversation> conversationList = new ArrayList<Conversation>();
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Conversation conversation = new Conversation(
+					rs.getInt("CONVERSATION_ID"),
+					rs.getInt("PATIENT_ID"),
+					rs.getInt("DOCTOR_ID"),
+					rs.getString("TITLE"),
+					rs.getTimestamp("START_DATE"),
+					rs.getTimestamp("UPDATE_DATE"),
+					rs.getBoolean("UNANSWERED")
+				);
+				conversationList.add(conversation);
+			}
+			rs.close();
+			ps.close();
+			return conversationList;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+				conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
+	
+	@Override
+	public List<Conversation> getAllConversationsInvolvingUser(int userId) {
+		String sql = "SELECT * FROM conversation WHERE CONVERSATION_ID IN (SELECT DISTINCT CONVERSATION_ID FROM comment WHERE USER_ID=?) ORDER BY START_DATE DESC";
+		 
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, userId);
 			List<Conversation> conversationList = new ArrayList<Conversation>();
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {

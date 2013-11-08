@@ -2,7 +2,7 @@ package com.secondopinion.common.model;
 
 import java.util.Date;
 
-public class Doctor {
+public class Doctor implements Person {
 	int doctorId;
 	int userId;
 	String name;

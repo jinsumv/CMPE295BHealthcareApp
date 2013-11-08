@@ -79,5 +79,65 @@ public class ConversationController {
     	return "listmessages";
     }
     
+    @RequestMapping(value="/listdoctormessages.do", method={RequestMethod.GET})
+    public String doListDoctorMessages (ModelMap model) {
+    	Doctor doctor = doctorService.getCurrentDoctor();
+    	List<Conversation> conversationList = conversationService.getAllMessages(doctor);
+    	model.addAttribute("conversationList", conversationList);
+    	return "listdoctormessages";
+    }
+    
+    @RequestMapping(value="/viewmessage.do", method={RequestMethod.GET})
+    public String doViewMessage (ModelMap model,
+    		@RequestParam("conversationid") int conversationId) {
+    	Conversation conversation = conversationService.getMessage(conversationId);
+    	Patient patient = patientService.findPatient(conversation.getPatientId());
+    	conversation.setPatient(patient);
+    	if (conversation.getDoctorId() != null || conversation.getDoctorId() != 0) {
+    		Doctor doctor = doctorService.findDoctor(conversation.getDoctorId());
+    		conversation.setDoctor(doctor);
+    	}
+    	
+    	List<Comment> commentList = conversationService.getComments(conversationId);
+    	for (Comment comment : commentList) {
+    		User user = new User(comment.getUserId());
+    		Patient patient1 = patientService.findPatient(user);
+    		if (patient1 != null) {
+    			comment.setCommenter(patient1);
+    		}
+    		else {
+    			Doctor doctor1 = doctorService.findDoctor(user);
+    			comment.setCommenter(doctor1);
+    		}
+    	}
+    	model.addAttribute("conversation", conversation);
+    	model.addAttribute("commentList", commentList);
+    	return "viewmessage";
+    }
+    
+    @RequestMapping(value="/addcomment.do", method={RequestMethod.POST})
+    public ModelAndView doAddComment (ModelMap model,
+    		@RequestParam("replytext") String commentText,
+    		@RequestParam("conversationid") int conversationId) {
+    	Conversation conversation = conversationService.getMessage(conversationId);
+    	
+    	Comment comment = null;
+    	Patient patient = patientService.getCurrentPatient();
+		if (patient != null) {
+			comment = new Comment(-1, -1, patient.getUserId(), commentText, new Date());
+		}
+		else {
+			Doctor doctor = doctorService.getCurrentDoctor();
+			comment = new Comment(-1, -1, doctor.getUserId(), commentText, new Date());
+		}
+    	
+    	conversationService.addComment(conversation, comment);
+    	
+    	
+    	return new ModelAndView("redirect:viewmessage.do?conversationid="+conversationId);
+    }
+    
+    
+    
     
 }
