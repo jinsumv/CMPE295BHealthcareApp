@@ -63,7 +63,7 @@ public class PatientService {
 		return patientDao.fetchPatientMedications(patient.getPatientId());
 	}
 
-	public void addPatientMedation(Patient patient,
+	public void addPatientMedication(Patient patient,
 			PatientMedication patientMedication) {
 		patientDao.insertPatientMedication(patient, patientMedication);
 	}
@@ -83,6 +83,7 @@ public class PatientService {
 				InputStream in = fileUpload.file.getInputStream();
 				Long contentLength = Long.valueOf(fileUpload.file.getSize());
 				ObjectMetadata metadata = new ObjectMetadata();
+				metadata.setServerSideEncryption(ObjectMetadata.AES_256_SERVER_SIDE_ENCRYPTION);
 				metadata.setContentLength(contentLength);
 				s3client.putObject(new PutObjectRequest(BUCKET_NAME, keyName,
 						in, metadata));

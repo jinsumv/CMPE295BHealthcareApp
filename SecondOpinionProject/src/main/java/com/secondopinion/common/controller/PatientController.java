@@ -134,7 +134,7 @@ public class PatientController {
 		
 		PatientMedication patientMedication = new PatientMedication(-1, -1, medicationName, notes);
 		
-		patientService.addPatientMedation(patient, patientMedication);
+		patientService.addPatientMedication(patient, patientMedication);
 		
 		return new ModelAndView("redirect:patientmedication.do");
     }
@@ -150,6 +150,7 @@ public class PatientController {
     
     @RequestMapping(value="/patientsymptoms.do", method={RequestMethod.GET})
     public void doPatientSymptoms (ModelMap model) {
+    	// TODO show list of symptoms
     	Patient patient = patientService.getCurrentPatient();
 		model.addAttribute("patient", patient);
     }

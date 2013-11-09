@@ -8,7 +8,6 @@ public class PatientSymptom {
 	
 	public PatientSymptom(int patientSymptomId, int patientId,
 			String symptomName, String notes) {
-		super();
 		this.patientSymptomId = patientSymptomId;
 		this.patientId = patientId;
 		this.symptomName = symptomName;
