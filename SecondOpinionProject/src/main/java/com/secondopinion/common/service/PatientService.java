@@ -21,6 +21,7 @@ import com.secondopinion.common.model.FileUpload;
 import com.secondopinion.common.model.Patient;
 import com.secondopinion.common.model.PatientFile;
 import com.secondopinion.common.model.PatientMedication;
+import com.secondopinion.common.model.PatientSymptom;
 import com.secondopinion.common.model.User;
 
 @Component
@@ -101,5 +102,17 @@ public class PatientService {
 
 	public void removePatientMedication(int medicationId) {
 		patientDao.deletePatientMedication(medicationId);
+	}
+
+	public void addPatientSymptom(Patient patient, PatientSymptom patientSymptom) {
+		// TODO 
+		
+		
+	}
+
+	public void removePatientSymptom(int symptomId) {
+		// TODO 
+		
+		
 	}
 }

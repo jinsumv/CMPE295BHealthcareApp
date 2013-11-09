@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.secondopinion.common.model.FileUpload;
 import com.secondopinion.common.model.Patient;
 import com.secondopinion.common.model.PatientMedication;
+import com.secondopinion.common.model.PatientSymptom;
 import com.secondopinion.common.model.User;
 import com.secondopinion.common.service.PatientService;
 import com.secondopinion.common.service.UserService;
@@ -152,6 +153,30 @@ public class PatientController {
     	Patient patient = patientService.getCurrentPatient();
 		model.addAttribute("patient", patient);
     }
+    
+    @RequestMapping(value="/addpatientsymptom.do", method=RequestMethod.POST)
+    public ModelAndView doAddPatientSymptom (ModelMap model,
+    	  @RequestParam("symptom") String symptomName,
+	      @RequestParam("notes") String notes) throws ParseException {
+    	
+		Patient patient = patientService.getCurrentPatient();
+		
+		PatientSymptom patientSymptom = new PatientSymptom(-1, -1, symptomName, notes);
+		
+		patientService.addPatientSymptom(patient, patientSymptom);
+		
+		return new ModelAndView("redirect:patientsymptoms.do"); 
+    }
+    
+    @RequestMapping(value="/removepatientsymptoms.do", method=RequestMethod.POST)
+    public ModelAndView doRemovePatientSymptoms (ModelMap model,
+    	  @RequestParam("symptomId") int symptomId) throws ParseException {
+
+		patientService.removePatientSymptom(symptomId);
+		
+		return new ModelAndView("redirect:patientsymptoms.do");
+    }
+    
     
     @RequestMapping(value="/patientallergies.do", method={RequestMethod.GET})
     public void doPatientAllergies (ModelMap model) {
