@@ -71,6 +71,7 @@ public class PatientService {
 			throws IOException {
 		String keyName = "patient-documents/"
 				+ RandomStringUtils.randomAlphanumeric(KEY_LENGTH);
+		keyName += "/" + fileUpload.fileName;
 		AWSCredentials credentials = new PropertiesCredentials(
 				PatientService.class
 						.getResourceAsStream("/AwsCredentials.properties"));
