@@ -255,7 +255,7 @@ public class PatientDaoImpl implements PatientDao{
 			ps.setInt(1, patient.getPatientId());
 			ps.setString(2, patientFile.fileName);
 			ps.setString(3, patientFile.description);
-			ps.setString(3, patientFile.fileUrl);
+			ps.setString(4, patientFile.fileUrl);
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
