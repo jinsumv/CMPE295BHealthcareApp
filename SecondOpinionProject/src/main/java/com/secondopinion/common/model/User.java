@@ -7,6 +7,11 @@ public class User {
 	String password;
 	boolean enabled;
 	
+	public User(int userId) {
+		super();
+		this.userId = userId;
+	}
+	
 	public User(int userId, String userName, String password, boolean enabled) {
 		super();
 		this.userId = userId;

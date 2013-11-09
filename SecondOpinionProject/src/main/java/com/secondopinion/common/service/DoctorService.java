@@ -26,6 +26,10 @@ public class DoctorService {
 		return doctorDao.findByUserId(user.getUserId());
 	}
 	
+	public Doctor findDoctor(int doctorId) {
+		return doctorDao.findByDoctorId(doctorId);
+	}
+	
 	public Doctor getCurrentDoctor() {
 		org.springframework.security.core.userdetails.User loggedInUser = (org.springframework.security.core.userdetails.User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String name = loggedInUser.getUsername();

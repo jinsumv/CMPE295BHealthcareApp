@@ -3,7 +3,7 @@ package com.secondopinion.common.model;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Patient {
+public class Patient implements Person {
 	int patientId;
 	int userId;
 	String name;
