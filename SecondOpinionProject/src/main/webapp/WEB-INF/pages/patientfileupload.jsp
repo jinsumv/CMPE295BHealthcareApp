@@ -62,7 +62,29 @@
 			</form>
 		</section>
 	<section>
-		<h3> Uploaded Documents</h3>
+		
+		<article class= "bottomcontent">
+		<h3 class = "heading"> Uploaded Documents</h3>
+                  <table class = "usertable" >
+                   <c:if test="${not empty patientFiles}">
+                        <c:forEach var="file" items="${patientFiles}">
+                            <tr>
+                                <td class = "borderbottom" style="width:40%;"><a href="${file.fileUrl}">${file.fileName}</a></td>
+                                <td class = "borderbottom" style="width:50%;"><a href="${file.fileUrl}">${file.description}</a></td>
+                                <td class = "borderbottom" style="width:10%;">
+                                    <form name="deleteForm_${file.patientFileId}" action="removepatientfile.do" method="post">
+                                        <input type="hidden" name="fileId" value="${file.patientFileId}" />
+                                        <a href="javascript:" onclick="document.deleteForm_${file.patientFileId}.submit()">
+                                            <img align="top" style="width:30px; height:30px;" src="images/DeleteBtn.png" />
+                                        </a>
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </c:if> 
+                  </table>
+                  </article>
+		
 		
 	</section>	
 	</div></div></div>

@@ -13,6 +13,7 @@ import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.PropertiesCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.secondopinion.common.dao.PatientDao;
@@ -87,12 +88,16 @@ public class PatientService {
 				ObjectMetadata metadata = new ObjectMetadata();
 				metadata.setServerSideEncryption(ObjectMetadata.AES_256_SERVER_SIDE_ENCRYPTION);
 				metadata.setContentLength(contentLength);
-				s3client.putObject(new PutObjectRequest(BUCKET_NAME, keyName,
-						in, metadata));
+				PutObjectRequest putRequest = new PutObjectRequest(BUCKET_NAME, keyName,
+						in, metadata);
+				putRequest.setCannedAcl(CannedAccessControlList.PublicRead);
+				System.out.println("Setting public permissions to S3 object");
+				
+				s3client.putObject(putRequest);
 				System.out.println("File Uploaded to S3");
-				String url = "https://s3-us-west-2.amazonaws.com/secondopinion/patient-documents/"
-						+ keyName + "/" + fileUpload.fileName;
-				PatientFile patientFile = new PatientFile(
+				String url = "https://s3-us-west-2.amazonaws.com/secondopinion/"
+						+ keyName;
+				PatientFile patientFile = new PatientFile( -1,
 						patient.getPatientId(), fileUpload.fileName,
 						fileUpload.fileDescription, url);
 				patientDao.insertPatientFile(patient, patientFile);
@@ -143,6 +148,15 @@ public class PatientService {
 
 	public void removePatientProcedure(int procedureId) {
 		patientDao.deletePatientProcedure(procedureId);
+		
+	}
+
+	public List<PatientFile> getPatientFiles(Patient patient) {
+		return patientDao.fetchPatientFiles(patient.getPatientId());
+	}
+
+	public void removePatientFile(int fileId) {
+		patientDao.deletePatientFile(fileId);
 		
 	}
 }

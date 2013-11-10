@@ -525,4 +525,63 @@ public class PatientDaoImpl implements PatientDao{
 		}		
 		
 	}
+	
+	public List<PatientFile> fetchPatientFiles(int patientId) {
+		String sql = "SELECT * FROM patient_file WHERE PATIENT_ID = ?";
+		 
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, patientId);
+			List<PatientFile> fileList = new ArrayList<PatientFile>();
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				PatientFile file = new PatientFile(
+					rs.getInt("FILE_ID"),
+					rs.getInt("PATIENT_ID"),
+					rs.getString("FILE_NAME"),
+					rs.getString("DESCRIPTION"),
+					rs.getString("FILE_URL")
+				);
+				fileList.add(file);
+			}
+			rs.close();
+			ps.close();
+			return fileList;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+				conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
+	
+	public void deletePatientFile(int fileId) {
+		String sql = "DELETE FROM patient_file " +
+				"WHERE FILE_ID=?";
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, fileId);
+			ps.executeUpdate();
+			ps.close();
+ 
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}		
+	}
 }

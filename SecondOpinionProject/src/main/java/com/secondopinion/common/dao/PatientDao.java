@@ -32,5 +32,7 @@ public interface PatientDao {
 	public void insertPatientProcedure(Patient patient,
 			PatientProcedure patientProcedure);
 	public void deletePatientProcedure(int procedureId);
+	public List<PatientFile> fetchPatientFiles(int patientId);
+	public void deletePatientFile(int fileId);
 }
 

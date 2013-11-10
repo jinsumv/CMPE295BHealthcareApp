@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.secondopinion.common.model.FileUpload;
 import com.secondopinion.common.model.Patient;
 import com.secondopinion.common.model.PatientAllergy;
+import com.secondopinion.common.model.PatientFile;
 import com.secondopinion.common.model.PatientMedication;
 import com.secondopinion.common.model.PatientProcedure;
 import com.secondopinion.common.model.PatientSymptom;
@@ -101,6 +102,8 @@ public class PatientController {
     @RequestMapping(value="/patientfileupload.do", method={RequestMethod.GET})
 	public void doPatientFileUpload(ModelMap model) {
     	Patient patient = patientService.getCurrentPatient();
+    	List<PatientFile> patientFiles = patientService.getPatientFiles(patient);
+		model.addAttribute("patientFiles", patientFiles);
 		model.addAttribute("patient", patient);
     }
 
@@ -114,9 +117,17 @@ public class PatientController {
 		
 		FileUpload fileUpload = new FileUpload(file, fileDescription);
 		patientService.addPatientFile(patient, fileUpload);
-		
 		return new ModelAndView("redirect:patientfileupload.do");
 	}
+	
+	@RequestMapping(value="/removepatientfile.do", method=RequestMethod.POST)
+    public ModelAndView doRemovePatientFile (ModelMap model,
+    	  @RequestParam("fileId") int fileId) throws ParseException {
+
+		patientService.removePatientFile(fileId);
+		
+		return new ModelAndView("redirect:patientfileupload.do");
+    }
     
     @RequestMapping(value="/patientmedication.do", method={RequestMethod.GET})
     public void doPatientMedication (ModelMap model) {
