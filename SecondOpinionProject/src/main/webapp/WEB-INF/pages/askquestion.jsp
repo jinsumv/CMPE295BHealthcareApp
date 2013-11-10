@@ -10,7 +10,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <link href="css/main.css" media="screen" rel="stylesheet" type="text/css"/>
-    <title>${journal.title}</title>
+    <title></title>
 
 
     <!-- Popup related includes -->
@@ -56,15 +56,29 @@
               <div class="mainContent">
 	           <div class="content">
 	              <section class ="topcontent" >
-				     <%@include file="patientinfo.jsp" %> 	
+				     <c:if test="${not empty doctor}">
+							<div id="doc_pic" class="doc_details">
+							<div style="float:left;">
+							<img src="images/doctor1.jpg" alt="doc profile" width="92" height="92"/></a> 	
+							</div>
+							
+							<div id="docinf" style="float:right;padding-left:20px;padding-top:10px;">	
+							<label id="docname"><b>Dr. ${doctor.name}</b></label><br>
+							<label id="specialisation"><i>${doctor.areaOfPractice}</i></label><br>
+							<label id="achievements"><i>${doctor.achievements}</i></label><br>
+							</div>
+						</div>
+					</c:if>	
  	              </section>
 
 		          <article class= "bottomcontent">
-				  <header><h2>Ask your question to the Doctor</h2></header>	
-				  	  <form name="askForm" action="addNewQuestion.do" method="post">		  	  
-  			          <input type="text" name="title" placeholder="Title" autofocus required><br><br>
-  			          <input class = "notes" type="text" name="question" placeholder="Question" required><br><br>
- 			          <input type="submit" name="Submit Question" value="Submit Question">
+				  	  <form name="askForm" action="addNewQuestion.do" method="post">
+				  	  <c:if test="${not empty doctor}" >
+						  <input type="hidden" name="doctorid" value="${doctor.doctorId}" />
+					  </c:if>		  	  
+  			          <input type="text" name="title" placeholder="Question Title" autofocus required><br><br>
+  			          <textarea name="question" rows="5" cols="50" placeholder="Enter your brief description.." required></textarea><br><br>
+ 			          <input type="submit" name="Ask Question" value="Ask Question">
  			          </form>
 		          </article>  
 			</div>

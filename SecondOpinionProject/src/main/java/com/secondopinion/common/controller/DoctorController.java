@@ -3,6 +3,7 @@ package com.secondopinion.common.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,11 +70,20 @@ public class DoctorController {
     @RequestMapping(value="/searchdoc.do", method={RequestMethod.GET})
     public void doSearch (ModelMap model) {
    
-    }  
+    }
 
     @RequestMapping(value="/doctorsearchlist.do", method={RequestMethod.GET})
-    public void doDocSearchList (ModelMap model) {
-   
-    }  
+    public void doDocSearchList (ModelMap model,
+    		@RequestParam("speciality") String speciality) {
+    	List<Doctor> doctorList = doctorService.findDoctorBySpeciality(speciality);
+    	model.addAttribute("doctorList", doctorList);
+    } 
+    
+    @RequestMapping(value="/doctordetails.do", method={RequestMethod.GET})
+    public void doDoctorProfile (ModelMap model,
+    		@RequestParam("doctorid") int doctorId) {
+    	Doctor doctor = doctorService.findDoctor(doctorId);
+		model.addAttribute("doctor", doctor);
+    }
 
 }

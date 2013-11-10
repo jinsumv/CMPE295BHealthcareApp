@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.secondopinion.common.model.Doctor;
 import com.secondopinion.common.model.Patient;
 import com.secondopinion.common.service.DoctorService;
 import com.secondopinion.common.service.PatientService;
@@ -17,19 +18,23 @@ public class LoginController {
 	
 	@Autowired
     PatientService patientService;
+	
+	@Autowired
+    DoctorService doctorService;
  
 	@RequestMapping(value="/welcome.do", method = RequestMethod.GET)
 	public String printWelcome(ModelMap model) {
  
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		String name = user.getUsername();
 	
-		model.addAttribute("username", name);
 		Patient patient = patientService.getCurrentPatient();
 		if (patient != null) {
+			model.addAttribute("patient", patient);
 			return "home";
 		}
 		else {
+			Doctor doctor = doctorService.getCurrentDoctor();
+			model.addAttribute("doctor", doctor);
 			return "doctorhome";
 		}
  

@@ -67,8 +67,12 @@ public class ConversationController {
     }
     
     @RequestMapping(value="/askquestion.do", method={RequestMethod.GET})
-    public void doAskQuestion (ModelMap model) {
-   
+    public void doAskQuestion (ModelMap model,
+    		@RequestParam(value="doctorid", required=false) Integer doctorId) {
+    	if (doctorId != null) {
+    		Doctor doctor = doctorService.findDoctor(doctorId);
+    		model.addAttribute("doctor", doctor);
+    	}
     }
     
     @RequestMapping(value="/listmessages.do", method={RequestMethod.GET})
@@ -112,6 +116,14 @@ public class ConversationController {
     	}
     	model.addAttribute("conversation", conversation);
     	model.addAttribute("commentList", commentList);
+    	
+    	Doctor doctor = doctorService.getCurrentDoctor();
+    	if (doctor != null) {
+    		model.addAttribute("showreplybox", true);
+    	}
+    	else {
+    		model.addAttribute("showreplybox", false);
+    	}
     	return "viewmessage";
     }
     
@@ -137,7 +149,12 @@ public class ConversationController {
     	return new ModelAndView("redirect:viewmessage.do?conversationid="+conversationId);
     }
     
-    
+    @RequestMapping(value="/topmessages.do", method={RequestMethod.GET})
+    public String doTopMessages (ModelMap model) {
+    	List<Conversation> conversationList = conversationService.getMostRecentConversations();
+    	model.addAttribute("conversationList", conversationList);
+    	return "topmessages";
+    }
     
     
 }

@@ -63,25 +63,25 @@
 		   <section>
  	         	<h2> Top Doctor Specialities </h2><br>
  	         	<ul>
- 	         		<li><a href="doctorsearchlist.do">Allergy and Immunology</a></li>
- 	         		<li><a href="#">Anaesthetics</a></li>
- 	         	    <li><a href="#">Pathology</a></li>
- 	         	    <li><a href="#">Cardiology</a></li>
- 	         	    <li><a href="#">Endocrinology</a></li>
- 	         	    <li><a href="#">Gastroenterology</a></li>
- 	         	    <li><a href="#">Internal Medicine</a></li>
- 	         	    <li><a href="#">Neurology</a></li>
- 	         	    <li><a href="#">Neurosurgery</a></li>
- 	         	    <li><a href="#">Opthalmology</a></li>
- 	         	    <li><a href="#">Orthopaedics</a></li>
- 	         	    <li><a href="#">Pediatrics</a></li>
- 	         	    <li><a href="#">Neonatology</a></li>
- 	         	    <li><a href="#">Plastic Surgery</a></li>
- 	         	    <li><a href="#">Radiology</a></li>
- 	         	    <li><a href="#">Radiotherapy</a></li>
- 	         	    <li><a href="#">General Surgery</a></li>
- 	         	    <li><a href="#">Urology</a></li>
- 	         	    <li><a href="#">Vascular Surgery</a></li>
+ 	         		<li><a href="doctorsearchlist.do?speciality=Allergy+and+Immunology">Allergy and Immunology</a></li>
+ 	         		<li><a href="doctorsearchlist.do?speciality=Anaesthetics">Anaesthetics</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Pathology">Pathology</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Cardiology">Cardiology</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Endocrinology">Endocrinology</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Gastroenterology">Gastroenterology</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Internal+Medicine">Internal Medicine</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Neurology">Neurology</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Neurosurgery">Neurosurgery</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Opthalmology">Opthalmology</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Orthopaedics">Orthopaedics</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Pediatrics">Pediatrics</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Neonatology">Neonatology</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Plastic+Surgery">Plastic Surgery</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Radiology">Radiology</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Radiotherapy">Radiotherapy</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=General Surgery">General Surgery</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Urology">Urology</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Vascular+Surgery">Vascular Surgery</a></li>
 			</ul>
 		 </section>
 

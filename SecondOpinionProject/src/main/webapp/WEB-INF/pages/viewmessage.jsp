@@ -58,6 +58,7 @@
 			   				<p style="width:20%;">Date: <fmt:formatDate pattern="MM/dd/yyyy" value="${comment.commentDate}" /></p>
 			   			</div>
 					</c:forEach>
+					<c:if test="${showreplybox}">
 						<div style="border:1px solid grey; margin:15px; border-radius:5px;">
 							<form name="replyForm" action="addcomment.do" method="post">
 								<textarea name="replytext" placeholder="Reply.." cols="50" rows="5"></textarea><br><br>
@@ -65,6 +66,7 @@
 								<input type="submit" value="Send"/>
 							</form> 
 						</div>
+					</c:if>	
 		        </c:if>
 				
 		 </section>

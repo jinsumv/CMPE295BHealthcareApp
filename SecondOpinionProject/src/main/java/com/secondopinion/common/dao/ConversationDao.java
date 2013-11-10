@@ -13,5 +13,6 @@ public interface ConversationDao {
 	List<Comment> getCommentsForConversationId(int conversationId);
 	Conversation getNewConversation();
 	List<Conversation> getAllConversationsForPatient(int patientId);
-	List<Conversation> getAllConversationsInvolvingUser(int userId);
+	List<Conversation> getAllConversationsInvolvingUser(int userId, int doctorId);
+	List<Conversation> getMostRecentConversations();
 }
