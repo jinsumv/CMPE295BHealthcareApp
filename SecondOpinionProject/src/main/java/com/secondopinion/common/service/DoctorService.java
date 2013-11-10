@@ -1,5 +1,7 @@
 package com.secondopinion.common.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -35,6 +37,10 @@ public class DoctorService {
 		String name = loggedInUser.getUsername();
 		User user = userDao.findByUserName(name);
 		return findDoctor(user);
+	}
+	
+	public List<Doctor> findDoctorBySpeciality(String speciality) {
+		return doctorDao.findBySpeciality(speciality);
 	}
 
 }

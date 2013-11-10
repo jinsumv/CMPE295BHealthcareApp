@@ -49,31 +49,23 @@
 		</form>	<br>
 		
 		 <div class="doclist">
-		  <ul>
-			<li>
-			  <img src="images/doctor1.jpg" width=100px height=100px>
-			  <h3>Dr. Susan A. Mitchell</h3>
-			  <p>Dental<br>DDS. FADSA<br>Rating - 5</p>
-			</li>
-			  
-			<li>
-			  <img src="images/doctor1.jpg" width=100px height=100px>
-			  <h3>Dr. Susan A. Mitchell</h3>
-			  <p>Dental<br>DDS. FADSA<br>Rating - 5</p>
-			</li>
-
-			<li>
-			  <img src="images/doctor1.jpg" width=100px height=100px>
-			  <h3>Dr. Susan A. Mitchell</h3>
-			  <p>Dental<br>DDS. FADSA<br>Rating - 5</p>
-			</li>
-
-			<li>
-			  <img src="images/doctor1.jpg" width=100px height=100px>
-			  <h3>Dr. Susan A. Mitchell</h3>
-			  <p>Dental<br>DDS. FADSA<br>Rating - 5</p>
-			</li>
-		  </ul>
+		 <c:choose>
+		      <c:when test="${not empty doctorList}">
+		      	<ul>
+		      	<c:forEach var="doctor" items="${doctorList}">
+		   			<li><a href="doctordetails.do?doctorid=${doctor.doctorId}" style="text-decoration:none;">
+						<img src="images/doctor1.jpg" width=100px height=100px>
+						<h3>Dr. ${doctor.name}</h3>
+						<p>${doctor.areaOfPractice}<br>${doctor.qualifyingDegree}<br>Rating - 5</p>
+		   			</a></li>
+				</c:forEach>
+				</table>
+		      </c:when>
+		
+		      <c:otherwise>
+		      	No doctors found with this specialization !!
+		      </c:otherwise>
+		</c:choose>
 		</div>
   </div>
  </body>

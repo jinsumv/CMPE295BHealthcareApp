@@ -3,9 +3,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page import="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter"%><html><head>
+
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <link href="css/main.css" media="screen" rel="stylesheet" type="text/css"/>
@@ -39,55 +41,37 @@
   
   <body class="body">
 	<header class="mainheader">
-          <img src="images/Header.jpg">	
+       <%@include file="header.jsp" %>   
 	</header>
 
- 	<div class="mainContent">
-		<div class="content">
-		<section class ="topcontent" >
-		<h3 style="margin-left:35px;color:royalblue;">Hi ${patient.name} !</h3>
-		<table>
-			<tr>
-				<td>
-					<a href="patientprofile.do">
-					<img class="menuimage" src="images/profile.png" /></a>
-				</td>
-				<td>
-					<a href="topmessages.do">
-					<img class="menuimage" src="images/newsfeed.png"/></a>
-				</td>
+    <div class="mainContent" style="padding:10px;">
+	    
+	    <div class="messageslist">
+		   <section>
+ 	         	<h2> Recent Messages </h2><br>
+ 	         	<c:choose>
+				      <c:when test="${not empty conversationList}">
+				      	<table>
+				      	<c:forEach var="conversation" items="${conversationList}">
+				   			<tr>
+				   				<td style="width:20%;"><fmt:formatDate pattern="MM/dd/yyyy" value="${conversation.startDate}" /></td>
+				   				<td style="width:70%;">
+				   					<a href="viewmessage.do?conversationid=${conversation.conversationId}" style="text-decoration:none;">
+				   						${conversation.title}
+				   					</a>
+				   				</td>
+				   			</tr>
+						</c:forEach>
+						</table>
+				      </c:when>
 				
-			<tr>
-			<tr>
-				<td>
-					<a href="listmessages.do">
-					<img class="menuimage" src="images/message.png"/></a>
-				</td>
-				<td>
-					<a href="askquestion.do">
-					<img class="menuimage" src="images/AskQtn.jpg"/></a>
-				</td>
-			<tr>
-			<tr>
-				<td>
-					<a href="searchdoc.do">
-					<img class="menuimage" src="images/search.png"/></a>	
-				</td>
-				<td>
-						
-				</td>
-			<tr>
-		</table>		    				
- 	</section>
-	</div>
-	</div>
+				      <c:otherwise>
+				      	You don't have any messages yet!!
+				      </c:otherwise>
+				</c:choose>
+		 </section>
 
-    <div class="signOut">
-        	<a href="<c:url value="/j_spring_security_logout"/>">Sign out</a>
-    </div>
-	<!-- <footer class="mainFooter">
-	  <p>Copyright &copy; <a href="#" title="2ndhtml"></a></p>
-	</footer>  -->
-	<script src="js/main.js" type="text/javascript"></script>
+ </div>
+ </div>
 </body>
 </html>

@@ -37,7 +37,7 @@ public class ConversationService {
 	}
 	
 	public List<Conversation> getAllMessages(Doctor doctor) {
-		List<Conversation> conversationList = conversationDao.getAllConversationsInvolvingUser(doctor.getUserId());
+		List<Conversation> conversationList = conversationDao.getAllConversationsInvolvingUser(doctor.getUserId(), doctor.getDoctorId());
 		return conversationList;
 	}
 	
@@ -53,5 +53,10 @@ public class ConversationService {
 	
 	public void addComment(Conversation conversation, Comment comment) {
 		conversationDao.addComment(conversation, comment);
+	}
+	
+	public List<Conversation> getMostRecentConversations() {
+		List<Conversation> conversationList = conversationDao.getMostRecentConversations();
+		return conversationList; 
 	}
 }

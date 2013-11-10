@@ -45,6 +45,7 @@
  	<div class="mainContent">
 		<div class="content">
 		<section class ="topcontent" >
+		<h3 style="margin-left:35px;color:royalblue;">Hi Dr. ${doctor.name} !</h3>
 		<table>
 			<tr>
 				<td>
@@ -52,7 +53,7 @@
 					<img class="menuimage" src="images/profile.png" /></a>
 				</td>
 				<td>
-					<a href="#">
+					<a href="topmessages.do">
 					<img class="menuimage" src="images/newsfeed.png"/></a>
 				</td>
 				
@@ -63,18 +64,15 @@
 					<img class="menuimage" src="images/message.png"/></a>
 				</td>
 				<td>
-					<a href="#">
-					<img class="menuimage" src="images/AskQtn.jpg"/></a>
+					
 				</td>
 			<tr>
 			<tr>
 				<td>
-					<a href="#">
-					<img class="menuimage" src="images/search.png"/></a>	
+						
 				</td>
 				<td>
-					<a href="#">
-					<img class="menuimage" src="images/docprofile.png"/></a>	
+						
 				</td>
 			<tr>
 		</table>		    				
