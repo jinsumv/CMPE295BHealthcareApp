@@ -106,14 +106,14 @@ public class PatientService {
 	}
 
 	public void addPatientSymptom(Patient patient, PatientSymptom patientSymptom) {
-		// TODO 
-		
-		
+		patientDao.insertPatientSymptom(patient, patientSymptom);
 	}
 
 	public void removePatientSymptom(int symptomId) {
-		// TODO 
-		
-		
+		patientDao.deletePatientSymptom(symptomId);
+	}
+
+	public List<PatientSymptom> getPatientSymptoms(Patient patient) {
+		return patientDao.fetchPatientSymptoms(patient.getPatientId());
 	}
 }

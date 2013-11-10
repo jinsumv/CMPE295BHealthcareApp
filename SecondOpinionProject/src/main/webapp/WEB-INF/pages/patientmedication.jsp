@@ -58,8 +58,6 @@
 				  <a href="patientaddmedication.do"><img id="addimage" src="images/add.png" /></a>
 				  </article>  
 				  				
- 				
- 				
  				<article class= "bottomcontent">
 				  <table class = "usertable" >
 				  	<c:if test="${not empty patientMedications}">

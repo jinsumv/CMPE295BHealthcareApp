@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import com.secondopinion.common.model.Patient;
 import com.secondopinion.common.model.PatientFile;
 import com.secondopinion.common.model.PatientMedication;
+import com.secondopinion.common.model.PatientSymptom;
 import com.secondopinion.common.model.User;
 
 @Component
@@ -269,6 +270,92 @@ public class PatientDaoImpl implements PatientDao{
 			}
 		}
 		
+	}
+	@Override
+	public void insertPatientSymptom(Patient patient, PatientSymptom patientSymptom) {
+		String sql = "INSERT INTO patient_symptom " +
+				"(PATIENT_ID, SYMPTOM_NAME, NOTES) VALUES (?, ?, ?)";
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, patient.getPatientId());
+			ps.setString(2, patientSymptom.symptomName);
+			ps.setString(3, patientSymptom.notes);
+			ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
+	
+	@Override
+	public void deletePatientSymptom(int symptomId) {
+		String sql = "DELETE FROM patient_symptom " +
+				"WHERE SYMPTOM_ID=?";
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, symptomId);
+			ps.executeUpdate();
+			ps.close();
+ 
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}		
+		
+	}
+	
+	@Override
+	public List<PatientSymptom> fetchPatientSymptoms(int patientId) {
+		String sql = "SELECT * FROM patient_symptom WHERE PATIENT_ID = ?";
+		 
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, patientId);
+			List<PatientSymptom> symptomList = new ArrayList<PatientSymptom>();
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				PatientSymptom symptom = new PatientSymptom(
+					rs.getInt("SYMPTOM_ID"),
+					rs.getInt("PATIENT_ID"),
+					rs.getString("SYMPTOM_NAME"),
+					rs.getString("NOTES")
+				);
+				symptomList.add(symptom);
+			}
+			rs.close();
+			ps.close();
+			return symptomList;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+				conn.close();
+				} catch (SQLException e) {}
+			}
+		}
 	}
 
 }

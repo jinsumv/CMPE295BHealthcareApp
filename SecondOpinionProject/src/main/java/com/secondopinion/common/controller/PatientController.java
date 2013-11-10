@@ -150,9 +150,12 @@ public class PatientController {
     
     @RequestMapping(value="/patientsymptoms.do", method={RequestMethod.GET})
     public void doPatientSymptoms (ModelMap model) {
-    	// TODO show list of symptoms
     	Patient patient = patientService.getCurrentPatient();
+    	List<PatientSymptom> patientSymptoms = patientService.getPatientSymptoms(patient);
+    	
 		model.addAttribute("patient", patient);
+		model.addAttribute("patientSymptoms", patientSymptoms);
+		
     }
     
     @RequestMapping(value="/addpatientsymptom.do", method=RequestMethod.POST)
@@ -169,7 +172,7 @@ public class PatientController {
 		return new ModelAndView("redirect:patientsymptoms.do"); 
     }
     
-    @RequestMapping(value="/removepatientsymptoms.do", method=RequestMethod.POST)
+    @RequestMapping(value="/removepatientsymptom.do", method=RequestMethod.POST)
     public ModelAndView doRemovePatientSymptoms (ModelMap model,
     	  @RequestParam("symptomId") int symptomId) throws ParseException {
 

@@ -13,4 +13,16 @@ public class PatientSymptom {
 		this.symptomName = symptomName;
 		this.notes = notes;
 	}
+	public int getPatientSymptomId() {
+		return patientSymptomId;
+	}
+	public int getPatientId() {
+		return patientId;
+	}
+	public String getSymptomName() {
+		return symptomName;
+	}
+	public String getNotes() {
+		return notes;
+	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import com.secondopinion.common.model.Patient;
 import com.secondopinion.common.model.PatientFile;
 import com.secondopinion.common.model.PatientMedication;
+import com.secondopinion.common.model.PatientSymptom;
 import com.secondopinion.common.model.User;
 
 public interface PatientDao {
@@ -17,4 +18,9 @@ public interface PatientDao {
 			PatientMedication patientMedication);
 	void deletePatientMedication(int medicationId);
 	void insertPatientFile(Patient patient, PatientFile patientFile);
+	public void insertPatientSymptom(Patient patient,
+			PatientSymptom patientSymptom);
+	public void deletePatientSymptom(int symptomId);
+	public List<PatientSymptom> fetchPatientSymptoms(int patientId);
 }
+
