@@ -16,6 +16,7 @@ import com.secondopinion.common.model.Patient;
 import com.secondopinion.common.model.PatientAllergy;
 import com.secondopinion.common.model.PatientFile;
 import com.secondopinion.common.model.PatientMedication;
+import com.secondopinion.common.model.PatientProcedure;
 import com.secondopinion.common.model.PatientSymptom;
 import com.secondopinion.common.model.User;
 
@@ -426,6 +427,89 @@ public class PatientDaoImpl implements PatientDao{
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, allergyId);
+			ps.executeUpdate();
+			ps.close();
+ 
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}		
+		
+	}
+	
+	public List<PatientProcedure> fetchPatientProcedures(int patientId) {
+		String sql = "SELECT * FROM patient_procedure WHERE PATIENT_ID = ?";
+		 
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, patientId);
+			List<PatientProcedure> procedureList = new ArrayList<PatientProcedure>();
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				PatientProcedure procedure = new PatientProcedure(
+					rs.getInt("PROCEDURE_ID"),
+					rs.getInt("PATIENT_ID"),
+					rs.getString("PROCEDURE_NAME"),
+					rs.getString("NOTES")
+				);
+				procedureList.add(procedure);
+			}
+			rs.close();
+			ps.close();
+			return procedureList;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+				conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
+	public void insertPatientProcedure(Patient patient,
+			PatientProcedure patientProcedure) {
+		String sql = "INSERT INTO patient_procedure " +
+				"(PATIENT_ID, PROCEDURE_NAME, NOTES) VALUES (?, ?, ?)";
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, patient.getPatientId());
+			ps.setString(2, patientProcedure.procedureName);
+			ps.setString(3, patientProcedure.notes);
+			ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
+	public void deletePatientProcedure(int procedureId) {
+		String sql = "DELETE FROM patient_procedure " +
+				"WHERE PROCEDURE_ID=?";
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, procedureId);
 			ps.executeUpdate();
 			ps.close();
  

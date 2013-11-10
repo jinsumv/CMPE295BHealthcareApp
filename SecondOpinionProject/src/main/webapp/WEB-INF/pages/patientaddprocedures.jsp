@@ -54,9 +54,9 @@
 			</section>	  
 				  <article class= "bottomcontent">
 				  <header><h2>Add procedures </h2></header>
-				  <form action="addprocedure_form.asp">
+				  <form action="addpatientprocedure.do" method="post">
 				  <h3> Procedure</h3>
-  			  	  <input class = "category" type="text" name="procedures"  autofocus required><br>
+  			  	  <input class = "category" type="text" name="procedure"  autofocus required><br>
   			  	  <h3>Notes</h3>
   			      <input class = "notes" type="text" name="notes"  autofocus required><br>
   			      <p>  </p>

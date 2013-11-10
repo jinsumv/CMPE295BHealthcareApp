@@ -6,6 +6,7 @@ import com.secondopinion.common.model.Patient;
 import com.secondopinion.common.model.PatientAllergy;
 import com.secondopinion.common.model.PatientFile;
 import com.secondopinion.common.model.PatientMedication;
+import com.secondopinion.common.model.PatientProcedure;
 import com.secondopinion.common.model.PatientSymptom;
 import com.secondopinion.common.model.User;
 
@@ -27,5 +28,9 @@ public interface PatientDao {
 			PatientAllergy patientAllergy);
 	public List<PatientAllergy> fetchPatientAllergies(int patientId);
 	public void deletePatientAllergy(int allergyId);
+	public List<PatientProcedure> fetchPatientProcedures(int patientId);
+	public void insertPatientProcedure(Patient patient,
+			PatientProcedure patientProcedure);
+	public void deletePatientProcedure(int procedureId);
 }
 

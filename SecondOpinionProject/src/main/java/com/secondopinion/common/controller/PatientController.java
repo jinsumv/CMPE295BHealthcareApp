@@ -20,6 +20,7 @@ import com.secondopinion.common.model.FileUpload;
 import com.secondopinion.common.model.Patient;
 import com.secondopinion.common.model.PatientAllergy;
 import com.secondopinion.common.model.PatientMedication;
+import com.secondopinion.common.model.PatientProcedure;
 import com.secondopinion.common.model.PatientSymptom;
 import com.secondopinion.common.model.User;
 import com.secondopinion.common.service.PatientService;
@@ -207,11 +208,10 @@ public class PatientController {
     }
     
     @RequestMapping(value="/removepatientallergy.do", method=RequestMethod.POST)
-    public ModelAndView doRemovePatientA (ModelMap model,
+    public ModelAndView doRemovePatientAllergy (ModelMap model,
     	  @RequestParam("allergyId") int allergyId) throws ParseException {
-
+    	
 		patientService.removePatientAllergy(allergyId);
-		
 		return new ModelAndView("redirect:patientallergies.do");
     }
     
@@ -219,8 +219,36 @@ public class PatientController {
     @RequestMapping(value="/patientprocedures.do", method={RequestMethod.GET})
     public void doPatientProcedures (ModelMap model) {
     	Patient patient = patientService.getCurrentPatient();
+    	List<PatientProcedure> patientProcedures = patientService.getPatientProcedures(patient);
+    	
 		model.addAttribute("patient", patient);
+		model.addAttribute("patientProcedures", patientProcedures);
     }
+    
+    @RequestMapping(value="/addpatientprocedure.do", method=RequestMethod.POST)
+    public ModelAndView doAddPatientProcedure(ModelMap model,
+    	  @RequestParam("procedure") String procedureName,
+	      @RequestParam("notes") String notes) throws ParseException {
+    	
+		Patient patient = patientService.getCurrentPatient();
+		
+		PatientProcedure patientProcedure = new PatientProcedure(-1, -1, procedureName, notes);
+		
+		patientService.addPatientProcedure(patient, patientProcedure);
+		
+		return new ModelAndView("redirect:patientprocedures.do"); 
+    }
+    
+    @RequestMapping(value="/removepatientprocedure.do", method=RequestMethod.POST)
+    public ModelAndView doRemovePatientProcedure(ModelMap model,
+    	  @RequestParam("procedureId") int procedureId) throws ParseException {
+
+		patientService.removePatientProcedure(procedureId);
+		
+		return new ModelAndView("redirect:patientprocedures.do");
+    }
+    
+    
     @RequestMapping(value="/patientaddmedication.do", method={RequestMethod.GET})
     public void doPatientAddMedication (ModelMap model) {
     	Patient patient = patientService.getCurrentPatient();

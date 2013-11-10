@@ -22,6 +22,7 @@ import com.secondopinion.common.model.Patient;
 import com.secondopinion.common.model.PatientAllergy;
 import com.secondopinion.common.model.PatientFile;
 import com.secondopinion.common.model.PatientMedication;
+import com.secondopinion.common.model.PatientProcedure;
 import com.secondopinion.common.model.PatientSymptom;
 import com.secondopinion.common.model.User;
 
@@ -128,5 +129,20 @@ public class PatientService {
 
 	public void removePatientAllergy(int allergyId) {
 		patientDao.deletePatientAllergy(allergyId);
+	}
+
+	public List<PatientProcedure> getPatientProcedures(Patient patient) {
+		return patientDao.fetchPatientProcedures(patient.getPatientId());
+	}
+
+	public void addPatientProcedure(Patient patient,
+			PatientProcedure patientProcedure) {
+		patientDao.insertPatientProcedure(patient, patientProcedure);
+		
+	}
+
+	public void removePatientProcedure(int procedureId) {
+		patientDao.deletePatientProcedure(procedureId);
+		
 	}
 }
