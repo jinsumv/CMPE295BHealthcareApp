@@ -19,6 +19,7 @@ import com.secondopinion.common.dao.PatientDao;
 import com.secondopinion.common.dao.UserDao;
 import com.secondopinion.common.model.FileUpload;
 import com.secondopinion.common.model.Patient;
+import com.secondopinion.common.model.PatientAllergy;
 import com.secondopinion.common.model.PatientFile;
 import com.secondopinion.common.model.PatientMedication;
 import com.secondopinion.common.model.PatientSymptom;
@@ -115,5 +116,17 @@ public class PatientService {
 
 	public List<PatientSymptom> getPatientSymptoms(Patient patient) {
 		return patientDao.fetchPatientSymptoms(patient.getPatientId());
+	}
+
+	public void addPatientAllergy(Patient patient, PatientAllergy patientAllergy) {
+		patientDao.insertPatientAllergy(patient, patientAllergy);
+	}
+
+	public List<PatientAllergy> getPatientAllergies(Patient patient) {
+		return patientDao.fetchPatientAllergies(patient.getPatientId());
+	}
+
+	public void removePatientAllergy(int allergyId) {
+		patientDao.deletePatientAllergy(allergyId);
 	}
 }

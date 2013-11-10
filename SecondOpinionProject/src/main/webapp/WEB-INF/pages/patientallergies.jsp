@@ -60,10 +60,22 @@
 				  
 				  <article class= "bottomcontent">
 				  <table class = "usertable" >
-				   <tr>
-				   <td class = "borderbottom" > <a  href="#"> Ibuprofen </a> </td></tr>
-				   <tr>
-				   <td class = "borderbottom">  <a  href="#"> Motrin </a> </td></tr>
+				   <c:if test="${not empty patientAllergies}">
+                        <c:forEach var="allergy" items="${patientAllergies}">
+                            <tr>
+                                <td class = "borderbottom" style="width:40%;">${allergy.allergyName}</td>
+                                <td class = "borderbottom" style="width:50%;">${allergy.notes}</td>
+                                <td class = "borderbottom" style="width:10%;">
+                                    <form name="deleteForm_${allergy.patientAllergyId}" action="removepatientallergy.do" method="post">
+                                        <input type="hidden" name="allergyId" value="${allergy.patientAllergyId}" />
+                                        <a href="javascript:" onclick="document.deleteForm_${allergy.patientAllergyId}.submit()">
+                                            <img align="top" style="width:30px; height:30px;" src="images/DeleteBtn.png" />
+                                        </a>
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </c:if> 
 				  </table>
 				  </article>
 				  			

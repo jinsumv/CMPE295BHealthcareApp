@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.secondopinion.common.model.Patient;
+import com.secondopinion.common.model.PatientAllergy;
 import com.secondopinion.common.model.PatientFile;
 import com.secondopinion.common.model.PatientMedication;
 import com.secondopinion.common.model.PatientSymptom;
@@ -357,5 +358,87 @@ public class PatientDaoImpl implements PatientDao{
 			}
 		}
 	}
-
+	public void insertPatientAllergy(Patient patient,
+			PatientAllergy patientAllergy){
+		String sql = "INSERT INTO patient_allergy " +
+				"(PATIENT_ID, ALLERGY_NAME, NOTES) VALUES (?, ?, ?)";
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, patient.getPatientId());
+			ps.setString(2, patientAllergy.allergyName);
+			ps.setString(3, patientAllergy.notes);
+			ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
+	}
+	public List<PatientAllergy> fetchPatientAllergies(int patientId) {
+		String sql = "SELECT * FROM patient_allergy WHERE PATIENT_ID = ?";
+		 
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, patientId);
+			List<PatientAllergy> allergyList = new ArrayList<PatientAllergy>();
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				PatientAllergy allergy = new PatientAllergy(
+					rs.getInt("ALLERGY_ID"),
+					rs.getInt("PATIENT_ID"),
+					rs.getString("ALLERGY_NAME"),
+					rs.getString("NOTES")
+				);
+				allergyList.add(allergy);
+			}
+			rs.close();
+			ps.close();
+			return allergyList;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+				conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
+	public void deletePatientAllergy(int allergyId) {
+		String sql = "DELETE FROM patient_allergy " +
+				"WHERE ALLERGY_ID=?";
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, allergyId);
+			ps.executeUpdate();
+			ps.close();
+ 
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}		
+		
+	}
 }

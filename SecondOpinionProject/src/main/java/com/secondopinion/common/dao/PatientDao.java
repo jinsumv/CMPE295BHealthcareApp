@@ -3,6 +3,7 @@ package com.secondopinion.common.dao;
 import java.util.List;
 
 import com.secondopinion.common.model.Patient;
+import com.secondopinion.common.model.PatientAllergy;
 import com.secondopinion.common.model.PatientFile;
 import com.secondopinion.common.model.PatientMedication;
 import com.secondopinion.common.model.PatientSymptom;
@@ -22,5 +23,9 @@ public interface PatientDao {
 			PatientSymptom patientSymptom);
 	public void deletePatientSymptom(int symptomId);
 	public List<PatientSymptom> fetchPatientSymptoms(int patientId);
+	public void insertPatientAllergy(Patient patient,
+			PatientAllergy patientAllergy);
+	public List<PatientAllergy> fetchPatientAllergies(int patientId);
+	public void deletePatientAllergy(int allergyId);
 }
 

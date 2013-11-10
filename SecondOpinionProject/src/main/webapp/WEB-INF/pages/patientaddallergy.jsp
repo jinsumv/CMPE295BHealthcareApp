@@ -54,7 +54,7 @@
 			</section>	  
 				  <article class= "bottomcontent">
 				  <header><h2>Add the allergy details </h2></header>
-				  <form action="addallergy_form.asp">
+				  <form action="addpatientallergy.do" method="post">
 				  <h3> Allergy</h3>
   			  	  <input  class = "category" type="text" name="allergy"  autofocus required><br>
   			  	  <h3>Notes</h3>
