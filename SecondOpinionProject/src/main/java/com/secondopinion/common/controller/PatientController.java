@@ -7,9 +7,17 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.servlet.ServletRequest;
+
+import net.tanesha.recaptcha.ReCaptchaImpl;
+import net.tanesha.recaptcha.ReCaptchaResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,15 +34,6 @@ import com.secondopinion.common.model.PatientSymptom;
 import com.secondopinion.common.model.User;
 import com.secondopinion.common.service.PatientService;
 import com.secondopinion.common.service.UserService;
-
-import net.tanesha.recaptcha.ReCaptchaImpl;
-import net.tanesha.recaptcha.ReCaptchaResponse;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 
 
 /**
@@ -53,12 +52,12 @@ public class PatientController {
     @Autowired
     PatientService patientService;
     
-    //@Autowired
-    //private HttpServletRequest context;
-    
     @RequestMapping(value = "/patientsignup.do", method = RequestMethod.POST)
     public ModelAndView doPatientAccount (ModelMap map,
-      HttpServletRequest request,
+      @ModelAttribute("addPatientForm") Patient patient,			
+	  BindingResult result,
+      ServletRequest request,
+      Model model,
       @RequestParam("email") String email,
       @RequestParam("pwd") String password,
       @RequestParam("fullname") String fullName,
@@ -76,22 +75,23 @@ public class PatientController {
 
         if (!reCaptchaResponse.isValid()) {
         	System.out.println("Captcha Answer is wrong");
-        	//result.rejectValue("recaptcha_response_field","recaptcha_response.notvalid","recaptcha response Error");
+        	//result.rejectValue("invalidRecaptcha", "invalid.captcha");
+			model.addAttribute("invalidRecaptcha", true);
+			ModelAndView modelView = new ModelAndView("redirect:registration.do");
+			return modelView;
         	//FieldError fieldError = new FieldError(objectName, field, defaultMessage)
         } else {
         	System.out.println("Captcha Answer is correct");
+            //System.out.println("Captcha Answer is correct");
+            User user = new User( -1, email, password, true);
+            user = userService.createUser(user);
+            
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy");
+            Date dob = dateFormatter.parse(dateOfBirth);
+            patient = new Patient(-1, -1, fullName, dob, gender, location);
+        	patientService.createPatient(user, patient);
+            return new ModelAndView("redirect:welcome.do");        	
         }
-        	
-        
-        //System.out.println("Captcha Answer is correct");
-        User user = new User( -1, email, password, true);
-        user = userService.createUser(user);
-        
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy");
-        Date dob = dateFormatter.parse(dateOfBirth);
-        Patient patient = new Patient(-1, -1, fullName, dob, gender, location);
-    	patientService.createPatient(user, patient);
-        return new ModelAndView("redirect:welcome.do");
     }
     
     @RequestMapping(value="/patientprofile.do", method={RequestMethod.GET})

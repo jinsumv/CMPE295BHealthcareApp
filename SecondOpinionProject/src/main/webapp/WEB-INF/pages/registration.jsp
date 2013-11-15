@@ -72,14 +72,18 @@
 			<div class="patient">
 			<b>Sign Up</b> Volunteer! Your opportunity to server and connect with your patients for FREE!</p>
 			<p>
-			<form action="patientsignup.do" method="post">
+			<form action="patientsignup.do" method="post" modelAttribute="addPatientForm">
   			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com" autofocus style="width: 100%" required ><br><br>
   			  <input type="password" name="pwd" placeholder="New Password" style='width: 100%' required ><br><br>
   			  <input type="text" name="fullname" placeholder="Full Name" style='width: 100%' required ><br><br>
   			  <input type="text" name="dateofbirth" placeholder="Date of Birth (MM/DD/YYYY)" style='width: 100%' required ><br><br>Genger&nbsp;&nbsp;&nbsp;
   			  <input type="radio" name="gender" value="Male" checked >&nbsp;Male&nbsp;&nbsp;
   			  <input type="radio" name="gender" value="Female" >&nbsp;Female<br><br>
-  			  <input type="text" name="location" placeholder="Location" style='width: 100%' required ><br><br>
+  			  <input type="text" name="location" placeholder="Location" style='width: 100%' required /><br><br>
+  			  
+  			   <c:if test="${param.invalidRecaptcha == 'true'}">
+  			   <span class="error_form_validation"><spring:message code="invalid.captcha" text="Invalid captcha please try again"/></span>
+  			   </c:if>
   			   <%
               ReCaptcha reCaptchaPatient = ReCaptchaFactory.newReCaptcha("6LfARuoSAAAAAKXdB0wLyJu7pVBl8nfp0-SpAL6X", "6LfARuoSAAAAAKoszbmVYYkidNNvv-3kWQhcghpd", false);
               out.print(reCaptchaPatient.createRecaptchaHtml("ReCaptchaError", null, null));
@@ -97,7 +101,7 @@
   			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com" style='width: 100%' required><br><br>
   			  <input type="password" name="pwd" placeholder="New Password" style='width: 100%' required><br><br>
   			  <input type="text" name="dateofbirth" placeholder="Date of Birth (MM/DD/YYYY)" style='width: 100%' required ><br><br>
-  			  Genger&nbsp;&nbsp;&nbsp;
+  			  Gender&nbsp;&nbsp;&nbsp;
   			  <input type="radio" name="gender" value="Male" checked >&nbsp;Male&nbsp;&nbsp;
   			  <input type="radio" name="gender" value="Female" >&nbsp;Female<br><br>
   			  <select name="qualifyingdegree" style='width: 100%' required>

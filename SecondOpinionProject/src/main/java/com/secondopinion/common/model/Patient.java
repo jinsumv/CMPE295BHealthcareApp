@@ -11,6 +11,9 @@ public class Patient implements Person {
 	String gender;
 	String location;
 	
+	
+	public Patient() { }
+	
 	public Patient(int patientId, int userId, String name, Date dateOfBirth,
 			String gender, String location) {
 		super();
