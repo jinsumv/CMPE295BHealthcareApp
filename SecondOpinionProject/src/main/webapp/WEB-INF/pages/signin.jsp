@@ -66,7 +66,7 @@
 			<form action="j_spring_security_check" name="loginForm" method="post">
 				<c:if test="${not empty error}">
 					<div class="popupFieldLabel">
-						<div class="error"><br/>Bad username/password</div>
+						<div class="error"><br/>Invalid username/password</div>
 					</div>
 				</c:if>
   			  <input type="text" name="j_username" placeholder="Email Eg:test@gmail.com" autofocus required style='width: 100%'/><br><br>

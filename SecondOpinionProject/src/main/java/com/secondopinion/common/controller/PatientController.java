@@ -27,6 +27,15 @@ import com.secondopinion.common.model.User;
 import com.secondopinion.common.service.PatientService;
 import com.secondopinion.common.service.UserService;
 
+import net.tanesha.recaptcha.ReCaptchaImpl;
+import net.tanesha.recaptcha.ReCaptchaResponse;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+
 
 /**
  * This is the core of the TravelLog functionality.  It's a Spring controller implemented
@@ -44,16 +53,38 @@ public class PatientController {
     @Autowired
     PatientService patientService;
     
+    //@Autowired
+    //private HttpServletRequest context;
+    
     @RequestMapping(value = "/patientsignup.do", method = RequestMethod.POST)
     public ModelAndView doPatientAccount (ModelMap map,
+      HttpServletRequest request,
       @RequestParam("email") String email,
       @RequestParam("pwd") String password,
       @RequestParam("fullname") String fullName,
       @RequestParam("dateofbirth") String dateOfBirth,
       @RequestParam("gender") String gender,
-      @RequestParam("location") String location) throws ParseException {
+      @RequestParam("location") String location,
+      @RequestParam("recaptcha_challenge_field") String challenge,
+      @RequestParam("recaptcha_response_field") String response) throws ParseException {
+    	
+    	String remoteAddr = request.getRemoteAddr();
+        ReCaptchaImpl reCaptcha = new ReCaptchaImpl();
+        reCaptcha.setPrivateKey("6LfARuoSAAAAAKoszbmVYYkidNNvv-3kWQhcghpd");
+        
+        ReCaptchaResponse reCaptchaResponse = reCaptcha.checkAnswer(remoteAddr, challenge, response);
 
-    	User user = new User( -1, email, password, true);
+        if (!reCaptchaResponse.isValid()) {
+        	System.out.println("Captcha Answer is wrong");
+        	//result.rejectValue("recaptcha_response_field","recaptcha_response.notvalid","recaptcha response Error");
+        	//FieldError fieldError = new FieldError(objectName, field, defaultMessage)
+        } else {
+        	System.out.println("Captcha Answer is correct");
+        }
+        	
+        
+        //System.out.println("Captcha Answer is correct");
+        User user = new User( -1, email, password, true);
         user = userService.createUser(user);
         
         SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy");

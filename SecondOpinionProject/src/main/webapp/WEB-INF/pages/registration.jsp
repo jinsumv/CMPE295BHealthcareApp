@@ -5,6 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page import="net.tanesha.recaptcha.ReCaptcha" %>
+<%@ page import="net.tanesha.recaptcha.ReCaptchaFactory" %>
 <%@page import="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter"%><html><head>
 
 
@@ -74,11 +76,15 @@
   			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com" autofocus style="width: 100%" required ><br><br>
   			  <input type="password" name="pwd" placeholder="New Password" style='width: 100%' required ><br><br>
   			  <input type="text" name="fullname" placeholder="Full Name" style='width: 100%' required ><br><br>
-  			  <input type="text" name="dateofbirth" placeholder="Date of Birth (MM/DD/YYYY)" style='width: 100%' required ><br><br>
-  			  Genger&nbsp;&nbsp;&nbsp;
+  			  <input type="text" name="dateofbirth" placeholder="Date of Birth (MM/DD/YYYY)" style='width: 100%' required ><br><br>Genger&nbsp;&nbsp;&nbsp;
   			  <input type="radio" name="gender" value="Male" checked >&nbsp;Male&nbsp;&nbsp;
   			  <input type="radio" name="gender" value="Female" >&nbsp;Female<br><br>
   			  <input type="text" name="location" placeholder="Location" style='width: 100%' required ><br><br>
+  			   <%
+              ReCaptcha reCaptchaPatient = ReCaptchaFactory.newReCaptcha("6LfARuoSAAAAAKXdB0wLyJu7pVBl8nfp0-SpAL6X", "6LfARuoSAAAAAKoszbmVYYkidNNvv-3kWQhcghpd", false);
+              out.print(reCaptchaPatient.createRecaptchaHtml("ReCaptchaError", null, null));
+              %>
+             
 			  <input type="image" src="images/SignUpBtn.jpg" name="Submit Form" width="100%" height="50px" />
  			</form></p>
 			</div>
@@ -131,6 +137,10 @@
 			</select><br><br>
 			<input type="text" name="licensenumber" placeholder="Professional License #" style='width: 100%' required><br><br>
 			<input type="text" name="achievements" placeholder="Achievements" style='width: 100%'><br><br>
+			 <%
+              ReCaptcha reCaptchaDoc = ReCaptchaFactory.newReCaptcha("6LfARuoSAAAAAKXdB0wLyJu7pVBl8nfp0-SpAL6X", "6LfARuoSAAAAAKoszbmVYYkidNNvv-3kWQhcghpd", false);
+              out.print(reCaptchaDoc.createRecaptchaHtml("ReCaptchaError", null, null));
+              %>
 			<input type="image" src="images/DocSignUpBtn.jpg" name="Submit Form" width="100%" height="50px" />
 		</form></p>
     	</div>

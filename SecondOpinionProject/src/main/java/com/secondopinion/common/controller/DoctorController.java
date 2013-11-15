@@ -6,6 +6,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.servlet.http.HttpServletRequest;
+
+import net.tanesha.recaptcha.ReCaptchaImpl;
+import net.tanesha.recaptcha.ReCaptchaResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -40,6 +45,7 @@ public class DoctorController {
     
     @RequestMapping(value = "/doctorsignup.do", method = RequestMethod.POST)
     public ModelAndView doPatientAccount (ModelMap map,
+    		HttpServletRequest request,
       @RequestParam("email") String email,
       @RequestParam("pwd") String password,
       @RequestParam("fullname") String fullName,
@@ -48,7 +54,21 @@ public class DoctorController {
       @RequestParam("qualifyingdegree") String qualifyingDegree,
       @RequestParam("areaofpractice") String areaOfPractice,
       @RequestParam("licensenumber") String licenseNumber,
-      @RequestParam("achievements") String achievements) throws ParseException {
+      @RequestParam("achievements") String achievements,
+      @RequestParam("recaptcha_challenge_field") String challenge,
+      @RequestParam("recaptcha_response_field") String response) throws ParseException {
+    	
+    	String remoteAddr = request.getRemoteAddr();
+        ReCaptchaImpl reCaptcha = new ReCaptchaImpl();
+        reCaptcha.setPrivateKey("6LfARuoSAAAAAKoszbmVYYkidNNvv-3kWQhcghpd");
+        
+        ReCaptchaResponse reCaptchaResponse = reCaptcha.checkAnswer(remoteAddr, challenge, response);
+
+        if (reCaptchaResponse.isValid()) {
+          System.out.println("Answer was entered correctly!");
+        } else {
+          System.out.println("Answer is wrong");
+        }
 
     	User user = new User( -1, email, password, true);
         user = userService.createUser(user);
