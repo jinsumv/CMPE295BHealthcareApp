@@ -82,7 +82,7 @@
   			  <input type="text" name="location" placeholder="Location" style='width: 100%' required /><br><br>
   			  
   			   <c:if test="${param.invalidRecaptcha == 'true'}">
-  			   <span class="error_form_validation"><spring:message code="invalid.captcha" text="Invalid captcha please try again"/></span>
+  			   <span class="error_validation"><spring:message code="invalid.captcha" text="Invalid captcha please try again"/></span>
   			   </c:if>
   			   <%
               ReCaptcha reCaptchaPatient = ReCaptchaFactory.newReCaptcha("6LfARuoSAAAAAKXdB0wLyJu7pVBl8nfp0-SpAL6X", "6LfARuoSAAAAAKoszbmVYYkidNNvv-3kWQhcghpd", false);
