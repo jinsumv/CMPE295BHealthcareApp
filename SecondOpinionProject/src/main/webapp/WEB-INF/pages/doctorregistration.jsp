@@ -39,22 +39,7 @@
     
     <link rel="stylesheet" href="css/style.css" type="text/css" />
 	
-	<script>
-	$(document).ready(function() {
-		$(".doc").hide();
-		$(".patient").show();	
-		
-		$("#patientregister").click(function() {
-		$(".patient").show();
-		$(".doc").hide();	
-		});	
-		
-		$("#docregister").click(function() {
-		$(".doc").show();
-		$(".patient").hide();	
-		});	
-	});
-	</script>
+
   </head>
   
   <body class="body">
@@ -67,34 +52,10 @@
 	  <div class="content">
 		 <div class="topcontent">
 								
-			<p><a href="#" id="patientregister"><b>Are you a Patient?</b></a> OR <a href="#" id="docregister"><b>Are you a Doctor?</b></a><br>
-			
-			<div class="patient">
-			<b>Sign Up</b> Volunteer! Your opportunity to server and connect with your patients for FREE!</p>
-			<p>
-			<form action="patientsignup.do" method="post" modelAttribute="addPatientForm">
-  			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com" autofocus style="width: 100%" required ><br><br>
-  			  <input type="password" name="pwd" placeholder="New Password" style='width: 100%' required ><br><br>
-  			  <input type="text" name="fullname" placeholder="Full Name" style='width: 100%' required ><br><br>
-  			  <input type="text" name="dateofbirth" placeholder="Date of Birth (MM/DD/YYYY)" style='width: 100%' required ><br><br>Genger&nbsp;&nbsp;&nbsp;
-  			  <input type="radio" name="gender" value="Male" checked >&nbsp;Male&nbsp;&nbsp;
-  			  <input type="radio" name="gender" value="Female" >&nbsp;Female<br><br>
-  			  <input type="text" name="location" placeholder="Location" style='width: 100%' required /><br><br>
-  			  
-  			   <c:if test="${param.invalidRecaptcha == 'true'}">
-  			   <span class="error_validation"><spring:message code="invalid.captcha" text="Invalid captcha please try again"/></span>
-  			   </c:if>
-  			   <%
-              ReCaptcha reCaptchaPatient = ReCaptchaFactory.newReCaptcha("6LfARuoSAAAAAKXdB0wLyJu7pVBl8nfp0-SpAL6X", "6LfARuoSAAAAAKoszbmVYYkidNNvv-3kWQhcghpd", false);
-              out.print(reCaptchaPatient.createRecaptchaHtml("ReCaptchaError", null, null));
-              %>
-             
-			  <input type="image" src="images/SignUpBtn.jpg" name="Submit Form" width="100%" height="50px" />
- 			</form></p>
-			</div>
+
 			
 			<div class="doc">
-			<b>Sign Up</b> Its helpful, private, and FREE!</p>
+			<b>Sign Up</b> Volunteer! Your opportunity to serve and connect with your patients for FREE!</p>
 			<p>
 			<form action="doctorsignup.do" method="post">
   			  <input type="text" name="fullname" placeholder="Full Name" style='width: 48%' autofocus required><br><br>
@@ -141,13 +102,22 @@
 			</select><br><br>
 			<input type="text" name="licensenumber" placeholder="Professional License #" style='width: 100%' required><br><br>
 			<input type="text" name="achievements" placeholder="Achievements" style='width: 100%'><br><br>
-			 <%
-              ReCaptcha reCaptchaDoc = ReCaptchaFactory.newReCaptcha("6LfARuoSAAAAAKXdB0wLyJu7pVBl8nfp0-SpAL6X", "6LfARuoSAAAAAKoszbmVYYkidNNvv-3kWQhcghpd", false);
-              out.print(reCaptchaDoc.createRecaptchaHtml("ReCaptchaError", null, null));
-              %>
-			<input type="image" src="images/DocSignUpBtn.jpg" name="Submit Form" width="100%" height="50px" />
+			 <c:if test="${param.invalidRecaptcha == 'true'}">
+  			   <span class="error_validation"><spring:message code="invalid.captcha" text="Invalid captcha please try again"/></span>
+  			 </c:if>
+            
+			<%
+              ReCaptcha reCaptchaVar = ReCaptchaFactory.newReCaptcha("6LfARuoSAAAAAKXdB0wLyJu7pVBl8nfp0-SpAL6X", "6LfARuoSAAAAAKoszbmVYYkidNNvv-3kWQhcghpd", false);
+  			  out.print(reCaptchaVar.createRecaptchaHtml("ReCaptchaError", null, null));
+            %>
+			<input type="image" src="images/SignUpBtn.jpg" name="Submit Form" width="100%" height="50px" />
 		</form></p>
     	</div>
+    	  			  
+		
+
+             
+			  
 	</div>
   </div>
 </div>

@@ -50,8 +50,9 @@ public class DoctorController {
     PatientService patientService;
     
     @RequestMapping(value = "/doctorsignup.do", method = RequestMethod.POST)
-    public ModelAndView doPatientAccount (ModelMap map,
+    public ModelAndView doDoctorAccount (ModelMap map,
     		HttpServletRequest request,
+    		Model model,
       @RequestParam("email") String email,
       @RequestParam("pwd") String password,
       @RequestParam("fullname") String fullName,
@@ -70,11 +71,14 @@ public class DoctorController {
         
         ReCaptchaResponse reCaptchaResponse = reCaptcha.checkAnswer(remoteAddr, challenge, response);
 
-        if (reCaptchaResponse.isValid()) {
-          System.out.println("Answer was entered correctly!");
-        } else {
-          System.out.println("Answer is wrong");
+        if (!reCaptchaResponse.isValid()) {
+        	System.out.println("Captcha Answer is wrong");
+			model.addAttribute("invalidRecaptcha", true);
+			ModelAndView modelView = new ModelAndView("redirect:doctorregistration.do");
+			return modelView;
         }
+
+        System.out.println("Captcha Answer is correct");
 
     	User user = new User( -1, email, password, true);
         user = userService.createUser(user);

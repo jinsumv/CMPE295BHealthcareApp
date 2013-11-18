@@ -5,6 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page import="net.tanesha.recaptcha.ReCaptcha" %>
+<%@ page import="net.tanesha.recaptcha.ReCaptchaFactory" %>
 <%@page import="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter"%><html><head>
 
 
@@ -36,58 +38,50 @@
     <script type="text/javascript" src="js/travellog.js"></script>
     
     <link rel="stylesheet" href="css/style.css" type="text/css" />
-	<style>
-	.errorblock {
-		color: #ff0000;
-		background-color: #ffEEEE;
-		border: 3px solid #ff0000;
-		padding: 8px;
-		margin: 16px;
-	}
-	</style>
+	
+
   </head>
   
   <body class="body">
   
 	<header class="mainheader">
-          <img src="images/Header.jpg">		
-	  
+          <%@include file="header.jsp" %>	
 	</header>
 
  	<div class="mainContent">
 	  <div class="content">
-		 <article class="topcontent">
-			<header>
-			  <h2><a href="#" title="First Post"></a></h2>
-			</header>
-			<b>Already have an account?</b>
+		 <div class="topcontent">
+								
+			<div class="patient">
+			<b>Sign Up</b> Its helpful, private, and FREE!</p>
 			<p>
-			
-			<form action="j_spring_security_check" name="loginForm" method="post">
-				<c:if test="${not empty error}">
-					<div class="popupFieldLabel">
-						<div class="error"><br/>Invalid username/password</div>
-					</div>
-				</c:if>
-  			  <input type="text" name="j_username" placeholder="Email Eg:test@gmail.com" autofocus required style='width: 100%'/><br><br>
-  			  <input type="password" name="j_password" placeholder="Password" autofocus required style='width: 100%'/><br><br>
- 			  <a class="saveButton" href="javascript:" onclick="document.loginForm.submit()">
- 			  	<input type="image" src="images/Login.jpg" name="Submit Form" width="100%" height="50px" />
- 			  </a>
-			</form>			
-		  	
-		  <p>
-		  	   <b> New to Second Opinion?</b><br>
-			   <a href="doctorregistration.do"><img src="images/RegisterDoc.jpg" name="Doctor Register" width="100%" height="50px"/></a>
-			   <a href="patientregistration.do"><img src="images/RegisterPatient.jpg" name="Patient Register" width="100%" height="50px"/></a>
-		</p>
-		
-		<p><a href="forgotpassword.do">Forgot Password? - Help Center</a>
-	 </article>
+			<form action="patientsignup.do" method="post" modelAttribute="addPatientForm">
+  			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com" autofocus style="width: 100%" required ><br><br>
+  			  <input type="password" name="pwd" placeholder="New Password" style='width: 100%' required ><br><br>
+  			  <input type="text" name="fullname" placeholder="Full Name" style='width: 100%' required ><br><br>
+  			  <input type="text" name="dateofbirth" placeholder="Date of Birth (MM/DD/YYYY)" style='width: 100%' required ><br><br>Gender&nbsp;&nbsp;&nbsp;
+  			  <input type="radio" name="gender" value="Male" checked >&nbsp;Male&nbsp;&nbsp;
+  			  <input type="radio" name="gender" value="Female" >&nbsp;Female<br><br>
+  			  <input type="text" name="location" placeholder="Location" style='width: 100%' required /><br><br>
+
+			 <c:if test="${param.invalidRecaptcha == 'true'}">
+  			   <span class="error_validation"><spring:message code="invalid.captcha" text="Invalid captcha please try again"/></span>
+  			 </c:if>
+            
+			<%
+              ReCaptcha reCaptchaVar = ReCaptchaFactory.newReCaptcha("6LfARuoSAAAAAKXdB0wLyJu7pVBl8nfp0-SpAL6X", "6LfARuoSAAAAAKoszbmVYYkidNNvv-3kWQhcghpd", false);
+  			  out.print(reCaptchaVar.createRecaptchaHtml("ReCaptchaError", null, null));
+            %>
+              <input type="image" src="images/SignUpBtn.jpg" name="Submit Form" width="100%" height="50px" />
+ 			</form></p>
+			</div>
+					
+			  
 	</div>
-     </div>
+  </div>
+</div>
 	
-	<!--  <footer class="mainFooter">
+	<!--   <footer class="mainFooter">
 	  <p>Copyright &copy; <a href="#" title="1sthtml">payal.com</a></p>
 	</footer> -->
 	<script src="js/main.js" type="text/javascript"></script>

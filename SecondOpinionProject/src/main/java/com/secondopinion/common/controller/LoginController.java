@@ -67,8 +67,12 @@ public class LoginController {
         
     }   
 
-    @RequestMapping(value="/registration.do", method={RequestMethod.GET})
-    public void doRegistration (ModelMap model) {
+    @RequestMapping(value="/doctorregistration.do", method={RequestMethod.GET})
+    public void doDoctorRegistration (ModelMap model) {
+        
+    } 
+    @RequestMapping(value="/patientregistration.do", method={RequestMethod.GET})
+    public void doPatientRegistration (ModelMap model) {
         
     } 
 	

@@ -77,21 +77,22 @@ public class PatientController {
         	System.out.println("Captcha Answer is wrong");
         	//result.rejectValue("invalidRecaptcha", "invalid.captcha");
 			model.addAttribute("invalidRecaptcha", true);
-			ModelAndView modelView = new ModelAndView("redirect:registration.do");
+			ModelAndView modelView = new ModelAndView("redirect:patientregistration.do");
 			return modelView;
         	//FieldError fieldError = new FieldError(objectName, field, defaultMessage)
-        } else {
-        	System.out.println("Captcha Answer is correct");
-            //System.out.println("Captcha Answer is correct");
-            User user = new User( -1, email, password, true);
-            user = userService.createUser(user);
+        } 
+        
+        System.out.println("Captcha Answer is correct");
+        //System.out.println("Captcha Answer is correct");
+        User user = new User( -1, email, password, true);
+        user = userService.createUser(user);
             
-            SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy");
-            Date dob = dateFormatter.parse(dateOfBirth);
-            patient = new Patient(-1, -1, fullName, dob, gender, location);
-        	patientService.createPatient(user, patient);
-            return new ModelAndView("redirect:welcome.do");        	
-        }
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy");
+        Date dob = dateFormatter.parse(dateOfBirth);
+        patient = new Patient(-1, -1, fullName, dob, gender, location);
+        patientService.createPatient(user, patient);
+        return new ModelAndView("redirect:welcome.do");        	
+        
     }
     
     @RequestMapping(value="/patientprofile.do", method={RequestMethod.GET})
