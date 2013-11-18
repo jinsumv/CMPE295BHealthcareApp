@@ -3,9 +3,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page import="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter"%><html><head>
+
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <link href="css/main.css" media="screen" rel="stylesheet" type="text/css"/>
@@ -39,56 +41,41 @@
   
   <body class="body">
 	<header class="mainheader">
-          <img src="images/Header.jpg">	
+       <%@include file="header.jsp" %>   
 	</header>
 
- 	<div class="mainContent">
-		<div class="content">
-		<section class ="topcontent" >
-		<h3 style="margin-left:35px;color:royalblue;">Hi ${patient.name} !</h3>
-		<table>
-			<tr>
-				<td>
-					<a href="patientprofile.do">
-					<img class="menuimage" src="images/profile.png" /></a>
-				</td>
-				<td>
-					<a href="topmessages.do">
-					<img class="menuimage" src="images/newsfeed.png"/></a>
-				</td>
+    <div class="mainContent" style="padding:10px;">
+	    
+	    <div class="messageslist">
+		   <section>
+ 	         	<h2> Reviews for Dr. ${doctor.name} </h2><br>
+ 	         	<c:choose>
+				      <c:when test="${not empty reviewList}">
+				      	<c:forEach var="review" items="${reviewList}">
+				   			<div style="border:1px solid grey; margin:15px; background:#FFF; border-radius:5px;">
+				   				<p>From: ${review.patient.name}</p>
+				   				<p>Message: ${review.text}</p>
+				   				<p>Date: <fmt:formatDate pattern="MM/dd/yyyy" value="${review.reviewDate}" /></p>
+			   				</div>
+						</c:forEach>
+				      </c:when>
 				
-			<tr>
-			<tr>
-				<td>
-					<a href="listmessages.do">
-					<img class="menuimage" src="images/message.png"/></a>
-				</td>
-				<td>
-					<a href="askquestion.do">
-					<img class="menuimage" src="images/AskQtn.jpg"/></a>
-				</td>
-			<tr>
-			<tr>
-				<td>
-					<a href="searchdoc.do">
-					<img class="menuimage" src="images/search.png"/></a>	
-				</td>
-				<td>
-					<a href="followeddoctors.do">
-					<img class="menuimage" src="images/favorite.png"/></a>	
-				</td>
-			<tr>
-		</table>		    				
- 	</section>
-	</div>
-	</div>
+				      <c:otherwise>
+				      	No reviews yet!!
+				      </c:otherwise>
+				</c:choose>
+		 	</section>
+			<section>
+				<div style="border:1px solid grey; margin:15px; border-radius:5px;">
+					<form name="replyForm" action="addreview.do" method="post">
+						<textarea name="reviewtext" placeholder="Review doctor" cols="50" rows="5"></textarea><br><br>
+						<input type="hidden" name="doctorid" value="${doctor.doctorId}" />
+						<input type="submit" value="Add Review"/>
+					</form> 
+				</div>
+			</section>		 
 
-    <div class="signOut">
-        	<a href="<c:url value="/j_spring_security_logout"/>">Sign out</a>
-    </div>
-	<!-- <footer class="mainFooter">
-	  <p>Copyright &copy; <a href="#" title="2ndhtml"></a></p>
-	</footer>  -->
-	<script src="js/main.js" type="text/javascript"></script>
+ 		</div>
+ 	</div>
 </body>
 </html>

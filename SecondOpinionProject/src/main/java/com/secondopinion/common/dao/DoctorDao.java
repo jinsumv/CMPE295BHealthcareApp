@@ -3,6 +3,8 @@ package com.secondopinion.common.dao;
 import java.util.List;
 
 import com.secondopinion.common.model.Doctor;
+import com.secondopinion.common.model.Patient;
+import com.secondopinion.common.model.Review;
 import com.secondopinion.common.model.User;
 
 public interface DoctorDao {
@@ -10,4 +12,9 @@ public interface DoctorDao {
 	public Doctor findByDoctorId(int doctorId);
 	Doctor findByUserId(int userId);
 	List<Doctor> findBySpeciality(String speciality);
+	void followDoctor(Patient patient, Doctor doctor);
+	List<Doctor> getFollowedDoctors(int patientId);
+	int getFollowersCount(int doctorId);
+	void addReview(Review review);
+	List<Review> getReviewsForDoctor(int doctorId);
 }

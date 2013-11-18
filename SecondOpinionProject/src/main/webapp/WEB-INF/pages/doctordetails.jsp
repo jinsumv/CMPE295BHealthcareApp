@@ -67,12 +67,23 @@
 		</div>
 			
 		<div style="padding-top:10px;padding-bottom:10px;">
-			<img src="images/FollowBtn.png" alt="follow doc" width="152" height="35"/></a>
+			<c:choose>
+				<c:when test="${showfollowbutton}">
+				<a href="followdoctor.do?doctorid=${doctor.doctorId}"><img src="images/FollowBtn.png" alt="follow doc" width="152" height="35"/></a>
+				</c:when>
+				<c:otherwise>
+				<img style="opacity:0.4" src="images/FollowBtn.png" alt="follow doc" width="152" height="35"/>
+				</c:otherwise>
+			</c:choose>
 			<a href="askquestion.do?doctorid=${doctor.doctorId}"><img src="images/SendmsgBtn.png" alt="send " width="152" height="35"/></a>
 		</div>
 			
-		<div style="float:left;background-color:#E1E1E8;width:152px;height:50px;color:blue;font-size:18px;text-align: center; font-weight: bold;">125 <br> FOLLOWERS</div>
-		<div style="margin-left:160px;background-color:#E1E1E8;width:152px;height:50px;color:blue;font-size:18px;vertical-align:middle;text-align: center; font-weight: bold;">12 <br> REVIEWS</div>
+		<div style="float:left;background-color:#E1E1E8;width:152px;height:50px;color:royalblue;font-size:18px;text-align: center; font-weight: bold;">${followercount} <br> FOLLOWERS</div>
+		
+		<div style="margin-left:160px;background-color:#E1E1E8;width:152px;height:50px;color:royalblue;font-size:18px;vertical-align:middle;text-align: center; font-weight: bold;">
+			<a href="reviewlist.do?doctorid=${doctor.doctorId}" style="text-decoration:none;">${reviewcount} <br> REVIEWS</a>
+		</div>
+		
 		</section>
 		
 <section class="bottomcontent">

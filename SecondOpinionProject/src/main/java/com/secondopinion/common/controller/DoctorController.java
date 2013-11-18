@@ -19,8 +19,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.secondopinion.common.model.Comment;
+import com.secondopinion.common.model.Conversation;
 import com.secondopinion.common.model.Doctor;
 import com.secondopinion.common.model.Patient;
+import com.secondopinion.common.model.Review;
 import com.secondopinion.common.model.User;
 import com.secondopinion.common.service.DoctorService;
 import com.secondopinion.common.service.PatientService;
@@ -42,6 +45,9 @@ public class DoctorController {
     
     @Autowired
     DoctorService doctorService;
+    
+    @Autowired
+    PatientService patientService;
     
     @RequestMapping(value = "/doctorsignup.do", method = RequestMethod.POST)
     public ModelAndView doPatientAccount (ModelMap map,
@@ -104,6 +110,72 @@ public class DoctorController {
     		@RequestParam("doctorid") int doctorId) {
     	Doctor doctor = doctorService.findDoctor(doctorId);
 		model.addAttribute("doctor", doctor);
+		
+		Patient patient = patientService.getCurrentPatient();
+		List<Doctor> doctorList = doctorService.getFollowedDoctors(patient.getPatientId());
+		model.addAttribute("showfollowbutton", true);
+		for (Doctor followeddoctor : doctorList)
+		{
+			if (doctor.getDoctorId() == followeddoctor.getDoctorId()) {
+				model.addAttribute("showfollowbutton", false);
+				break;
+			}
+		}
+		
+		int followerCount = doctorService.getFollowersCount(doctorId);
+		model.addAttribute("followercount", followerCount);
+		
+		List<Review> reviewList = doctorService.getReviewsForDoctor(doctorId);
+		model.addAttribute("reviewcount", reviewList.size());
+    }
+    
+    @RequestMapping(value = "/followdoctor.do", method = RequestMethod.GET)
+    public ModelAndView doPatientAccount (ModelMap map,
+      @RequestParam("doctorid") int doctorId) throws ParseException {
+
+    	Patient patient = patientService.getCurrentPatient();
+    	Doctor doctor = doctorService.findDoctor(doctorId);
+        
+        doctorService.followDoctor(patient, doctor);
+        return new ModelAndView("redirect:followeddoctors.do");
+    }
+    
+    @RequestMapping(value="/followeddoctors.do", method={RequestMethod.GET})
+    public String doDocSearchList (ModelMap model) {
+    	Patient patient = patientService.getCurrentPatient();
+    	List<Doctor> doctorList = doctorService.getFollowedDoctors(patient.getPatientId());
+    	model.addAttribute("doctorList", doctorList);
+    	return "doctorsearchlist";
+    }
+    
+    @RequestMapping(value="/reviewlist.do", method={RequestMethod.GET})
+    public String doReviewList (ModelMap model,
+    		@RequestParam("doctorid") int doctorId) {
+    	List<Review> reviewList = doctorService.getReviewsForDoctor(doctorId);
+    	for (Review review : reviewList) {
+    		Patient patient = patientService.findPatient(review.getPatientId());
+    		review.setPatient(patient);
+    	}
+    	model.addAttribute("reviewList", reviewList);
+    	
+    	Doctor doctor = doctorService.findDoctor(doctorId);
+    	model.addAttribute("doctor", doctor);
+    	
+    	return "reviewlist";
+    }
+    
+    @RequestMapping(value="/addreview.do", method={RequestMethod.POST})
+    public ModelAndView doAddComment (ModelMap model,
+    		@RequestParam("reviewtext") String reviewText,
+    		@RequestParam("doctorid") int doctorId) {
+    	
+    	Patient patient = patientService.getCurrentPatient();
+    	
+    	Review review = new Review(-1, patient.getPatientId(), doctorId, reviewText, new Date());
+    	
+    	doctorService.addReview(review);
+    	
+    	return new ModelAndView("redirect:reviewlist.do?doctorid="+doctorId);
     }
 
 }

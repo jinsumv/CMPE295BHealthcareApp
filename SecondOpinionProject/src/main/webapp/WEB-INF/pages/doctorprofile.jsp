@@ -66,11 +66,6 @@
 			</div>
 		</div>
 			
-		<div style="padding-top:10px;padding-bottom:10px;">
-			<img src="images/FollowBtn.png" alt="follow doc" width="152" height="35"/></a>
-			<img src="images/SendmsgBtn.png" alt="send " width="152" height="35"/></a>
-		</div>
-			
 		<div style="float:left;background-color:#E1E1E8;width:152px;height:50px;color:blue;font-size:18px;text-align: center; font-weight: bold;">125 <br> FOLLOWERS</div>
 		<div style="margin-left:160px;background-color:#E1E1E8;width:152px;height:50px;color:blue;font-size:18px;vertical-align:middle;text-align: center; font-weight: bold;">12 <br> REVIEWS</div>
 		</section>

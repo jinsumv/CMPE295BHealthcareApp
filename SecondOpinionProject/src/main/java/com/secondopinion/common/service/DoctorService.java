@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 import com.secondopinion.common.dao.DoctorDao;
 import com.secondopinion.common.dao.UserDao;
 import com.secondopinion.common.model.Doctor;
+import com.secondopinion.common.model.Patient;
+import com.secondopinion.common.model.Review;
 import com.secondopinion.common.model.User;
 
 @Component
@@ -42,5 +44,24 @@ public class DoctorService {
 	public List<Doctor> findDoctorBySpeciality(String speciality) {
 		return doctorDao.findBySpeciality(speciality);
 	}
+	
+	public void followDoctor(Patient patient, Doctor doctor) {
+		doctorDao.followDoctor(patient, doctor);
+	}
 
+	public List<Doctor> getFollowedDoctors(int patientId) {
+		return doctorDao.getFollowedDoctors(patientId);
+	}
+	
+	public int getFollowersCount(int doctorId) {
+		return doctorDao.getFollowersCount(doctorId);
+	}
+	
+	public List<Review> getReviewsForDoctor(int doctorId) {
+		return doctorDao.getReviewsForDoctor(doctorId);
+	}
+	
+	public void addReview(Review review) {
+		doctorDao.addReview(review);
+	}
 }

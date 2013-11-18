@@ -63,7 +63,7 @@
 		      </c:when>
 		
 		      <c:otherwise>
-		      	No doctors found with this specialization !!
+		      	No doctors found!!
 		      </c:otherwise>
 		</c:choose>
 		</div>
