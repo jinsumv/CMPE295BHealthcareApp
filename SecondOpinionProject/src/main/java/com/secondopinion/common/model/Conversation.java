@@ -13,6 +13,7 @@ public class Conversation {
 	
 	Patient patient;
 	Doctor doctor;
+	Comment firstComment;
 	
 	public Conversation(int conversationId, int patientId, Integer doctorId,
 			String title, Date startDate, Date updateDate, boolean unAnswered) {
@@ -59,4 +60,11 @@ public class Conversation {
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
 	}
+	public Comment getFirstComment() {
+		return firstComment;
+	}
+	public void setFirstComment(Comment firstComment) {
+		this.firstComment = firstComment;
+	}
+	
 }

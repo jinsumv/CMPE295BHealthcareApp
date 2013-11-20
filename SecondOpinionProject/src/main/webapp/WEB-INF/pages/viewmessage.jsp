@@ -36,7 +36,22 @@
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 
     <script type="text/javascript" src="js/travellog.js"></script>
-    
+    <style type="text/css">
+    .comment {
+    	border: 1px solid grey;
+    	padding: 10px;
+    	border-radius: 5px;
+    	margin-bottom: 10px;
+    	font-size: 13px;
+		font-style: italic;
+    	background-color: #FFFFFF;
+    }
+    .commenter {
+    	font-weight:bold;
+    	font-size: 14px;
+    	font-style: normal;
+    }
+    </style>
   </head>
   
   <body class="body">
@@ -50,18 +65,27 @@
 		   <section>
  	         	<h2> Question : ${conversation.title} </h2><br>
  	         	<c:if test="${not empty commentList}">
-			      	
+			      	<c:set var="author" value="${commentList[0].commenter.name}" />
 			      	<c:forEach var="comment" items="${commentList}">
-			   			<div style="border:1px solid grey; margin:15px; background:#FFF; border-radius:5px;">
-			   				<p>From: ${comment.commenter.name}</p>
-			   				<p style="width:20%;">Message: ${comment.text}</p>
-			   				<p style="width:20%;">Date: <fmt:formatDate pattern="MM/dd/yyyy" value="${comment.commentDate}" /></p>
+			   			<div class="comment">
+			   				
+			   				<c:choose>
+			   					<c:when test="${author == comment.commenter.name}">
+			   						<span class="commenter">${comment.commenter.name}</span> asked
+			   					</c:when>
+			   					<c:otherwise>
+			   						<span class="commenter">Dr. ${comment.commenter.name}</span> answered
+			   					</c:otherwise>
+			   				</c:choose> on <fmt:formatDate pattern="d MMM h:mm a" value="${comment.commentDate}" />
+			   			 	<br/>
+			   			 	<span style="font-size: 14px;">${comment.text}</span>
 			   			</div>
 					</c:forEach>
 					<c:if test="${showreplybox}">
-						<div style="border:1px solid grey; margin:15px; border-radius:5px;">
+						<div class="comment">
 							<form name="replyForm" action="addcomment.do" method="post">
-								<textarea name="replytext" placeholder="Reply.." cols="50" rows="5"></textarea><br><br>
+								<textarea name="replytext" placeholder="Reply.." cols="40" rows="5" style="resize: none;"></textarea>
+								<br>
 								<input type="hidden" name="conversationid" value="${conversation.conversationId}" />
 								<input type="submit" value="Send"/>
 							</form> 

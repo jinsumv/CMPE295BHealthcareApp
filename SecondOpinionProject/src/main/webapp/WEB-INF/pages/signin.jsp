@@ -69,8 +69,8 @@
 						<div class="error"><br/>Invalid username/password</div>
 					</div>
 				</c:if>
-  			  <input type="text" name="j_username" placeholder="Email Eg:test@gmail.com" autofocus required style='width: 100%'/><br><br>
-  			  <input type="password" name="j_password" placeholder="Password" autofocus required style='width: 100%'/><br><br>
+  			  <input type="text" name="j_username" placeholder="Email Eg:test@gmail.com" autofocus required style='width: 100%;height: 30px;'/><br><br>
+  			  <input type="password" name="j_password" placeholder="Password" autofocus required style='width: 100%;height: 30px;'/><br><br>
  			  <a class="saveButton" href="javascript:" onclick="document.loginForm.submit()">
  			  	<input type="image" src="images/Login.jpg" name="Submit Form" width="100%" height="50px" />
  			  </a>

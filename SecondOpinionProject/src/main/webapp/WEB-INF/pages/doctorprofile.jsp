@@ -39,15 +39,7 @@
   
   <body class="body">
 	<header class="mainheader">
-	<%@include file="header.jsp" %>
-          <nav>
-	  		<ul>
-		  		<li class="active"><a href="#">About</a></li>
-		  		<li><a href="#">Answers</a></li>
-		 		<li><a href="#">Network</a></li>
-		  		<li><a href="#">Reviews</a></li>
-	  		</ul>
-		</nav>	
+	<%@include file="header.jsp" %>	
 	</header>
 
  	<div class="mainContent">
@@ -65,7 +57,7 @@
 			<label id="achievements"><i>${doctor.achievements}</i></label><br>
 			</div>
 		</div>
-			
+		<br/>	
 		<div style="float:left;background-color:#E1E1E8;width:152px;height:50px;color:blue;font-size:18px;text-align: center; font-weight: bold;">125 <br> FOLLOWERS</div>
 		<div style="margin-left:160px;background-color:#E1E1E8;width:152px;height:50px;color:blue;font-size:18px;vertical-align:middle;text-align: center; font-weight: bold;">12 <br> REVIEWS</div>
 		</section>

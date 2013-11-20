@@ -195,6 +195,41 @@ public class ConversationDaoImpl implements ConversationDao{
 			}
 		}
 	}
+	
+	@Override
+	public Comment getFirstCommentForConversationId(int conversationId) {
+		String sql = "SELECT * FROM comment WHERE CONVERSATION_ID=? ORDER BY COMMENT_DATE ASC LIMIT 1";
+		 
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, conversationId);
+			Comment comment = null;
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				comment= new Comment(
+					rs.getInt("COMMENT_ID"),
+					rs.getInt("CONVERSATION_ID"),
+					rs.getInt("USER_ID"),
+					rs.getString("TEXT"),
+					rs.getTimestamp("COMMENT_DATE")
+				);
+			}
+			rs.close();
+			ps.close();
+			return comment;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+				conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
 
 	@Override
 	public List<Conversation> getAllConversationsForPatient(int patientId) {

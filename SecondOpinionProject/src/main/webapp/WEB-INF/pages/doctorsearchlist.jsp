@@ -44,8 +44,7 @@
 
  	<div class="mainContent" style="padding:10px;">
 		<form>
-					<input name="search" placeholder="Type a doctor's name" autofocus style="width:50%">
-					<input type="submit" value="Search">
+					<input type="search" name="search" placeholder="Type a doctor's name" autofocus style="width:100%;">
 		</form>	<br>
 		
 		 <div class="doclist">

@@ -36,7 +36,19 @@
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 
     <script type="text/javascript" src="js/travellog.js"></script>
-    
+    <style type="text/css">
+    .message {
+    	border: 1px solid grey;
+    	padding: 10px;
+    	border-radius: 5px;
+    	margin-bottom: 15px;
+    	font-size: 13px;
+		font-style: italic;
+    }
+    .message:hover {
+    	background-color: #FFFFFF;
+    }
+    </style>
   </head>
   
   <body class="body">
@@ -51,18 +63,18 @@
  	         	<h2> Your Messages </h2><br>
  	         	<c:choose>
 				      <c:when test="${not empty conversationList}">
-				      	<table>
+
 				      	<c:forEach var="conversation" items="${conversationList}">
-				   			<tr>
-				   				<td style="width:20%;"><fmt:formatDate pattern="MM/dd/yyyy" value="${conversation.startDate}" /></td>
-				   				<td style="width:70%;">
-				   					<a href="viewmessage.do?conversationid=${conversation.conversationId}" style="text-decoration:none;">
-				   						${conversation.title}
-				   					</a>
-				   				</td>
-				   			</tr>
+				      	
+				      		<div class="message" onclick="location.href='viewmessage.do?conversationid=${conversation.conversationId}';">
+				   				<span style="font-weight:bold;font-size: 16px;font-style: normal;">${conversation.patient.name}</span> posted on <fmt:formatDate pattern="d MMMM yy" value="${conversation.startDate}" />
+				   			 	<br/>
+				   			 	<span style="font-weight:bold;font-size: 14px;">${conversation.title}</span>
+				   			 	<br/>
+			   					${conversation.firstComment.text}
+				   			</div>
 						</c:forEach>
-						</table>
+
 				      </c:when>
 				
 				      <c:otherwise>

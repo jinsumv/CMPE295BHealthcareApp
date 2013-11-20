@@ -56,8 +56,7 @@
 
     <div class="mainContent" style="padding:10px;">
 	    <form>
-			<input name="search" placeholder="Type a speciality" autofocus style="width:50%">
-			<input type="submit" value="Search">
+			<input type="search" name="search" placeholder="Type a speciality" autofocus style="width:90%" />
 		</form>	
 		<div class="specializationlist">
 		   <section>

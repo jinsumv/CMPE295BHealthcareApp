@@ -79,6 +79,16 @@ public class ConversationController {
     public String doListMessages (ModelMap model) {
     	Patient patient = patientService.getCurrentPatient();
     	List<Conversation> conversationList = conversationService.getAllMessages(patient);
+    	
+    	for (Conversation conversation : conversationList) {
+			int conversationId = conversation.getConversationId();
+			Comment firstComment = conversationService.getFirstComment(conversationId);
+			conversation.setFirstComment(firstComment);
+			
+    		conversation.setPatient(patient);
+    		
+		}
+    	
     	model.addAttribute("conversationList", conversationList);
     	return "listmessages";
     }
@@ -87,6 +97,18 @@ public class ConversationController {
     public String doListDoctorMessages (ModelMap model) {
     	Doctor doctor = doctorService.getCurrentDoctor();
     	List<Conversation> conversationList = conversationService.getAllMessages(doctor);
+    	
+    	for (Conversation conversation : conversationList) {
+			int conversationId = conversation.getConversationId();
+			Comment firstComment = conversationService.getFirstComment(conversationId);
+			conversation.setFirstComment(firstComment);
+			
+			int patientId = conversation.getPatientId(); 
+			Patient patient = patientService.findPatient(patientId);
+    		conversation.setPatient(patient);
+    		
+		}
+    	
     	model.addAttribute("conversationList", conversationList);
     	return "listdoctormessages";
     }
@@ -152,6 +174,18 @@ public class ConversationController {
     @RequestMapping(value="/topmessages.do", method={RequestMethod.GET})
     public String doTopMessages (ModelMap model) {
     	List<Conversation> conversationList = conversationService.getMostRecentConversations();
+    	
+    	for (Conversation conversation : conversationList) {
+			int conversationId = conversation.getConversationId();
+			Comment firstComment = conversationService.getFirstComment(conversationId);
+			conversation.setFirstComment(firstComment);
+			
+			int patientId = conversation.getPatientId(); 
+			Patient patient = patientService.findPatient(patientId);
+    		conversation.setPatient(patient);
+    		
+		}
+    	
     	model.addAttribute("conversationList", conversationList);
     	return "topmessages";
     }

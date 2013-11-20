@@ -59,4 +59,8 @@ public class ConversationService {
 		List<Conversation> conversationList = conversationDao.getMostRecentConversations();
 		return conversationList; 
 	}
+	
+	public Comment getFirstComment(int conversationId) {
+		return conversationDao.getFirstCommentForConversationId(conversationId);
+	}
 }
