@@ -58,8 +58,11 @@
 			</div>
 		</div>
 		<br/>	
-		<div style="float:left;background-color:#E1E1E8;width:152px;height:50px;color:blue;font-size:18px;text-align: center; font-weight: bold;">125 <br> FOLLOWERS</div>
-		<div style="margin-left:160px;background-color:#E1E1E8;width:152px;height:50px;color:blue;font-size:18px;vertical-align:middle;text-align: center; font-weight: bold;">12 <br> REVIEWS</div>
+		<div style="float:left;background-color:#E1E1E8;width:152px;height:50px;color:royalblue;font-size:18px;text-align: center; font-weight: bold;">${followercount} <br> FOLLOWERS</div>
+		
+		<div style="margin-left:160px;background-color:#E1E1E8;width:152px;height:50px;color:royalblue;font-size:18px;vertical-align:middle;text-align: center; font-weight: bold;">
+			<a href="reviewlist.do?doctorid=${doctor.doctorId}" style="text-decoration:none;">${reviewcount} <br> REVIEWS</a>
+		</div>
 		</section>
 		
 <section class="bottomcontent">

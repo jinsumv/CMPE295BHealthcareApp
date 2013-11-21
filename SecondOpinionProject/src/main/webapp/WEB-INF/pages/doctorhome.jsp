@@ -39,13 +39,14 @@
   
   <body class="body">
 	<header class="mainheader">
-          <img src="images/Header.jpg">	
+          <img src="images/Header.jpg" style="z-index=-1;">
+          <a href="<c:url value="/j_spring_security_logout"/>"><img src="images/power_blue.png" style="position:absolute; top:8px;right:12px;width:35px;height:35px;"></a>	
 	</header>
 
  	<div class="mainContent">
 		<div class="content">
 		<section class ="topcontent" >
-		<h3 style="margin-left:35px;color:royalblue;">Hi Dr. ${doctor.name} !</h3>
+		<span style="margin-left:35px;color:royalblue;">Hi Dr. ${doctor.name} !</span>
 		<table>
 			<tr>
 				<td>
@@ -80,12 +81,6 @@
 	</div>
 	</div>
 
-    <div class="signOut">
-        	<a href="<c:url value="/j_spring_security_logout"/>">Sign out</a>
-    </div>
-	<!-- <footer class="mainFooter">
-	  <p>Copyright &copy; <a href="#" title="2ndhtml"></a></p>
-	</footer>  -->
 	<script src="js/main.js" type="text/javascript"></script>
 </body>
 </html>

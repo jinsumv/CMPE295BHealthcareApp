@@ -74,6 +74,7 @@
 				      </c:otherwise>
 				</c:choose>
 		 	</section>
+		 	<c:if test="${showAddReview}">
 			<section>
 				<div class="review">
 					<form name="replyForm" action="addreview.do" method="post">
@@ -83,7 +84,7 @@
 					</form> 
 				</div>
 			</section>		 
-
+			</c:if>
  		</div>
  	</div>
 </body>

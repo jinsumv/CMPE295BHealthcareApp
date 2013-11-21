@@ -100,6 +100,12 @@ public class DoctorController {
     public void doDoctorProfile (ModelMap model) {
     	Doctor doctor = doctorService.getCurrentDoctor();
 		model.addAttribute("doctor", doctor);
+		
+		int followerCount = doctorService.getFollowersCount(doctor.getDoctorId());
+		model.addAttribute("followercount", followerCount);
+		
+		List<Review> reviewList = doctorService.getReviewsForDoctor(doctor.getDoctorId());
+		model.addAttribute("reviewcount", reviewList.size());
     }
     
     @RequestMapping(value="/searchdoc.do", method={RequestMethod.GET})
@@ -169,6 +175,13 @@ public class DoctorController {
     	
     	Doctor doctor = doctorService.findDoctor(doctorId);
     	model.addAttribute("doctor", doctor);
+    	
+    	Patient patient = patientService.getCurrentPatient();
+    	if (patient != null) {
+    		model.addAttribute("showAddReview", true);
+    	}else {
+    		model.addAttribute("showAddReview", false);
+    	}
     	
     	return "reviewlist";
     }
