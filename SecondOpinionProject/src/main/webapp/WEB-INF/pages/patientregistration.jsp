@@ -50,6 +50,12 @@
 		font-size: 18px;
 		font-weight: bold;
 	}
+	input[type=text], input[type=email], input[type=password] {
+		width:100%;
+		height: 25px;
+		margin-bottom: 15px;
+		font-size: 14px;
+	}
 	</style>
 
   </head>
@@ -71,13 +77,14 @@
 			<b>Sign Up</b> Its helpful, private, and FREE!</p>
 			<p>
 			<form action="patientsignup.do" method="post" modelAttribute="addPatientForm">
-  			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com" autofocus style="width: 100%" required ><br><br>
-  			  <input type="password" name="pwd" placeholder="New Password" style='width: 100%' required ><br><br>
-  			  <input type="text" name="fullname" placeholder="Full Name" style='width: 100%' required ><br><br>
-  			  <input type="text" name="dateofbirth" placeholder="Date of Birth (MM/DD/YYYY)" style='width: 100%' required ><br><br>Gender&nbsp;&nbsp;&nbsp;
+  			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com" autofocus style="width: 100%" required >
+  			  <input type="password" name="pwd" placeholder="New Password" style='width: 100%' required >
+  			  <input type="text" name="fullname" placeholder="Full Name" style='width: 100%' required >
+  			  <input type="text" name="dateofbirth" placeholder="Date of Birth (MM/DD/YYYY)" style='width: 100%' required >
+  			  Gender&nbsp;&nbsp;&nbsp;
   			  <input type="radio" name="gender" value="Male" checked >&nbsp;Male&nbsp;&nbsp;
   			  <input type="radio" name="gender" value="Female" >&nbsp;Female<br><br>
-  			  <input type="text" name="location" placeholder="Location" style='width: 100%' required /><br><br>
+  			  <input type="text" name="location" placeholder="Location" style='width: 100%' required />
 
 			 <c:if test="${param.invalidRecaptcha == 'true'}">
   			   <span class="error_validation"><spring:message code="invalid.captcha" text="Invalid captcha please try again"/></span>
@@ -87,7 +94,7 @@
               ReCaptcha reCaptchaVar = ReCaptchaFactory.newReCaptcha("6LfARuoSAAAAAKXdB0wLyJu7pVBl8nfp0-SpAL6X", "6LfARuoSAAAAAKoszbmVYYkidNNvv-3kWQhcghpd", false);
   			  out.print(reCaptchaVar.createRecaptchaHtml("ReCaptchaError", null, null));
             %>
-              <input type="image" src="images/SignUpBtn.jpg" name="Submit Form" width="100%" height="50px" />
+              <input type="image" src="images/SignUpBtn.jpg" name="Submit Form" width="100%" height="50px" style="padding-top:15px"/>
  			</form></p>
 			</div>
 					

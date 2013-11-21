@@ -76,8 +76,8 @@
 				  	  <c:if test="${not empty doctor}" >
 						  <input type="hidden" name="doctorid" value="${doctor.doctorId}" />
 					  </c:if>		  	  
-  			          <input type="text" name="title" placeholder="Question Title" autofocus required><br><br>
-  			          <textarea name="question" rows="5" cols="50" placeholder="Enter your brief description.." required></textarea><br><br>
+  			          <input type="text" name="title" placeholder="Question Title" autofocus style="width:100%;height:30px;" required><br><br>
+  			          <textarea name="question" placeholder="Enter your brief description.." rows="5" style="resize: none;display: table-cell;vertical-align: top;width: 100%;" required></textarea><br><br>
  			          <input type="submit" name="Ask Question" value="Ask Question">
  			          </form>
 		          </article>  

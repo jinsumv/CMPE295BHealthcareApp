@@ -66,20 +66,19 @@
 			<form action="j_spring_security_check" name="loginForm" method="post">
 				<c:if test="${not empty error}">
 					<div class="popupFieldLabel">
-						<div class="error"><br/>Invalid username/password</div>
+						<div class="error">Invalid username/password</div>
 					</div>
 				</c:if>
-  			  <input type="text" name="j_username" placeholder="Email Eg:test@gmail.com" autofocus required style='width: 100%;height: 30px;'/><br><br>
-  			  <input type="password" name="j_password" placeholder="Password" autofocus required style='width: 100%;height: 30px;'/><br><br>
- 			  <a class="saveButton" href="javascript:" onclick="document.loginForm.submit()">
+  			  <input type="text" name="j_username" placeholder="Email Eg:test@gmail.com" autofocus required style='width: 94%;height: 30px;font-size: 14px;padding-left:10px;margin-bottom:15px;'/>
+  			  <input type="password" name="j_password" placeholder="Password" required style='width: 94%;height: 30px;font-size: 14px;padding-left:10px;margin-bottom:15px;'/>
+ 			  <a href="javascript:" onclick="document.loginForm.submit()">
  			  	<input type="image" src="images/Login.jpg" name="Submit Form" width="100%" height="50px" />
  			  </a>
 			</form>			
-		  	
+		  <br>	
 		  <p>
 		  	   <b> New to Second Opinion?</b><br>
-			   <a href="doctorregistration.do"><img src="images/RegisterDoc.jpg" name="Doctor Register" width="100%" height="50px"/></a>
-			   <a href="patientregistration.do"><img src="images/RegisterPatient.jpg" name="Patient Register" width="100%" height="50px"/></a>
+			   <a href="patientregistration.do"><img src="images/Register.jpg" width="100%" height="50px"/></a>
 		</p>
 		
 		<p><a href="forgotpassword.do">Forgot Password? - Help Center</a>

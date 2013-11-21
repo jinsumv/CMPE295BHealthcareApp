@@ -42,25 +42,15 @@
 	<header class="mainheader">
        <%@include file="header.jsp" %>   
 		
-		<!--  
-	 	<nav>
-	  		<ul>
-		  		<li class="active"><a href="#">Search a doctor</a></li>
-		  		<li><a href="#">View my Profile</a></li>
-		 		<li><a href="#">About</a></li>
-		  		<li><a href="#">Contact Us</a></li>
-	  		</ul>
-		</nav>
-		-->
 	</header>
 
     <div class="mainContent" style="padding:10px;">
 	    <form>
-			<input type="search" name="search" placeholder="Type a speciality" autofocus style="width:90%" />
+			<input type="search" name="search" placeholder="Type a speciality" autofocus style="width:100%; font-size:16px;" />
 		</form>	
 		<div class="specializationlist">
 		   <section>
- 	         	<h2> Top Doctor Specialities </h2><br>
+ 	         	<h2> Top Doctor Specialities </h2>
  	         	<ul>
  	         		<li><a href="doctorsearchlist.do?speciality=Allergy+and+Immunology">Allergy and Immunology</a></li>
  	         		<li><a href="doctorsearchlist.do?speciality=Anaesthetics">Anaesthetics</a></li>

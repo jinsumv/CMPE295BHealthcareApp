@@ -55,7 +55,7 @@
 			<p>
 			<i>Provide your email you used to sign up and we will send you a link to reset it.<br><br>
 			<form action="forgotpassword_form.asp">
-  			  <input type="email" name="email" placeholder="Email Eg:test@gmail.com" autofocus style='width: 100%'required /><br><br>
+  			  <input type="email" name="email" placeholder="Email Eg:test@gmail.com" autofocus style='width: 100%; height:30px;'required /><br><br>
  			  <input type="image" src="images/resetPasswordEmailBtn.jpg" name="Forgot Password Form" width="100%" height="50px" />
 			</form>			
 		 </article>

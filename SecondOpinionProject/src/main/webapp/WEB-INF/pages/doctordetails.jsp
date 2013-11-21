@@ -40,14 +40,6 @@
   <body class="body">
 	<header class="mainheader">
 	<%@include file="header.jsp" %>
-          <nav>
-	  		<ul>
-		  		<li class="active"><a href="#">About</a></li>
-		  		<li><a href="#">Answers</a></li>
-		 		<li><a href="#">Network</a></li>
-		  		<li><a href="#">Reviews</a></li>
-	  		</ul>
-		</nav>	
 	</header>
 
  	<div class="mainContent">
