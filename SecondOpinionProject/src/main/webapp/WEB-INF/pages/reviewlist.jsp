@@ -36,7 +36,17 @@
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 
     <script type="text/javascript" src="js/travellog.js"></script>
-    
+    <style type="text/css">
+    .review {
+    	border: 1px solid grey;
+    	padding: 10px;
+    	border-radius: 5px;
+    	margin-bottom: 15px;
+    	font-size: 13px;
+		font-style: italic;
+    	background-color: #FFFFFF;
+    }
+    </style>
   </head>
   
   <body class="body">
@@ -52,11 +62,10 @@
  	         	<c:choose>
 				      <c:when test="${not empty reviewList}">
 				      	<c:forEach var="review" items="${reviewList}">
-				   			<div style="border:1px solid grey; margin:15px; background:#FFF; border-radius:5px;">
-				   				<p>From: ${review.patient.name}</p>
-				   				<p>Message: ${review.text}</p>
-				   				<p>Date: <fmt:formatDate pattern="MM/dd/yyyy" value="${review.reviewDate}" /></p>
-			   				</div>
+				   			<div class="review">
+				   				<p>${review.text}</p>
+			   					<span style="font-weight:bold;font-size: 13px;font-style: normal;">${review.patient.name}</span> reviewed on <fmt:formatDate pattern="d MMMM yy" value="${review.reviewDate}" />
+				   			</div>
 						</c:forEach>
 				      </c:when>
 				
@@ -66,9 +75,9 @@
 				</c:choose>
 		 	</section>
 			<section>
-				<div style="border:1px solid grey; margin:15px; border-radius:5px;">
+				<div class="review">
 					<form name="replyForm" action="addreview.do" method="post">
-						<textarea name="reviewtext" placeholder="Review doctor" cols="50" rows="5"></textarea><br><br>
+						<textarea name="reviewtext" placeholder="Review doctor" rows="5" style="resize: none;display: table-cell;vertical-align: top;width: 100%;"></textarea><br><br>
 						<input type="hidden" name="doctorid" value="${doctor.doctorId}" />
 						<input type="submit" value="Add Review"/>
 					</form> 

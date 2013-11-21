@@ -84,7 +84,7 @@
 					<c:if test="${showreplybox}">
 						<div class="comment">
 							<form name="replyForm" action="addcomment.do" method="post">
-								<textarea name="replytext" placeholder="Reply.." cols="40" rows="5" style="resize: none;"></textarea>
+								<textarea name="replytext" placeholder="Reply.." rows="5" rows="5" style="resize: none;display: table-cell;vertical-align: top;width: 100%;"></textarea>
 								<br>
 								<input type="hidden" name="conversationid" value="${conversation.conversationId}" />
 								<input type="submit" value="Send"/>

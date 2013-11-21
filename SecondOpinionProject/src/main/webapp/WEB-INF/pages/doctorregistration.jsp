@@ -39,6 +39,24 @@
     
     <link rel="stylesheet" href="css/style.css" type="text/css" />
 	
+	<style type="text/css">
+	.tab {
+		float: left;
+		width: 50%;
+		text-align: center;
+		padding-top: 10px;
+		background-color: white;
+		padding-bottom: 10px;
+		color: cornflowerblue;
+		font-size: 18px;
+		font-weight: bold;
+	}
+	input[type=text], input[type=email], input[type=password] {
+		width:100%;
+		height: 25px;
+		margin-bottom: 15px;
+	}
+	</style>
 
   </head>
   
@@ -47,24 +65,25 @@
 	<header class="mainheader">
           <%@include file="header.jsp" %>	
 	</header>
+	<div style="width:100%;height:40px;">
+	<div class="tab" style="background:none;" onclick="location.href='patientregistration.do;'">Patient</div><div class="tab">Doctor</div>
+	</div>
 
  	<div class="mainContent">
 	  <div class="content">
 		 <div class="topcontent">
-								
 
-			
 			<div class="doc">
 			<b>Sign Up</b> Volunteer! Your opportunity to serve and connect with your patients for FREE!</p>
 			<p>
 			<form action="doctorsignup.do" method="post" modelAttribute="addDoctorForm">
-  			  <input type="text" name="fullname" placeholder="Full Name" style='width: 48%' autofocus required><br><br>
-  			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com" style='width: 100%' required><br><br>
-  			  <input type="password" name="pwd" placeholder="New Password" style='width: 100%' required><br><br>
-  			  <input type="text" name="dateofbirth" placeholder="Date of Birth (MM/DD/YYYY)" style='width: 100%' required ><br><br>
+  			  <input type="text" name="fullname" placeholder="Full Name" autofocus required>
+  			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com"  required>
+  			  <input type="password" name="pwd" placeholder="New Password"  required>
+  			  <input type="text" name="dateofbirth" placeholder="Date of Birth (MM/DD/YYYY)"  required >
   			  Gender&nbsp;&nbsp;&nbsp;
   			  <input type="radio" name="gender" value="Male" checked >&nbsp;Male&nbsp;&nbsp;
-  			  <input type="radio" name="gender" value="Female" >&nbsp;Female<br><br>
+  			  <input type="radio" name="gender" value="Female" >&nbsp;Female<br></br>
   			  <select name="qualifyingdegree" style='width: 100%' required>
 				<option value="">Qualifying degree</option>
 				<option value="MD">MD</option>
@@ -100,8 +119,8 @@
 				<option value="Urology">Urology</option>
 				<option value="Vascular Surgery">Vascular Surgery</option>
 			</select><br><br>
-			<input type="text" name="licensenumber" placeholder="Professional License #" style='width: 100%' required><br><br>
-			<input type="text" name="achievements" placeholder="Achievements" style='width: 100%'><br><br>
+			<input type="text" name="licensenumber" placeholder="Professional License #"  required>
+			<input type="text" name="achievements" placeholder="Achievements" >
 			 <c:if test="${param.invalidRecaptcha == 'true'}">
   			   <span class="error_validation"><spring:message code="invalid.captcha" text="Invalid captcha please try again"/></span>
   			 </c:if>
@@ -110,7 +129,7 @@
               ReCaptcha reCaptchaVar = ReCaptchaFactory.newReCaptcha("6LfARuoSAAAAAKXdB0wLyJu7pVBl8nfp0-SpAL6X", "6LfARuoSAAAAAKoszbmVYYkidNNvv-3kWQhcghpd", false);
   			  out.print(reCaptchaVar.createRecaptchaHtml("ReCaptchaError", null, null));
             %>
-			<input type="image" src="images/SignUpBtn.jpg" name="Submit Form" width="100%" height="50px" />
+			<input type="image" src="images/SignUpBtn.jpg" name="Submit Form" width="100%" height="50px" style="padding-top:10px;"/>
 		</form></p>
     	</div>
     	  			  

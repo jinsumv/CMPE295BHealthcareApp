@@ -38,7 +38,19 @@
     <script type="text/javascript" src="js/travellog.js"></script>
     
     <link rel="stylesheet" href="css/style.css" type="text/css" />
-	
+	<style type="text/css">
+	.tab {
+		float: left;
+		width: 50%;
+		text-align: center;
+		padding-top: 10px;
+		background-color: white;
+		padding-bottom: 10px;
+		color: cornflowerblue;
+		font-size: 18px;
+		font-weight: bold;
+	}
+	</style>
 
   </head>
   
@@ -47,6 +59,9 @@
 	<header class="mainheader">
           <%@include file="header.jsp" %>	
 	</header>
+	<div style="width:100%;height:40px;">
+	<div class="tab">Patient</div><div class="tab" style="background:none;" onclick="location.href='doctorregistration.do;'">Doctor</div>
+	</div>
 
  	<div class="mainContent">
 	  <div class="content">

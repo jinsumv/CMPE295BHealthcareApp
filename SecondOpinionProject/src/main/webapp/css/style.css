@@ -9,16 +9,10 @@ body {
 	text-align: left;
 	height: 100%;
 }
-a {
+a a:link, a:visited a:hover, a:active {
 	text-decoration: none;
 }
-a:link, a:visited {
-	color: #CF5C3F;
-}
-a:hover, a:active {
-	background-color: #CF5C3F;
-	color: black;
-}
+
 .body {
 	margin: 0 auto;
 	width: 100%;
