@@ -90,10 +90,10 @@ public class SecondOpinionApp extends Activity {
         public void openFileChooser(ValueCallback<Uri> uploadMessg, String acceptType,
                 String capture) {
             uploadMessage = uploadMessg;
-            Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-            i.addCategory(Intent.CATEGORY_OPENABLE);
-            i.setType("image/*");
-            SecondOpinionApp.this.startActivityForResult(Intent.createChooser(i, "File Chooser"),
+            Intent filePickerIntent = new Intent(Intent.ACTION_GET_CONTENT);
+            filePickerIntent.addCategory(Intent.CATEGORY_OPENABLE);
+            filePickerIntent.setType("image/*,video/*");
+            SecondOpinionApp.this.startActivityForResult(Intent.createChooser(filePickerIntent, "File Chooser"),
                     SecondOpinionApp.FILECHOOSER_REQUEST_CODE);
 
         }
