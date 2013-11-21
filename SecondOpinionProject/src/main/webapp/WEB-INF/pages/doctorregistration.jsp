@@ -57,7 +57,7 @@
 			<div class="doc">
 			<b>Sign Up</b> Volunteer! Your opportunity to serve and connect with your patients for FREE!</p>
 			<p>
-			<form action="doctorsignup.do" method="post">
+			<form action="doctorsignup.do" method="post" modelAttribute="addDoctorForm">
   			  <input type="text" name="fullname" placeholder="Full Name" style='width: 48%' autofocus required><br><br>
   			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com" style='width: 100%' required><br><br>
   			  <input type="password" name="pwd" placeholder="New Password" style='width: 100%' required><br><br>

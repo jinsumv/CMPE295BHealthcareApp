@@ -13,6 +13,8 @@ public class Doctor implements Person {
 	String licenseNumber;
 	String achievements;
 	
+	public Doctor() { } // Default constructor needed for Captcha
+	
 	public Doctor(int doctorId, int userId, String name, Date dateOfBirth,
 			String gender, String qualifyingDegree, String areaOfPractice,
 			String licenseNumber, String achievements) {

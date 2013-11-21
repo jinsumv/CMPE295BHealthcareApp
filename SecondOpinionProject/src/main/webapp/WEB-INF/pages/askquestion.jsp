@@ -42,13 +42,13 @@
            <div id = "header" >
 	       <header class="mainheader">
                    <%@include file="header.jsp" %>
-	 	    <nav>
+	 	   <!-- <nav>
 	  		<ul>
 		  		<li class="active"><a href="#">Select a Doctor</a></li>
 		  		<li><a href="#">My Questions</a></li>
 		  		<li><a href="#">My Profile</a></li>
 	  		</ul>
-		    </nav>		
+		    </nav>	 --> 	
 	       </header>
 	   </div>
 

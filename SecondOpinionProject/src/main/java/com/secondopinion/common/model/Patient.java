@@ -12,7 +12,7 @@ public class Patient implements Person {
 	String location;
 	
 	
-	public Patient() { }
+	public Patient() { } // Default constructor needed for Captcha
 	
 	public Patient(int patientId, int userId, String name, Date dateOfBirth,
 			String gender, String location) {

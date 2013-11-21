@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,6 +54,8 @@ public class DoctorController {
     
     @RequestMapping(value = "/doctorsignup.do", method = RequestMethod.POST)
     public ModelAndView doDoctorAccount (ModelMap map,
+    		@ModelAttribute("addDoctorForm")  Doctor doctor,			
+    		BindingResult result,
     		HttpServletRequest request,
     		Model model,
       @RequestParam("email") String email,
@@ -86,7 +90,7 @@ public class DoctorController {
         
         SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy");
         Date dob = dateFormatter.parse(dateOfBirth);
-        Doctor doctor = new Doctor(-1, -1, fullName, dob, gender, qualifyingDegree, areaOfPractice, licenseNumber, achievements);
+        doctor = new Doctor(-1, -1, fullName, dob, gender, qualifyingDegree, areaOfPractice, licenseNumber, achievements);
         
         doctorService.createDoctor(user, doctor);
         return new ModelAndView("redirect:welcome.do");
