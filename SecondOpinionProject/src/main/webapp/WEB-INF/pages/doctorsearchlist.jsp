@@ -51,11 +51,21 @@
 		 <c:choose>
 		      <c:when test="${not empty doctorList}">
 		      	<ul>
-		      	<c:forEach var="doctor" items="${doctorList}">
+		      	<c:forEach var="doctor" items="${doctorList}"  varStatus="outer">
 		   			<li><a href="doctordetails.do?doctorid=${doctor.doctorId}" style="text-decoration:none;">
 						<img src="images/doctor1.jpg" width=100px height=100px>
 						<h3>Dr. ${doctor.name}</h3>
-						<p>${doctor.areaOfPractice}<br>${doctor.qualifyingDegree}<br>Rating - 5</p>
+						
+						<p>${doctor.areaOfPractice}<br>${doctor.qualifyingDegree}<br>
+						<div class="rating">
+						    <input type="radio" name="rating${outer.index}" value="0" <c:if test="${doctor.rating == 0}">checked</c:if> disabled/><span id="hide"></span>
+						    <input type="radio" name="rating${outer.index}" value="1" <c:if test="${doctor.rating == 1}">checked</c:if> disabled/><span></span>
+						    <input type="radio" name="rating${outer.index}" value="2" <c:if test="${doctor.rating == 2}">checked</c:if> disabled/><span></span>
+						    <input type="radio" name="rating${outer.index}" value="3" <c:if test="${doctor.rating == 3}">checked</c:if> disabled/><span></span>
+						    <input type="radio" name="rating${outer.index}" value="4" <c:if test="${doctor.rating == 4}">checked</c:if> disabled/><span></span>
+						    <input type="radio" name="rating${outer.index}" value="5" <c:if test="${doctor.rating == 5}">checked</c:if> disabled/><span></span>
+						</div>
+						</p>
 		   			</a></li>
 				</c:forEach>
 				</table>

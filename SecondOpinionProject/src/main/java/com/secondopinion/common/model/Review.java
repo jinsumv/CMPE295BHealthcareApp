@@ -8,18 +8,20 @@ public class Review {
 	int doctorId;
 	String text;
 	Date reviewDate;
+	int rate;
 	
 	Doctor doctor;
 	Patient patient;
 	
 	public Review(int reviewId, int patientId, int doctorId, String text,
-			Date reviewDate) {
+			Date reviewDate, int rate) {
 		super();
 		this.reviewId = reviewId;
 		this.patientId = patientId;
 		this.doctorId = doctorId;
 		this.text = text;
 		this.reviewDate = reviewDate;
+		this.rate = rate;
 	}
 	public int getReviewId() {
 		return reviewId;
@@ -47,6 +49,12 @@ public class Review {
 	}
 	public void setPatient(Patient patient) {
 		this.patient = patient;
+	}
+	public int getRate() {
+		return rate;
+	}
+	public void setRate(int rate) {
+		this.rate = rate;
 	}
 	
 }

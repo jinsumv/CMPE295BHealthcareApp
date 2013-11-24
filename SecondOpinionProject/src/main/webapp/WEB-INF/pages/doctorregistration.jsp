@@ -77,8 +77,8 @@
 			<b>Sign Up</b> Volunteer! Your opportunity to serve and connect with your patients for FREE!</p>
 			<p>
 			<form action="doctorsignup.do" method="post" modelAttribute="addDoctorForm">
-  			  <input type="text" name="fullname" placeholder="Full Name" autofocus required>
-  			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com"  required>
+  			  <input type="text" name="fullname" placeholder="Full Name" pattern="+[A-Za-z]" required autofocus>
+  			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com"  pattern="[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]{2,4}" required>
   			  <input type="password" name="pwd" placeholder="New Password"  required>
   			  <input type="text" name="dateofbirth" placeholder="Date of Birth (MM/DD/YYYY)"  required >
   			  Gender&nbsp;&nbsp;&nbsp;

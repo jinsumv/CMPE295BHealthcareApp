@@ -273,7 +273,7 @@ public class DoctorDaoImpl implements DoctorDao{
 	
 	@Override
 	public void addReview(Review review) {
-		String sql = "INSERT INTO review (PATIENT_ID, DOCTOR_ID, TEXT, REVIEW_DATE) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO review (PATIENT_ID, DOCTOR_ID, TEXT, REVIEW_DATE, RATING) VALUES (?, ?, ?, ?, ?)";
 		Connection conn = null;
  
 		try {
@@ -283,6 +283,7 @@ public class DoctorDaoImpl implements DoctorDao{
 			ps.setInt(2, review.getDoctorId());
 			ps.setString(3, review.getText());
 			ps.setTimestamp(4, new java.sql.Timestamp(review.getReviewDate().getTime()));
+			ps.setInt(5, review.getRate());
 			ps.executeUpdate();
 			ps.close();
  
@@ -317,7 +318,8 @@ public class DoctorDaoImpl implements DoctorDao{
 					rs.getInt("PATIENT_ID"),
 					rs.getInt("DOCTOR_ID"),
 					rs.getString("TEXT"),
-					rs.getTimestamp("REVIEW_DATE")
+					rs.getTimestamp("REVIEW_DATE"),
+					rs.getInt("RATING")
 				);
 				reviewList.add(review);
 			}

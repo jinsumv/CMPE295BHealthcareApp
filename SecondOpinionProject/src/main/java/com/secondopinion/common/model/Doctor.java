@@ -12,6 +12,7 @@ public class Doctor implements Person {
 	String areaOfPractice;
 	String licenseNumber;
 	String achievements;
+	int rating;
 	
 	public Doctor() { } // Default constructor needed for Captcha
 	
@@ -55,6 +56,14 @@ public class Doctor implements Person {
 	}
 	public String getAchievements() {
 		return achievements;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
 	
 }

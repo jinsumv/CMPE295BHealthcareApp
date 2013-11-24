@@ -117,6 +117,16 @@ public class DoctorController {
     public void doDocSearchList (ModelMap model,
     		@RequestParam("speciality") String speciality) {
     	List<Doctor> doctorList = doctorService.findDoctorBySpeciality(speciality);
+    	for (Doctor doctor : doctorList)
+    	{
+	    	List<Review> reviewList = doctorService.getReviewsForDoctor(doctor.getDoctorId());
+	    		int sumofratings = 0;
+		    	for (Review review : reviewList) {
+		    		sumofratings = sumofratings + review.getRate();
+		    	}
+		    	int docrating = sumofratings/reviewList.size();
+		    	doctor.setRating(docrating);
+	    }
     	model.addAttribute("doctorList", doctorList);
     } 
     
@@ -124,7 +134,17 @@ public class DoctorController {
     public void doDoctorProfile (ModelMap model,
     		@RequestParam("doctorid") int doctorId) {
     	Doctor doctor = doctorService.findDoctor(doctorId);
-		model.addAttribute("doctor", doctor);
+    	
+    	/*Get doctor rating count*/
+    	List<Review> reviewList = doctorService.getReviewsForDoctor(doctor.getDoctorId());
+		int sumofratings = 0;
+    	for (Review review : reviewList) {
+    		sumofratings = sumofratings + review.getRate();
+    	}
+    	int docrating = sumofratings/reviewList.size();
+    	doctor.setRating(docrating);
+    	
+    	model.addAttribute("doctor", doctor);
 		
 		Patient patient = patientService.getCurrentPatient();
 		List<Doctor> doctorList = doctorService.getFollowedDoctors(patient.getPatientId());
@@ -140,8 +160,8 @@ public class DoctorController {
 		int followerCount = doctorService.getFollowersCount(doctorId);
 		model.addAttribute("followercount", followerCount);
 		
-		List<Review> reviewList = doctorService.getReviewsForDoctor(doctorId);
-		model.addAttribute("reviewcount", reviewList.size());
+		List<Review> reviewList1 = doctorService.getReviewsForDoctor(doctorId);
+		model.addAttribute("reviewcount", reviewList1.size());
     }
     
     @RequestMapping(value = "/followdoctor.do", method = RequestMethod.GET)
@@ -159,6 +179,18 @@ public class DoctorController {
     public String doDocSearchList (ModelMap model) {
     	Patient patient = patientService.getCurrentPatient();
     	List<Doctor> doctorList = doctorService.getFollowedDoctors(patient.getPatientId());
+    	
+    	/* Get doctor rating count */
+    	for(Doctor doctor : doctorList)
+    	{
+	    	List<Review> reviewList = doctorService.getReviewsForDoctor(doctor.getDoctorId());
+			int sumofratings = 0;
+	    	for (Review review : reviewList) {
+	    		sumofratings = sumofratings + review.getRate();
+	    	}
+	    	int docrating = sumofratings/reviewList.size();
+	    	doctor.setRating(docrating);
+    	}
     	model.addAttribute("doctorList", doctorList);
     	return "doctorsearchlist";
     }
@@ -189,11 +221,12 @@ public class DoctorController {
     @RequestMapping(value="/addreview.do", method={RequestMethod.POST})
     public ModelAndView doAddComment (ModelMap model,
     		@RequestParam("reviewtext") String reviewText,
-    		@RequestParam("doctorid") int doctorId) {
+    		@RequestParam("doctorid") int doctorId, 
+    		@RequestParam("rating") int rating){
     	
     	Patient patient = patientService.getCurrentPatient();
     	
-    	Review review = new Review(-1, patient.getPatientId(), doctorId, reviewText, new Date());
+    	Review review = new Review(-1, patient.getPatientId(), doctorId, reviewText, new Date(), rating);
     	
     	doctorService.addReview(review);
     	

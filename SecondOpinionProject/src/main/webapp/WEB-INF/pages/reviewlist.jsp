@@ -36,18 +36,7 @@
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 
     <script type="text/javascript" src="js/travellog.js"></script>
-    <style type="text/css">
-    .review {
-    	border: 1px solid grey;
-    	padding: 10px;
-    	border-radius: 5px;
-    	margin-bottom: 15px;
-    	font-size: 13px;
-		font-style: italic;
-    	background-color: #FFFFFF;
-    }
-    </style>
-  </head>
+    </head>
   
   <body class="body">
 	<header class="mainheader">
@@ -61,8 +50,18 @@
  	         	<h2> Reviews for Dr. ${doctor.name} </h2><br>
  	         	<c:choose>
 				      <c:when test="${not empty reviewList}">
-				      	<c:forEach var="review" items="${reviewList}">
+				      	<c:forEach var="review" items="${reviewList}" varStatus="outer">
 				   			<div class="review">
+				   				<div class="rating" style="padding-top:5px;padding-bottom:10px;">
+								    <input type="radio" name="rating${outer.index}" value="0" <c:if test="${review.rate == 0}">checked</c:if> disabled/><span id="hide"></span>
+								    <input type="radio" name="rating${outer.index}" value="1" <c:if test="${review.rate == 1}">checked</c:if> disabled/><span></span>
+								    <input type="radio" name="rating${outer.index}" value="2" <c:if test="${review.rate == 2}">checked</c:if> disabled/><span></span>
+								    <input type="radio" name="rating${outer.index}" value="3" <c:if test="${review.rate == 3}">checked</c:if> disabled/><span></span>
+								    <input type="radio" name="rating${outer.index}" value="4" <c:if test="${review.rate == 4}">checked</c:if> disabled/><span></span>
+								    <input type="radio" name="rating${outer.index}" value="5" <c:if test="${review.rate == 5}">checked</c:if> disabled/><span></span>
+								</div>
+
+								
 				   				<p>${review.text}</p>
 			   					<span style="font-weight:bold;font-size: 13px;font-style: normal;">${review.patient.name}</span> reviewed on <fmt:formatDate pattern="d MMMM yy" value="${review.reviewDate}" />
 				   			</div>
@@ -78,6 +77,14 @@
 			<section>
 				<div class="review">
 					<form name="replyForm" action="addreview.do" method="post">
+						<div class="rating" style="padding-top:5px;padding-bottom:10px;">
+						    <input type="radio" name="rating" value="0" checked /><span id="hide"></span>
+						    <input type="radio" name="rating" value="1" /><span></span>
+						    <input type="radio" name="rating" value="2" /><span></span>
+						    <input type="radio" name="rating" value="3" /><span></span>
+						    <input type="radio" name="rating" value="4" /><span></span>
+						    <input type="radio" name="rating" value="5" /><span></span>
+						</div>
 						<textarea name="reviewtext" placeholder="Review doctor" rows="5" style="resize: none;display: table-cell;vertical-align: top;width: 100%;"></textarea><br><br>
 						<input type="hidden" name="doctorid" value="${doctor.doctorId}" />
 						<input type="submit" value="Add Review"/>

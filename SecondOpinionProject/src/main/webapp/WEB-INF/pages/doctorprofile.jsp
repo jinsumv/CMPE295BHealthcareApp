@@ -55,6 +55,15 @@
 			<label id="docname"><b>Dr. ${doctor.name}</b></label><br>
 			<label id="specialisation"><i>${doctor.areaOfPractice}</i></label><br>
 			<label id="achievements"><i>${doctor.achievements}</i></label><br>
+			<label id="rating"><i>${doctor.achievements}</i></label><br>
+			<div class="rating">
+			    <input type="radio" name="rating" value="0" <c:if test="${doctor.rating == 0}">checked</c:if> disabled/><span id="hide"></span>
+			    <input type="radio" name="rating" value="1" <c:if test="${doctor.rating == 1}">checked</c:if> disabled/><span></span>
+			    <input type="radio" name="rating" value="2" <c:if test="${doctor.rating == 2}">checked</c:if> disabled/><span></span>
+			    <input type="radio" name="rating" value="3" <c:if test="${doctor.rating == 3}">checked</c:if> disabled/><span></span>
+			    <input type="radio" name="rating" value="4" <c:if test="${doctor.rating == 4}">checked</c:if> disabled/><span></span>
+			    <input type="radio" name="rating" value="5" <c:if test="${doctor.rating == 5}">checked</c:if> disabled/><span></span>
+			</div>
 			</div>
 		</div>
 		<br/>	
