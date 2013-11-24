@@ -66,7 +66,7 @@
  	         	<h2> Question : ${conversation.title} </h2><br>
  	         	<c:if test="${not empty commentList}">
 			      	<c:set var="author" value="${commentList[0].commenter.name}" />
-			      	<c:forEach var="comment" items="${commentList}">
+			      	<c:forEach var="comment" items="${commentList}" varStatus="outer">
 			   			<div class="comment">
 			   				
 			   				<c:choose>
@@ -79,6 +79,17 @@
 			   				</c:choose> on <fmt:formatDate pattern="d MMM h:mm a" value="${comment.commentDate}" />
 			   			 	<br/>
 			   			 	<span style="font-size: 14px;">${comment.text}</span>
+			   			 	<c:if test="${outer.index == 0}">
+				   			 	<% if(request.getParameter("disablelike")!=null && request.getParameter("disablelike")!="") { %>
+				   			 	<br/>
+				   			 	Like: ${conversation.likes}&nbsp;<img src="images/like.jpg" width=30px height=30px style="opacity:0.4;">&nbsp;&nbsp;
+				   				Dislike: ${conversation.dislikes}&nbsp;<img src="images/dislike.jpg" width=30px height=30px style="opacity:0.4;">
+				   				<%} else {%>
+				   			 	<br/>
+				   			 	Like: ${conversation.likes}&nbsp;<a href="addlikes.do?conversationid=${conversation.conversationId}"><img src="images/like.jpg" width=30px height=30px></a>&nbsp;&nbsp;
+				   				Dislike: ${conversation.dislikes}&nbsp;<a href="adddislikes.do?conversationid=${conversation.conversationId}"><img src="images/dislike.jpg" width=30px height=30px></a>
+				   				<%}%>
+			   			 	</c:if>
 			   			</div>
 					</c:forEach>
 					<c:if test="${showreplybox}">

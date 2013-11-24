@@ -58,7 +58,7 @@ public class ConversationController {
     	Patient patient = patientService.getCurrentPatient();
     	
     	Conversation conversation = 
-    			new Conversation(-1, patient.getPatientId(), doctorId, title, new Date(), new Date(), true); 
+    			new Conversation(-1, patient.getPatientId(), doctorId, title, new Date(), new Date(), true, 0, 0); 
     	Comment comment = new Comment(-1, -1, patient.getUserId(), question, new Date());
     	
     	conversationService.askAQuestion(conversation, comment);
@@ -190,5 +190,19 @@ public class ConversationController {
     	return "topmessages";
     }
     
+    @RequestMapping(value="/addlikes.do", method={RequestMethod.GET})
+    public ModelAndView doAddLikes (ModelMap model,
+    		@RequestParam("conversationid") int conversationId) {
+    	 conversationService.addLikes(conversationId);
+    	    	
+    	return new ModelAndView("redirect:viewmessage.do?disablelike=true&conversationid="+conversationId);
+    }
     
+    @RequestMapping(value="/adddislikes.do", method={RequestMethod.GET})
+    public ModelAndView doAddDislikes (ModelMap model,
+    		@RequestParam("conversationid") int conversationId) {
+    	 conversationService.addDislikes(conversationId);
+    	    	
+    	return new ModelAndView("redirect:viewmessage.do?disablelike=true&conversationid="+conversationId);
+    }
 }

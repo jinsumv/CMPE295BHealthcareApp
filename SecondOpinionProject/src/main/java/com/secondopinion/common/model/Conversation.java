@@ -10,13 +10,15 @@ public class Conversation {
 	Date startDate;
 	Date updateDate;
 	boolean unAnswered;
+	int likes;
+	int dislikes;
 	
 	Patient patient;
 	Doctor doctor;
 	Comment firstComment;
 	
 	public Conversation(int conversationId, int patientId, Integer doctorId,
-			String title, Date startDate, Date updateDate, boolean unAnswered) {
+			String title, Date startDate, Date updateDate, boolean unAnswered, int likes, int dislikes) {
 		super();
 		this.conversationId = conversationId;
 		this.patientId = patientId;
@@ -25,6 +27,8 @@ public class Conversation {
 		this.startDate = startDate;
 		this.updateDate = updateDate;
 		this.unAnswered = unAnswered;
+		this.likes = likes;
+		this.dislikes = dislikes;
 	}
 	public int getConversationId() {
 		return conversationId;
@@ -66,5 +70,10 @@ public class Conversation {
 	public void setFirstComment(Comment firstComment) {
 		this.firstComment = firstComment;
 	}
-	
+	public int getLikes() {
+		return likes;
+	}
+	public int getDislikes() {
+		return dislikes;
+	}
 }

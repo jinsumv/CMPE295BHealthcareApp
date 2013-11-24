@@ -36,19 +36,6 @@
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 
     <script type="text/javascript" src="js/travellog.js"></script>
-    <style type="text/css">
-    .message {
-    	border: 1px solid grey;
-    	padding: 10px;
-    	border-radius: 5px;
-    	margin-bottom: 15px;
-    	font-size: 13px;
-		font-style: italic;
-    }
-    .message:hover {
-    	background-color: #FFFFFF;
-    }
-    </style>
   </head>
   
   <body class="body">
@@ -57,8 +44,7 @@
 	</header>
 
     <div class="mainContent" style="padding:10px;">
-	    
-	    <div class="messageslist">
+	  <div class="messageslist">
 		   <section>
  	         	<h2> Your Messages </h2><br>
  	         	<c:choose>
@@ -70,6 +56,9 @@
 				   			 	<span style="font-weight:bold;font-size: 14px;">${conversation.title}</span>
 				   			 	<br/>
 			   					${conversation.firstComment.text}
+			   					<br/>
+			   					Likes: ${conversation.likes}&nbsp;<img src="images/like.jpg" width=30px height=30px>&nbsp;&nbsp;
+			   					Dislikes: ${conversation.dislikes}&nbsp;<img src="images/dislike.jpg" width=30px height=30px>
 				   			</div>
 				   			
 						</c:forEach>

@@ -106,7 +106,9 @@ public class ConversationDaoImpl implements ConversationDao{
 					rs.getString("TITLE"),
 					rs.getTimestamp("START_DATE"),
 					rs.getTimestamp("UPDATE_DATE"),
-					rs.getBoolean("UNANSWERED")
+					rs.getBoolean("UNANSWERED"),
+					rs.getInt("LIKES"),
+					rs.getInt("DISLIKES")
 				);
 			}
 			rs.close();
@@ -143,7 +145,9 @@ public class ConversationDaoImpl implements ConversationDao{
 					rs.getString("TITLE"),
 					rs.getTimestamp("START_DATE"),
 					rs.getTimestamp("UPDATE_DATE"),
-					rs.getBoolean("UNANSWERED")
+					rs.getBoolean("UNANSWERED"),
+					rs.getInt("LIKES"),
+					rs.getInt("DISLIKES")
 				);
 			}
 			rs.close();
@@ -251,7 +255,9 @@ public class ConversationDaoImpl implements ConversationDao{
 					rs.getString("TITLE"),
 					rs.getTimestamp("START_DATE"),
 					rs.getTimestamp("UPDATE_DATE"),
-					rs.getBoolean("UNANSWERED")
+					rs.getBoolean("UNANSWERED"),
+					rs.getInt("LIKES"),
+					rs.getInt("DISLIKES")
 				);
 				conversationList.add(conversation);
 			}
@@ -293,7 +299,9 @@ public class ConversationDaoImpl implements ConversationDao{
 					rs.getString("TITLE"),
 					rs.getTimestamp("START_DATE"),
 					rs.getTimestamp("UPDATE_DATE"),
-					rs.getBoolean("UNANSWERED")
+					rs.getBoolean("UNANSWERED"),
+					rs.getInt("LIKES"),
+					rs.getInt("DISLIKES")
 				);
 				conversationList.add(conversation);
 			}
@@ -330,7 +338,9 @@ public class ConversationDaoImpl implements ConversationDao{
 					rs.getString("TITLE"),
 					rs.getTimestamp("START_DATE"),
 					rs.getTimestamp("UPDATE_DATE"),
-					rs.getBoolean("UNANSWERED")
+					rs.getBoolean("UNANSWERED"),
+					rs.getInt("LIKES"),
+					rs.getInt("DISLIKES")
 				);
 				conversationList.add(conversation);
 			}
@@ -348,6 +358,51 @@ public class ConversationDaoImpl implements ConversationDao{
 		}
 	}
 	
+	@Override
+	public void addLikes(int conversationId) {
+		String sql = "UPDATE conversation SET LIKES=LIKES+1 WHERE CONVERSATION_ID=?";
+		
+		Connection conn = null;
+ 		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, conversationId);
+			ps.executeUpdate();
+			ps.close();
+ 
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
 	
-
+	@Override
+	public void addDislikes(int conversationId) {
+		String sql = "UPDATE conversation SET DISLIKES=DISLIKES+1 WHERE CONVERSATION_ID=?";
+		
+		Connection conn = null;
+ 		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, conversationId);
+			ps.executeUpdate();
+			ps.close();
+ 
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
 }

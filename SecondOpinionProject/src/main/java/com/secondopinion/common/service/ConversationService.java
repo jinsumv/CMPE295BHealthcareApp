@@ -63,4 +63,12 @@ public class ConversationService {
 	public Comment getFirstComment(int conversationId) {
 		return conversationDao.getFirstCommentForConversationId(conversationId);
 	}
+
+	public void addLikes(int conversationId) {
+		conversationDao.addLikes(conversationId);
+	}
+	
+	public void addDislikes(int conversationId) {
+		conversationDao.addDislikes(conversationId);
+	}
 }

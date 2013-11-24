@@ -16,4 +16,6 @@ public interface ConversationDao {
 	List<Conversation> getAllConversationsInvolvingUser(int userId, int doctorId);
 	List<Conversation> getMostRecentConversations();
 	Comment getFirstCommentForConversationId(int conversationId);
+	void addLikes(int conversationId);
+	void addDislikes(int conversationId);
 }
