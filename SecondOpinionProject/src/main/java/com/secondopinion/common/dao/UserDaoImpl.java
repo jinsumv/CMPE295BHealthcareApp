@@ -1,5 +1,7 @@
 package com.secondopinion.common.dao;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,10 +27,21 @@ public class UserDaoImpl implements UserDao{
 		Connection conn = null;
  
 		try {
+			String clearTextPassword = user.getPassword();
+			MessageDigest md = MessageDigest.getInstance("SHA-256");
+		    md.update(clearTextPassword.getBytes());
+		    byte byteData[] = md.digest();
+		    StringBuffer sb = new StringBuffer();
+	        for (int i = 0; i < byteData.length; i++) {
+	         sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+	        }
+	 
+	        String encriptedPassword = sb.toString();
+			
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, user.getUserName());
-			ps.setString(2, user.getPassword());
+			ps.setString(2, encriptedPassword);
 			ps.setBoolean(3, user.isEnabled());
 			ps.executeUpdate();
 			ps.close();
@@ -36,6 +49,9 @@ public class UserDaoImpl implements UserDao{
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
  
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
 			if (conn != null) {
 				try {
