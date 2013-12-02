@@ -87,7 +87,7 @@
      </div>
 	
 	<!--  <footer class="mainFooter">
-	  <p>Copyright &copy; <a href="#" title="1sthtml">payal.com</a></p>
+	  <p>Copyright &copy; <a href="#" title="1sthtml"></a></p>
 	</footer> -->
 	<script src="js/main.js" type="text/javascript"></script>
 </body>

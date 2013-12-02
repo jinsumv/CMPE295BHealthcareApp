@@ -57,7 +57,7 @@
  	<section id="fileupload_form">	
 			<form action="patientnewfileupload.do" method="post" enctype="multipart/form-data">
     			<input type="text" name="file_description" />
-    		    <input type="file" name="file" />
+    		    <input type="file" name="file" accept="image/*" capture="camera" />
     			<input type="submit" name="Upload" value="Upload"/>
 			</form>
 		</section>

@@ -75,7 +75,8 @@ public class PatientDaoImpl implements PatientDao{
 					rs.getString("PATIENT_NAME"),
 					rs.getTimestamp("DATE_OF_BIRTH"),
 					rs.getString("GENDER"),
-					rs.getString("LOCATION")
+					rs.getString("LOCATION"), 
+					rs.getString("PROFILE_PIC_URL")
 				);
 			}
 			rs.close();
@@ -111,7 +112,8 @@ public class PatientDaoImpl implements PatientDao{
 					rs.getString("PATIENT_NAME"),
 					rs.getTimestamp("DATE_OF_BIRTH"),
 					rs.getString("GENDER"),
-					rs.getString("LOCATION")
+					rs.getString("LOCATION"),
+					rs.getString("PROFILE_PIC_URL")
 				);
 			}
 			rs.close();
@@ -131,7 +133,7 @@ public class PatientDaoImpl implements PatientDao{
 	@Override
 	public void updatePatient(Patient patient) {
 		String sql = "UPDATE patient " +
-				"SET PATIENT_NAME=?, DATE_OF_BIRTH=?, GENDER=?, LOCATION=? " +
+				"SET PATIENT_NAME=?, DATE_OF_BIRTH=?, GENDER=?, LOCATION=?, PROFILE_PIC_URL=? " +
 				"WHERE PATIENT_ID=?";
 		Connection conn = null;
  
@@ -143,6 +145,7 @@ public class PatientDaoImpl implements PatientDao{
 			ps.setString(3, patient.getGender());
 			ps.setString(4, patient.getLocation());
 			ps.setInt(5, patient.getPatientId());
+			ps.setString(6, patient.getProfilePicUrl());
 			ps.executeUpdate();
 			ps.close();
  
@@ -584,4 +587,6 @@ public class PatientDaoImpl implements PatientDao{
 			}
 		}		
 	}
+	
+	
 }

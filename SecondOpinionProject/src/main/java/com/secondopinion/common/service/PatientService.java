@@ -8,6 +8,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.PropertiesCredentials;
@@ -157,6 +158,42 @@ public class PatientService {
 
 	public void removePatientFile(int fileId) {
 		patientDao.deletePatientFile(fileId);
+		
+	}
+
+	public void updateProfilePic(Patient patient, MultipartFile file) throws IOException {
+		String keyName = "profile_pictures/"
+				+ RandomStringUtils.randomAlphanumeric(KEY_LENGTH);
+		keyName += "/" + file.getOriginalFilename();
+		AWSCredentials credentials = new PropertiesCredentials(
+				PatientService.class
+						.getResourceAsStream("/AwsCredentials.properties"));
+		System.out.println(credentials);
+		AmazonS3 s3client = new AmazonS3Client(credentials);
+		try {
+			if (file.getSize() > 0) {
+				InputStream in = file.getInputStream();
+				Long contentLength = Long.valueOf(file.getSize());
+				ObjectMetadata metadata = new ObjectMetadata();
+				metadata.setServerSideEncryption(ObjectMetadata.AES_256_SERVER_SIDE_ENCRYPTION);
+				metadata.setContentLength(contentLength);
+				PutObjectRequest putRequest = new PutObjectRequest(BUCKET_NAME, keyName,
+						in, metadata);
+				putRequest.setCannedAcl(CannedAccessControlList.PublicRead);
+				System.out.println("Setting public permissions to S3 object");
+				
+				s3client.putObject(putRequest);
+				System.out.println("File Uploaded to S3");
+				String url = "https://s3-us-west-2.amazonaws.com/secondopinion/"
+						+ keyName;
+				
+				patient.setProfilePicUrl(url);
+				patientDao.updatePatient(patient);
+			}
+
+		} catch (Exception e) {
+			System.err.println("S3 Upload Error" + e.getMessage());
+		}
 		
 	}
 }
