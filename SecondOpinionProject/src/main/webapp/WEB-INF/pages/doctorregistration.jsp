@@ -8,8 +8,6 @@
 <%@ page import="net.tanesha.recaptcha.ReCaptcha" %>
 <%@ page import="net.tanesha.recaptcha.ReCaptchaFactory" %>
 <%@page import="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter"%><html><head>
-
-
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <link href="css/main.css" media="screen" rel="stylesheet" type="text/css"/>
     <title>${journal.title}</title>
