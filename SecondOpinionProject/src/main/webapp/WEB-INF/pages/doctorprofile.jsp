@@ -49,9 +49,9 @@
 		<div id="doc_pic" class="doc_details">
 			<div style="float:left;">
 			<img src="images/doctor1.jpg" alt="doc profile" style="border:2px solid grey;" width="92" height="92"/></a> 	
-			</div>
+		</div>
 			
-			<div id="docinf" style="float:right;padding-left:20px;padding-top:10px;">	
+		<div id="docinf" style="float:right;padding-left:20px;padding-top:10px;">	
 			<label id="docname"><b>Dr. ${doctor.name}</b></label><br>
 			<label id="specialisation"><i>${doctor.areaOfPractice}</i></label><br>
 			<label id="achievements"><i>${doctor.achievements}</i></label><br>
@@ -64,12 +64,11 @@
 			    <input type="radio" name="rating" value="4" <c:if test="${doctor.rating == 4}">checked</c:if> disabled/><span></span>
 			    <input type="radio" name="rating" value="5" <c:if test="${doctor.rating == 5}">checked</c:if> disabled/><span></span>
 			</div>
-			</div>
+		</div>
 		</div>
 		<br/>	
 		
 		<div style="float:left;background-color:#E1E1E8;width:152px;height:50px;color:royalblue;font-size:18px;text-align: center; font-weight: bold;">${followercount} <br> FOLLOWERS</div>
-		
 		<div style="margin-left:160px;background-color:#E1E1E8;width:152px;height:50px;color:royalblue;font-size:18px;vertical-align:middle;text-align: center; font-weight: bold;">
 			<a href="reviewlist.do?doctorid=${doctor.doctorId}" style="text-decoration:none;">${reviewcount} <br> REVIEWS</a>
 		</div>
