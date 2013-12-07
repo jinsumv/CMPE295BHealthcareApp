@@ -17,4 +17,5 @@ public interface DoctorDao {
 	int getFollowersCount(int doctorId);
 	void addReview(Review review);
 	List<Review> getReviewsForDoctor(int doctorId);
+	public List<Doctor> findByName(String doctorname);
 }

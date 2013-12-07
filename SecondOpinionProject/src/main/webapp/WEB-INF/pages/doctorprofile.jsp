@@ -48,7 +48,7 @@
 		
 		<div id="doc_pic" class="doc_details">
 			<div style="float:left;">
-			<img src="images/doctor1.jpg" alt="doc profile" width="92" height="92"/></a> 	
+			<img src="images/doctor1.jpg" alt="doc profile" style="border:2px solid grey;" width="92" height="92"/></a> 	
 			</div>
 			
 			<div id="docinf" style="float:right;padding-left:20px;padding-top:10px;">	
@@ -67,6 +67,7 @@
 			</div>
 		</div>
 		<br/>	
+		
 		<div style="float:left;background-color:#E1E1E8;width:152px;height:50px;color:royalblue;font-size:18px;text-align: center; font-weight: bold;">${followercount} <br> FOLLOWERS</div>
 		
 		<div style="margin-left:160px;background-color:#E1E1E8;width:152px;height:50px;color:royalblue;font-size:18px;vertical-align:middle;text-align: center; font-weight: bold;">
@@ -74,62 +75,44 @@
 		</div>
 		</section>
 		
-<section class="bottomcontent">
-	<details>
-
+<div class="bottomcontent">
+<details>
     <summary>BIO</summary>
-
-    <div>
      <h5>SPECIALITIES/AREAS OF PRACTICE</h5>
-      <ul>
-      <li>Family Medicine</li>
-      </ul>
-    </div>
+      <ul><li>Family Medicine</li></ul>
      
      <p><strong>Types of dental treatment: </strong> <em> ozone dentisty, laser, implants.</em><br>
     I was formerly an Assistant Professor at university of Illinois.<br>  Aenean ultricies mi vitae est.
     Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, 
     ornare sit amet, wisi. </p>
     
-    <div>
     <h5>SPECIAL HONORS</h5>
     <ul>
       <li>Top Doctor, Chicago,IL - Winter 2013</li>
       <li>Top Doctor, Chicago Region, IL - Summer 2013</li>
     </ul>
-  </div>
-
 </details>
 
 <details>
-
   <summary>PRACTICE INFORMATION</summary>
-     
-     <div>
      <p><h5>PRACTICE LOCATION</h5>
       Dentistry at Millenium Park<br>
       8 S Michigan Avenue, Suite 1800<br>
       Chicago, IL<br>
       <b>P</b> 312750-900
-     </div></p>
+   	</p>
   
-  <div>
-    <h5>OFFICE HOURS</h5>
+   <p><h5>OFFICE HOURS</h5>
     <ul>
       <li>Mon - Wed 8am - 5pm</li>
       <li>Thurs & Fri 8am - 3pm</li>
     </ul>
-  </div>
+  </p>
   
-  <div>
+  <p>
     <h5>PRACTICE WEBSITE</h5>
     <a href="www.test.com">www.test.com</a>
-  </div>
-  
-  <div>
-    <h5>LANGUAGES SPOKEN</h5>
-    English, Spanish
-  </div>
+  </p>
 </details>
 
 <details>
@@ -158,7 +141,7 @@
   </div>
   
 </details>
-</section>
+</div>
 </div></div>
 
 <!--  	<footer class="mainFooter">

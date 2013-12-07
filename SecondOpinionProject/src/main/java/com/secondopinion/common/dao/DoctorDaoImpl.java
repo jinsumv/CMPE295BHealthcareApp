@@ -177,6 +177,46 @@ public class DoctorDaoImpl implements DoctorDao{
 	}
 	
 	@Override
+	public List<Doctor> findByName(String doctorname) {
+		String sql = "SELECT * FROM doctor WHERE DOCTOR_NAME COLLATE UTF8_GENERAL_CI LIKE ?";
+		 
+		Connection conn = null;
+ 
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + doctorname + "%");
+			List<Doctor> doctorList = new ArrayList<Doctor>();
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Doctor doctor = new Doctor(
+					rs.getInt("DOCTOR_ID"),
+					rs.getInt("USER_ID"),
+					rs.getString("DOCTOR_NAME"),
+					rs.getTimestamp("DATE_OF_BIRTH"),
+					rs.getString("GENDER"),
+					rs.getString("QUALIFYING_DEGREE"),
+					rs.getString("AREA_OF_PRACTICE"),
+					rs.getString("LICENSE_NUMBER"),
+					rs.getString("ACHIEVEMENTS")
+				);
+				doctorList.add(doctor);
+			}
+			rs.close();
+			ps.close();
+			return doctorList;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (conn != null) {
+				try {
+				conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
+
+	@Override
 	public void followDoctor(Patient patient, Doctor doctor) {
 		String sql = "INSERT INTO follow_doctor (PATIENT_ID, DOCTOR_ID) VALUES (?, ?)";
 		Connection conn = null;

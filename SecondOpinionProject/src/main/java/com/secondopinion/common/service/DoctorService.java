@@ -64,4 +64,8 @@ public class DoctorService {
 	public void addReview(Review review) {
 		doctorDao.addReview(review);
 	}
+
+	public List<Doctor> findDoctorByName(String doctorname) {
+		return doctorDao.findByName(doctorname);	
+	}
 }

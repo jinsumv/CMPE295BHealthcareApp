@@ -45,36 +45,26 @@
 	</header>
 
     <div class="mainContent" style="padding:10px;">
-	    <form>
-			<input type="search" name="search" placeholder="Type a speciality" autofocus style="width:100%; font-size:16px;" />
+	    <form action="doctorsearchbyname.do" method="GET">
+			<input type="search" name="docname" placeholder="Search by doctor name..." style="width:100%; font-size:18px;font-style:italic;" />
+			<input type="submit" style="display:none;">
 		</form>	
 		<div class="specializationlist">
 		   <section>
- 	         	<h2> Top Doctor Specialities </h2>
+ 	         	<br><h3> Top Doctor Specialities </h3>
  	         	<ul>
- 	         		<li><a href="doctorsearchlist.do?speciality=Allergy+and+Immunology">Allergy and Immunology</a></li>
- 	         		<li><a href="doctorsearchlist.do?speciality=Anaesthetics">Anaesthetics</a></li>
- 	         	    <li><a href="doctorsearchlist.do?speciality=Pathology">Pathology</a></li>
- 	         	    <li><a href="doctorsearchlist.do?speciality=Cardiology">Cardiology</a></li>
- 	         	    <li><a href="doctorsearchlist.do?speciality=Endocrinology">Endocrinology</a></li>
- 	         	    <li><a href="doctorsearchlist.do?speciality=Gastroenterology">Gastroenterology</a></li>
+ 	         		<li><a href="doctorsearchlist.do?speciality=Cardiology">Cardiology</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Dermatology">Dermatology</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Dentistry">Dentistry</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Gastroentrology">Gastroentrology</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=General+Surgery">General Surgery</a></li>
+ 	         	    <li><a href="doctorsearchlist.do?speciality=Gynecology">Gynecology</a></li>
  	         	    <li><a href="doctorsearchlist.do?speciality=Internal+Medicine">Internal Medicine</a></li>
- 	         	    <li><a href="doctorsearchlist.do?speciality=Neurology">Neurology</a></li>
- 	         	    <li><a href="doctorsearchlist.do?speciality=Neurosurgery">Neurosurgery</a></li>
- 	         	    <li><a href="doctorsearchlist.do?speciality=Opthalmology">Opthalmology</a></li>
  	         	    <li><a href="doctorsearchlist.do?speciality=Orthopaedics">Orthopaedics</a></li>
  	         	    <li><a href="doctorsearchlist.do?speciality=Pediatrics">Pediatrics</a></li>
- 	         	    <li><a href="doctorsearchlist.do?speciality=Neonatology">Neonatology</a></li>
- 	         	    <li><a href="doctorsearchlist.do?speciality=Plastic+Surgery">Plastic Surgery</a></li>
- 	         	    <li><a href="doctorsearchlist.do?speciality=Radiology">Radiology</a></li>
- 	         	    <li><a href="doctorsearchlist.do?speciality=Radiotherapy">Radiotherapy</a></li>
- 	         	    <li><a href="doctorsearchlist.do?speciality=General Surgery">General Surgery</a></li>
- 	         	    <li><a href="doctorsearchlist.do?speciality=Urology">Urology</a></li>
- 	         	    <li><a href="doctorsearchlist.do?speciality=Vascular+Surgery">Vascular Surgery</a></li>
 			</ul>
 		 </section>
-
- </div>
+	 </div>
  </div>
 
 

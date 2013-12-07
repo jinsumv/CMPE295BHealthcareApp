@@ -71,9 +71,7 @@
 				</c:if>
   			  <input type="text" name="j_username" placeholder="Email Eg:test@gmail.com" autofocus required style='width: 94%;height: 30px;font-size: 14px;padding-left:10px;margin-bottom:15px;'/>
   			  <input type="password" name="j_password" placeholder="Password" required style='width: 94%;height: 30px;font-size: 14px;padding-left:10px;margin-bottom:15px;'/>
- 			  <a href="javascript:" onclick="document.loginForm.submit()">
- 			  	<input type="image" src="images/Login.jpg" name="Submit Form" width="100%" height="50px" />
- 			  </a>
+   	     	  <input type="image" src="images/Login.jpg" name="Submit Form" width="100%" height="50px" />
 			</form>			
 		  <br>	
 		  <p>

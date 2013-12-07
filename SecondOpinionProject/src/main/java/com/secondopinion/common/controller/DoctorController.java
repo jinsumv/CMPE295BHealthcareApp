@@ -88,7 +88,7 @@ public class DoctorController {
     	User user = new User( -1, email, password, true);
         user = userService.createUser(user);
         
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
         Date dob = dateFormatter.parse(dateOfBirth);
         doctor = new Doctor(-1, -1, fullName, dob, gender, qualifyingDegree, areaOfPractice, licenseNumber, achievements);
         
@@ -128,7 +128,26 @@ public class DoctorController {
 		    	doctor.setRating(docrating);
 	    }
     	model.addAttribute("doctorList", doctorList);
-    } 
+    }
+    
+    @RequestMapping(value="/doctorsearchbyname.do", method={RequestMethod.GET})
+    public String doDocSearchByName (ModelMap model,
+    		@RequestParam("docname") String doctorname) {
+    	List<Doctor> doctorList = doctorService.findDoctorByName(doctorname);
+    	for (Doctor doctor : doctorList)
+    	{
+	    	List<Review> reviewList = doctorService.getReviewsForDoctor(doctor.getDoctorId());
+	    		int sumofratings = 0;
+		    	for (Review review : reviewList) {
+		    		sumofratings = sumofratings + review.getRate();
+		    	}
+		    	int docrating = sumofratings/reviewList.size();
+		    	doctor.setRating(docrating);
+	    }
+    	model.addAttribute("doctorList", doctorList);
+    	return "doctorsearchlist";
+
+    }
     
     @RequestMapping(value="/doctordetails.do", method={RequestMethod.GET})
     public void doDoctorProfile (ModelMap model,

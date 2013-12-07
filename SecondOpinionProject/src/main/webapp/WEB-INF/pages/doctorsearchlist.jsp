@@ -43,17 +43,13 @@
 	</header>
 
  	<div class="mainContent" style="padding:10px;">
-		<form>
-					<input type="search" name="search" placeholder="Type a doctor's name" autofocus style="width:100%;">
-		</form>	<br>
-		
-		 <div class="doclist">
+		<div class="doclist">
 		 <c:choose>
 		      <c:when test="${not empty doctorList}">
 		      	<ul>
 		      	<c:forEach var="doctor" items="${doctorList}"  varStatus="outer">
 		   			<li><a href="doctordetails.do?doctorid=${doctor.doctorId}" style="text-decoration:none;">
-						<img src="images/doctor1.jpg" width=100px height=100px>
+						<img src="images/doctor1.jpg" width=100px height=100px style="border:2px solid grey;">
 						<h3>Dr. ${doctor.name}</h3>
 						
 						<p>${doctor.areaOfPractice}<br>${doctor.qualifyingDegree}<br>

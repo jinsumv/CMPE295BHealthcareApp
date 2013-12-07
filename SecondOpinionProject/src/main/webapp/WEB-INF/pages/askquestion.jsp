@@ -59,7 +59,7 @@
 				     <c:if test="${not empty doctor}">
 							<div id="doc_pic" class="doc_details">
 							<div style="float:left;">
-							<img src="images/doctor1.jpg" alt="doc profile" width="92" height="92"/></a> 	
+							<img src="images/doctor1.jpg" alt="doc profile" style="border:2px solid grey;" width="92" height="92"/></a> 	
 							</div>
 							
 							<div id="docinf" style="float:right;padding-left:20px;padding-top:10px;">	
@@ -78,17 +78,12 @@
 					  </c:if>		  	  
   			          <input type="text" name="title" placeholder="Question Title" autofocus style="width:100%;height:30px;" required><br><br>
   			          <textarea name="question" placeholder="Enter your brief description.." rows="5" style="resize: none;display: table-cell;vertical-align: top;width: 100%;" required></textarea><br><br>
- 			          <input type="submit" name="Ask Question" value="Ask Question">
+ 			          <input class="new-button" type="submit" name="Ask Question" value="Ask Question" align="middle">
  			          </form>
 		          </article>  
 			</div>
            </div>
           </div>
-
-        <!--   <div id = "footer">
-	 	<footer >
-	            <p>Copyright &copy; <a href="#" title="2ndhtml"></a></p>
-	        </footer> -->
 	  </div>
       </div>
 	</body>

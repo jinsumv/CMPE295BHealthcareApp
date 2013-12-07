@@ -77,14 +77,14 @@
 			<b>Sign Up</b> Its helpful, private, and FREE!</p>
 			<p>
 			<form action="patientsignup.do" method="post" modelAttribute="addPatientForm">
-  			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com" autofocus style="width: 100%" required >
-  			  <input type="password" name="pwd" placeholder="New Password" style='width: 100%' required >
-  			  <input type="text" name="fullname" placeholder="Full Name" style='width: 100%' required >
-  			  <input type="text" name="dateofbirth" placeholder="Date of Birth (MM/DD/YYYY)" style='width: 100%' required >
+  			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com" pattern="[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]{2,4}" autofocus style="width: 100%" required >
+  			  <input type="password" name="pwd" placeholder="New Password" pattern="(?=(.*[A-Z]){1,})(?=(.*[a-z]){1,})(?=(.*[^A-Za-z0-9]){1,}).{7,24}" title="Minimum 1Upper, 1Lower, 1 Special" style='width: 100%' required >
+  			  <input type="text" name="fullname" placeholder="Full Name" pattern="([A-Za-z]+\s?)*" title="Alphabets only" style='width: 100%' required >
+  			  <input type="date" name="dateofbirth" placeholder="Date of Birth (MM/DD/YYYY)" style='width: 100%' required >
   			  Gender&nbsp;&nbsp;&nbsp;
   			  <input type="radio" name="gender" value="Male" checked >&nbsp;Male&nbsp;&nbsp;
   			  <input type="radio" name="gender" value="Female" >&nbsp;Female<br><br>
-  			  <input type="text" name="location" placeholder="Location" style='width: 100%' required />
+  			  <input type="text" name="location" placeholder="Location Eg:San Francisco" pattern="([A-Za-z]+\s?)*" title="Alphabets only" style='width: 100%' required />
 
 			 <c:if test="${param.invalidRecaptcha == 'true'}">
   			   <span class="error_validation"><spring:message code="invalid.captcha" text="Invalid captcha please try again"/></span>

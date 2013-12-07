@@ -78,7 +78,7 @@
   			  <input type="text" name="fullname" placeholder="Full Name" pattern="+[A-Za-z]" required autofocus>
   			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com"  pattern="[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]{2,4}" required>
   			  <input type="password" name="pwd" placeholder="New Password"  required>
-  			  <input type="text" name="dateofbirth" placeholder="Date of Birth (MM/DD/YYYY)"  required >
+  			  <input type="date" name="dateofbirth" placeholder="Date of Birth (MM/DD/YYYY)" pattern="(?=(.*[A-Z]){1,})(?=(.*[a-z]){1,})(?=(.*[^A-Za-z0-9]){1,}).{7,24}" title="Minimum 1Upper, 1Lower, 1 Special" required >
   			  Gender&nbsp;&nbsp;&nbsp;
   			  <input type="radio" name="gender" value="Male" checked >&nbsp;Male&nbsp;&nbsp;
   			  <input type="radio" name="gender" value="Female" >&nbsp;Female<br></br>
@@ -98,24 +98,15 @@
 			 </select><br><br>
 			 <select name="areaofpractice" style='width: 100%' required>
 				<option value="">Area of practice</option>
-				<option value="Allergy and Immunology">Allergy and Immunology</option>
-				<option value="Anaesthetics">Anaesthetics</option>
-				<option value="Pathology">Pathology</option>
 				<option value="Cardiology">Cardiology</option>
-				<option value="Endocrinology">Endocrinology</option>
-				<option value="Gastroenterology">Gastroenterology</option>
-				<option value="Internal Medicine">Internal Medicine</option>
-				<option value="Neurology">Neurology</option>
-				<option value="Neurosurgery">Neurosurgery</option>
-				<option value="Opthalmology">Opthalmology</option>
+				<option value="Endocrinology">Dermatology</option>
+				<option value="Gastroenterology">Dentistry</option>
+				<option value="Internal Medicine">Gastroentrology</option>
+				<option value="Neurology">General Surgery</option>
+				<option value="Neurosurgery">Gynecology</option>
+				<option value="Opthalmology">Internal Medicine</option>
 				<option value="Orthopaedics">Orthopaedics</option>
 				<option value="Pediatrics">Pediatrics</option>
-				<option value="Neonatology">Neonatology</option>
-				<option value="Plastic Surgery">Plastic Surgery</option>
-				<option value="Radiology">Radiology</option>
-				<option value="General Surgery">General Surgery</option>
-				<option value="Urology">Urology</option>
-				<option value="Vascular Surgery">Vascular Surgery</option>
 			</select><br><br>
 			<input type="text" name="licensenumber" placeholder="Professional License #"  required>
 			<input type="text" name="achievements" placeholder="Achievements" >
