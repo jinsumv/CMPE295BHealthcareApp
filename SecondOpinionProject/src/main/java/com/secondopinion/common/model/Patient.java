@@ -10,12 +10,13 @@ public class Patient implements Person {
 	Date dateOfBirth;
 	String gender;
 	String location;
+	String profilePicUrl;
 	
 	
 	public Patient() { } // Default constructor needed for Captcha
 	
 	public Patient(int patientId, int userId, String name, Date dateOfBirth,
-			String gender, String location) {
+			String gender, String location, String profilePicUrl) {
 		super();
 		this.patientId = patientId;
 		this.userId = userId;
@@ -23,6 +24,7 @@ public class Patient implements Person {
 		this.dateOfBirth = dateOfBirth;
 		this.gender = gender;
 		this.location = location;
+		this.profilePicUrl = profilePicUrl;
 	}
 	
 	public int getPatientId() {
@@ -42,6 +44,9 @@ public class Patient implements Person {
 	}
 	public String getLocation() {
 		return location;
+	}
+	public String getProfilePicUrl() {
+		return profilePicUrl;
 	}
 	public int getAge() {
 		Calendar dob = Calendar.getInstance();  
@@ -71,5 +76,8 @@ public class Patient implements Person {
 
 	public void setLocation(String location) {
 		this.location = location;
+	}
+	public void setProfilePicUrl(String profilePicUrl) {
+		this.profilePicUrl = profilePicUrl;
 	}
 }

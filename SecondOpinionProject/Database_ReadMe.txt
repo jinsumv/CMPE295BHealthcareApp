@@ -150,10 +150,12 @@ CREATE TABLE `review` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE users MODIFY COLUMN password VARCHAR(255) NOT NULL;
+ALTER TABLE patient ADD COLUMN PROFILE_PIC_URL VARCHAR(1000) NOT NULL DEFAULT 'https://s3-us-west-2.amazonaws.com/secondopinion/profile_pictures/user_anonymous.png';
+ALTER TABLE doctor ADD COLUMN PROFILE_PIC_URL VARCHAR(1000) NOT NULL DEFAULT 'https://s3-us-west-2.amazonaws.com/secondopinion/profile_pictures/user_anonymous.png';
 
 INSERT INTO users (USER_ID, USERNAME,PASSWORD, ENABLED) VALUES (100, 'jeff@gmail.com', 'password', TRUE);
 INSERT INTO users (USER_ID, USERNAME,PASSWORD, ENABLED) VALUES (105, 'david@gmail.com', 'password', TRUE);
- 
+
 INSERT INTO user_roles (USER_ROLE_ID, USER_ID,AUTHORITY) VALUES (1, 100, 'ROLE_USER');
 
 INSERT INTO patient (USER_ID, PATIENT_NAME, DATE_OF_BIRTH, GENDER, LOCATION) VALUES (100, 'Jeff Yellow', '1974-02-18', 'Male', 'Los Angeles');

@@ -89,11 +89,22 @@ public class PatientController {
             
         SimpleDateFormat dateFormatter = new SimpleDateFormat("MM-dd-yyyy");
         Date dob = dateFormatter.parse(dateOfBirth);
-        patient = new Patient(-1, -1, fullName, dob, gender, location);
+        patient = new Patient(-1, -1, fullName, dob, gender, location, null);
         patientService.createPatient(user, patient);
         return new ModelAndView("redirect:welcome.do");        	
         
     }
+    
+    @RequestMapping(value="/patientnewprofilepic.do", method={RequestMethod.POST})
+	public ModelAndView doPatientNewProfilePicUpload(ModelMap model, 
+									   @RequestParam("file") MultipartFile file) throws IOException {
+		Patient patient = patientService.getCurrentPatient();
+		System.out.println("Controller says :Patient: " + patient.getName() + " uploaded a file.");
+		System.out.println("Controller says : Original file name: " + file.getOriginalFilename());
+		
+		patientService.updateProfilePic(patient, file);
+		return new ModelAndView("redirect:patientprofile.do");
+	}
     
     @RequestMapping(value="/patientprofile.do", method={RequestMethod.GET})
     public void doPatientProfile (ModelMap model) {

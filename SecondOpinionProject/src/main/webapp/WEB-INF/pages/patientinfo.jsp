@@ -1,9 +1,35 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class = "userprofile_top" >
-	<div style="float:left; padding-right: 20px;padding-left: 15px;" onclick="location.href='patientprofile.do;'">		
-			<img class="userpic" src="images/patient.jpg" style="border:2px solid grey;"/>
+<c:if test="${not empty patient}">
+	<div id = "profile-picture" style="float:left; padding-right: 20px;padding-left: 15px;" >		
+			
+			<img class="userpic" src="${patient.profilePicUrl}"  style="border:2px solid grey;"/>
 	</div>	
-	<c:if test="${not empty patient}">
+	
+	    <div style="float:left; padding-right: 20px;" >  
+	    
+	     <form id="profile-picture-upload-form" action="patientnewprofilepic.do" method="post" enctype="multipart/form-data">
+                <input id="profile-picture-upload" type="file" name="file" accept="image/*" capture="camera" class="hidden"/>
+                <!-- <input class="hidden" type="submit" name="Upload" value="Upload"/> -->
+            </form>  
+
+<script type="text/javascript">	    
+$(function() {
+    $('#profile-picture').bind('click', function() {
+    	
+        console.log("Inside click of hidden");
+        $('#profile-picture-upload').click();
+    });
+});
+
+$(function() {
+    $("#profile-picture-upload").change(function() {
+        console.log("Inside change of file upload. Submitting form");
+        $("#profile-picture-upload-form").submit();
+    });
+});
+</script>           
+        </div>  
 		<div id = "userinf">
 			<p > Name: ${patient.name} </p>
 			<p > Age: ${patient.age} </p>
