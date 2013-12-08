@@ -36,7 +36,7 @@
     <script type="text/javascript" src="js/travellog.js"></script>
     <script type="text/javascript">
 		$( document ).ready(function() {
-			$("#bio-detail").hide();
+			$("#bio-detail").show();
 		    $("#bio-header").click(function() {
 		    	$("#bio-detail").toggle();
 		    });
@@ -74,6 +74,7 @@
 		background-image: -webkit-linear-gradient(bottom, #FFFFFF 19%, #F0F0F0 65%, #E3E3E3 100%);
 		background-image: -ms-linear-gradient(bottom, #FFFFFF 19%, #F0F0F0 65%, #E3E3E3 100%);
 		background-image: linear-gradient(to bottom, #FFFFFF 19%, #F0F0F0 65%, #E3E3E3 100%);
+		border-top: 1px solid #E3E3E3;
     }
     .sub-headers {
     	padding: 8px 20px;
@@ -141,6 +142,10 @@
 	<div id="bio-header" class="headers">BIOGRAPHY</div>
 	<div id="bio-detail">
 	    <div class="sub-headers">
+	    	<div style="float:left;padding-right:10px;">
+	    		<img src="images/doc_speciality.png" width=50px height=60px />
+	    	</div>
+	    	<div style="float:left;">
 			<h4>SPECIALITIES/AREAS OF PRACTICE</h4>
 			  
 			${doctorDetails.areaOfPracticeName}
@@ -148,14 +153,22 @@
 			<p>
 			${doctorDetails.areaOfPracticeDetails}
 			</p>
+			</div>
+			<div style="clear:both;"></div>
 	    </div>
 	    <div class="sub-headers">
-		   <h4>SPECIAL HONORS</h4>
-		   <ul>
-		   	  <c:if test="${not empty doctorDetails.specialHonors1}"><li>${doctorDetails.specialHonors1}</li></c:if>	
-		   	  <c:if test="${not empty doctorDetails.specialHonors2}"><li>${doctorDetails.specialHonors2}</li></c:if>	
-		   	  <c:if test="${not empty doctorDetails.specialHonors3}"><li>${doctorDetails.specialHonors3}</li></c:if>	
-		   </ul>
+	    	<div style="float:left;padding-right:10px;">
+	    		<img src="images/doc_honors.png" width=50px height=60px />
+	    	</div>
+	    	<div style="float:left;">
+			   <h4>SPECIAL HONORS</h4>
+			   <ul>
+			   	  <c:if test="${not empty doctorDetails.specialHonors1}"><li>${doctorDetails.specialHonors1}</li></c:if>	
+			   	  <c:if test="${not empty doctorDetails.specialHonors2}"><li>${doctorDetails.specialHonors2}</li></c:if>	
+			   	  <c:if test="${not empty doctorDetails.specialHonors3}"><li>${doctorDetails.specialHonors3}</li></c:if>	
+			   </ul>
+		   </div>
+		   <div style="clear:both;"></div>
 	  	</div>
   	</div>
 
@@ -164,26 +177,43 @@
   <div  id="practice-header" class="headers">PRACTICE INFORMATION</div>
      <div id="practice-detail">
 		<div class="sub-headers">
-		   <h4>PRACTICE LOCATION</h4>
-		    <p>
-		    ${doctorDetails.practiceName}<br/>
-		    ${doctorDetails.practiceAddress}<br/>
-		    ${doctorDetails.practiceCity}, ${doctorDetails.practiceState}<br/>
-		    ${doctorDetails.practiceZip}
-		   </p>
+		   <div style="float:left;padding-right:10px;">
+	    		<img src="images/doc_location.png" width=50px height=70px />
+	    	</div>
+	    	<div style="float:left;">
+			   <h4>PRACTICE LOCATION</h4>
+			    <p>
+			    ${doctorDetails.practiceName}<br/>
+			    ${doctorDetails.practiceAddress}<br/>
+			    ${doctorDetails.practiceCity}, ${doctorDetails.practiceState}<br/>
+			    ${doctorDetails.practiceZip}
+			   </p>
+		   </div>
+		   <div style="clear:both;"></div>
 		</div>
 		
 		<div class="sub-headers">
-		  <h4>OFFICE HOURS</h4>
-		  <p>
-		    <c:if test="${not empty doctorDetails.practiceHours1}">${doctorDetails.practiceHours1}</c:if><br/>
-		    <c:if test="${not empty doctorDetails.practiceHours2}">${doctorDetails.practiceHours2}</c:if>
-		  </p>
+			<div style="float:left;padding-right:10px;">
+	    		<img src="images/doc_hours.gif" width=50px height=50px />
+	    	</div>
+	    	<div style="float:left;">
+			  <h4>OFFICE HOURS</h4>
+			  <p>
+			    <c:if test="${not empty doctorDetails.practiceHours1}">${doctorDetails.practiceHours1}</c:if><br/>
+			    <c:if test="${not empty doctorDetails.practiceHours2}">${doctorDetails.practiceHours2}</c:if>
+			  </p>
+		  	</div>
+		  	<div style="clear:both;"></div>
 		</div>
 		
 		<div class="sub-headers">
-		  <h4>PRACTICE WEBSITE</h4>
-		  <c:if test="${not empty doctorDetails.website}"><a href="${doctorDetails.website}">${doctorDetails.website}</a></c:if>
+			<div style="float:left;padding-right:10px;">
+	    		<img src="images/doc_website.png" width=50px height=50px />
+	    	</div>
+	    	<div>
+		  		<h4>PRACTICE WEBSITE</h4>
+		  		<c:if test="${not empty doctorDetails.website}"><a href="${doctorDetails.website}">${doctorDetails.website}</a></c:if>
+	  		</div>
 		</div>
 	</div>
   
@@ -191,30 +221,48 @@
     <div id="education-header" class="headers">EDUCATION &amp; EXPERIENCE</div>
 	<div id="education-detail">
 		<div class="sub-headers">
-	    <h4>RESIDENCIES</h4>
-	    <ul>
-	       <c:if test="${not empty doctorDetails.residencies1}"><li>${doctorDetails.residencies1}</li></c:if>
-	       <c:if test="${not empty doctorDetails.residencies2}"><li>${doctorDetails.residencies2}</li></c:if>
-	       <c:if test="${not empty doctorDetails.residencies3}"><li>${doctorDetails.residencies3}</li></c:if>
-	    </ul>
+		<div style="float:left;padding-right:10px;">
+	    		<img src="images/doc_residency.png" width=50px height=50px />
+	    	</div>
+	    	<div style="float:left;">
+				<h4>RESIDENCIES</h4>
+			    <ul>
+			       <c:if test="${not empty doctorDetails.residencies1}"><li>${doctorDetails.residencies1}</li></c:if>
+			       <c:if test="${not empty doctorDetails.residencies2}"><li>${doctorDetails.residencies2}</li></c:if>
+			       <c:if test="${not empty doctorDetails.residencies3}"><li>${doctorDetails.residencies3}</li></c:if>
+			    </ul>
+		    </div>
+		    <div style="clear:both;"></div>
 	  </div>
 	  
 	    <div class="sub-headers">
-	    <h4>MEDICAL/GRADUATE SCHOOL</h4>
-	    <ul>
-	      <c:if test="${not empty doctorDetails.medicalSchool1}"><li>${doctorDetails.medicalSchool1}</li></c:if>
-	      <c:if test="${not empty doctorDetails.medicalSchool2}"><li>${doctorDetails.medicalSchool2}</li></c:if>
-	      <c:if test="${not empty doctorDetails.medicalSchool3}"><li>${doctorDetails.medicalSchool3}</li></c:if>
-	    </ul>
+	    <div style="float:left;padding-right:10px;">
+	    		<img src="images/doc_graduate.jpg" width=50px height=50px />
+	    	</div>
+	    	<div style="float:left;">
+			  	<h4>MEDICAL/GRADUATE SCHOOL</h4>
+			    <ul>
+			      <c:if test="${not empty doctorDetails.medicalSchool1}"><li>${doctorDetails.medicalSchool1}</li></c:if>
+			      <c:if test="${not empty doctorDetails.medicalSchool2}"><li>${doctorDetails.medicalSchool2}</li></c:if>
+			      <c:if test="${not empty doctorDetails.medicalSchool3}"><li>${doctorDetails.medicalSchool3}</li></c:if>
+			    </ul>
+		    </div>
+		    <div style="clear:both;"></div>
 	  </div>
 	  
 	  <div class="sub-headers">
-	    <h4>AFFILIATIONS</h4>
-	    <ul>
-	      <c:if test="${not empty doctorDetails.affiliations1}"><li>${doctorDetails.affiliations1}</li></c:if>
-	      <c:if test="${not empty doctorDetails.affiliations2}"><li>${doctorDetails.affiliations2}</li></c:if>
-	      <c:if test="${not empty doctorDetails.affiliations3}"><li>${doctorDetails.affiliations3}</li></c:if>
-	    </ul>
+	  	<div style="float:left;padding-right:10px;">
+	    		<img src="images/doc_affiliations.png" width=50px height=70px />
+	    	</div>
+	    	<div style="float:left;">
+				<h4>AFFILIATIONS</h4>
+			    <ul>
+			      <c:if test="${not empty doctorDetails.affiliations1}"><li>${doctorDetails.affiliations1}</li></c:if>
+			      <c:if test="${not empty doctorDetails.affiliations2}"><li>${doctorDetails.affiliations2}</li></c:if>
+			      <c:if test="${not empty doctorDetails.affiliations3}"><li>${doctorDetails.affiliations3}</li></c:if>
+			    </ul>
+	    	</div>
+    		<div style="clear:both;"></div>
 	  </div>
   </div>
   

@@ -66,6 +66,7 @@
 				      	
 				      	<c:forEach var="conversation" items="${conversationList}">
 				   			<div class="message" onclick="location.href='viewmessage.do?conversationid=${conversation.conversationId}';">
+				   				<img class="userpic" src="${conversation.patient.profilePicUrl}" style="width:40px;height:40px;border:1px solid grey;border-radius: 22px;"/>
 				   				<span style="font-weight:bold;font-size: 16px;font-style: normal;">${conversation.patient.name}</span> posted on <fmt:formatDate pattern="d MMMM yy" value="${conversation.startDate}" />
 				   			 	<br/>
 				   			 	<span style="font-weight:bold;font-size: 14px;">${conversation.title}</span>

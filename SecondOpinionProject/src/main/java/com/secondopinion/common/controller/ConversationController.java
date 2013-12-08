@@ -140,7 +140,8 @@ public class ConversationController {
     	model.addAttribute("commentList", commentList);
     	
     	Doctor doctor = doctorService.getCurrentDoctor();
-    	if (doctor != null) {
+    	Patient patient2 = patientService.getCurrentPatient();
+    	if (doctor != null || (patient != null && patient2.getPatientId() == conversation.getPatientId())) {
     		model.addAttribute("showreplybox", true);
     	}
     	else {
