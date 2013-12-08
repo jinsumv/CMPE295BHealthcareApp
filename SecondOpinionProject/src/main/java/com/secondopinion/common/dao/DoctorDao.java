@@ -3,6 +3,7 @@ package com.secondopinion.common.dao;
 import java.util.List;
 
 import com.secondopinion.common.model.Doctor;
+import com.secondopinion.common.model.DoctorDetails;
 import com.secondopinion.common.model.Patient;
 import com.secondopinion.common.model.Review;
 import com.secondopinion.common.model.User;
@@ -18,4 +19,10 @@ public interface DoctorDao {
 	void addReview(Review review);
 	List<Review> getReviewsForDoctor(int doctorId);
 	public List<Doctor> findByName(String doctorname);
+	public void updateDoctorBiography(DoctorDetails doctorDetails);
+	public void updateDoctorPracticeInformation(DoctorDetails doctorDetails);
+	public void updateDoctorEducation(DoctorDetails doctorDetails);
+	public DoctorDetails getDoctorDetails(int doctorId);
+	Doctor getNewDoctor();
+	void insertDoctorDetails(Doctor doctor);
 }

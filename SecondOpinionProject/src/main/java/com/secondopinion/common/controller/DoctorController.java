@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.secondopinion.common.model.Comment;
 import com.secondopinion.common.model.Conversation;
 import com.secondopinion.common.model.Doctor;
+import com.secondopinion.common.model.DoctorDetails;
 import com.secondopinion.common.model.Patient;
 import com.secondopinion.common.model.Review;
 import com.secondopinion.common.model.User;
@@ -100,6 +101,9 @@ public class DoctorController {
     public void doDoctorProfile (ModelMap model) {
     	Doctor doctor = doctorService.getCurrentDoctor();
 		model.addAttribute("doctor", doctor);
+		
+		DoctorDetails doctorDetais = doctorService.getDoctorDetails(doctor.getDoctorId());
+		model.addAttribute("doctorDetails", doctorDetais);
 		
 		int followerCount = doctorService.getFollowersCount(doctor.getDoctorId());
 		model.addAttribute("followercount", followerCount);
@@ -191,6 +195,9 @@ public class DoctorController {
     		doctor.setRating(docrating);
     	}
     	model.addAttribute("doctor", doctor);
+    	
+    	DoctorDetails doctorDetais = doctorService.getDoctorDetails(doctor.getDoctorId());
+		model.addAttribute("doctorDetails", doctorDetais);
 		
 		Patient patient = patientService.getCurrentPatient();
 		List<Doctor> doctorList = doctorService.getFollowedDoctors(patient.getPatientId());
@@ -280,6 +287,89 @@ public class DoctorController {
     	doctorService.addReview(review);
     	
     	return new ModelAndView("redirect:reviewlist.do?doctorid="+doctorId);
+    }
+    
+    @RequestMapping(value="/updatedoctorbiography.do", method={RequestMethod.POST})
+    public ModelAndView doUpadteDoctorBiography (ModelMap model,
+    		@RequestParam("areaOfPracticeName") String areaOfPracticeName,
+    		@RequestParam("areaOfPracticeDetails") String areaOfPracticeDetails, 
+    		@RequestParam("specialHonors1") String specialHonors1, 
+    		@RequestParam("specialHonors2") String specialHonors2, 
+    		@RequestParam("specialHonors3") String specialHonors3){
+    	
+    	Doctor doctor = doctorService.getCurrentDoctor();
+    	
+    	DoctorDetails doctorDetails = new DoctorDetails();
+    	doctorDetails.setDoctorId(doctor.getDoctorId());
+    	doctorDetails.setAreaOfPracticeName(areaOfPracticeName);
+    	doctorDetails.setAreaOfPracticeDetails(areaOfPracticeDetails);
+    	doctorDetails.setSpecialHonors1(specialHonors1);
+    	doctorDetails.setSpecialHonors2(specialHonors2);
+    	doctorDetails.setSpecialHonors3(specialHonors3);
+    	
+    	doctorService.updateDoctorBiography(doctorDetails);
+    	
+    	return new ModelAndView("redirect:doctorprofile.do");
+    }
+    
+    @RequestMapping(value="/updatedoctorpracticeinfo.do", method={RequestMethod.POST})
+    public ModelAndView doUpadteDoctorPracticeInfo (ModelMap model,
+    		@RequestParam("practiceName") String practiceName,
+    		@RequestParam("practiceAddress") String practiceAddress, 
+    		@RequestParam("practiceCity") String practiceCity, 
+    		@RequestParam("practiceState") String practiceState, 
+    		@RequestParam("practiceZip") String practiceZip,
+    		@RequestParam("practiceHours1") String practiceHours1,
+    		@RequestParam("practiceHours2") String practiceHours2,
+    		@RequestParam("website") String website){
+    	
+    	Doctor doctor = doctorService.getCurrentDoctor();
+    	
+    	DoctorDetails doctorDetails = new DoctorDetails();
+    	doctorDetails.setDoctorId(doctor.getDoctorId());
+    	doctorDetails.setPracticeName(practiceName);
+    	doctorDetails.setPracticeAddress(practiceAddress);
+    	doctorDetails.setPracticeCity(practiceCity);
+    	doctorDetails.setPracticeState(practiceState);
+    	doctorDetails.setPracticeZip(practiceZip);
+    	doctorDetails.setPracticeHours1(practiceHours1);
+    	doctorDetails.setPracticeHours2(practiceHours2);
+    	doctorDetails.setWebsite(website);
+    	
+    	doctorService.updateDoctorPracticeInformation(doctorDetails);
+    	
+    	return new ModelAndView("redirect:doctorprofile.do");
+    }
+    
+    @RequestMapping(value="/updatedoctoreducation.do", method={RequestMethod.POST})
+    public ModelAndView doUpadteDoctorEducation (ModelMap model,
+    		@RequestParam("residencies1") String residencies1,
+    		@RequestParam("residencies2") String residencies2,
+    		@RequestParam("residencies3") String residencies3,
+    		@RequestParam("medicalSchool1") String medicalSchool1,
+    		@RequestParam("medicalSchool2") String medicalSchool2,
+    		@RequestParam("medicalSchool3") String medicalSchool3,
+    		@RequestParam("affiliations1") String affiliations1, 
+    		@RequestParam("affiliations2") String affiliations2, 
+    		@RequestParam("affiliations3") String affiliations3){
+    	
+    	Doctor doctor = doctorService.getCurrentDoctor();
+    	
+    	DoctorDetails doctorDetails = new DoctorDetails();
+    	doctorDetails.setDoctorId(doctor.getDoctorId());
+    	doctorDetails.setResidencies1(residencies1);
+    	doctorDetails.setResidencies2(residencies2);
+    	doctorDetails.setResidencies3(residencies3);
+    	doctorDetails.setMedicalSchool1(medicalSchool1);
+    	doctorDetails.setMedicalSchool2(medicalSchool2);
+    	doctorDetails.setMedicalSchool3(medicalSchool3);
+    	doctorDetails.setAffiliations1(affiliations1);
+    	doctorDetails.setAffiliations2(affiliations2);
+    	doctorDetails.setAffiliations3(affiliations3);
+    	
+    	doctorService.updateDoctorEducation(doctorDetails);
+    	
+    	return new ModelAndView("redirect:doctorprofile.do");
     }
 
 }

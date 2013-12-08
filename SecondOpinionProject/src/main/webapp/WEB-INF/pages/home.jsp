@@ -66,7 +66,7 @@
 				</td>
 				<td>
 					<a href="askquestion.do">
-					<img class="menuimage" src="images/AskQtn.jpg"/></a>
+					<img class="menuimage" src="images/AskQtn1.png"/></a>
 				</td>
 			<tr>
 			<tr>

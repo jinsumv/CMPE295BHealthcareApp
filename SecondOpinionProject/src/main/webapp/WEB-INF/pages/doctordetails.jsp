@@ -34,7 +34,62 @@
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 
     <script type="text/javascript" src="js/travellog.js"></script>
+    <script type="text/javascript">
+		$( document ).ready(function() {
+			$("#bio-detail").hide();
+		    $("#bio-header").click(function() {
+		    	$("#bio-detail").toggle();
+		    });
+		    
+		    $("#practice-detail").hide();
+		    $("#practice-header").click(function() {
+		    	$("#practice-detail").toggle();
+		    });
+		    
+		    $("#education-detail").hide();
+		    $("#education-header").click(function() {
+		    	$("#education-detail").toggle();
+		    });
+		});
+    </script>
+    <style type="text/css">
+    ul {
+    	list-style-type: none;
+    }
     
+    .headers {
+    	font-size: 18px;
+    	font-weight: bold;
+    	padding: 8px 20px;
+    	background-image: -webkit-gradient(
+			linear,
+			left top,
+			left bottom,
+			color-stop(0.19, #FFFFFF),
+			color-stop(0.65, #F0F0F0),
+			color-stop(1, #E3E3E3)
+		);
+		background-image: -o-linear-gradient(bottom, #FFFFFF 19%, #F0F0F0 65%, #E3E3E3 100%);
+		background-image: -moz-linear-gradient(bottom, #FFFFFF 19%, #F0F0F0 65%, #E3E3E3 100%);
+		background-image: -webkit-linear-gradient(bottom, #FFFFFF 19%, #F0F0F0 65%, #E3E3E3 100%);
+		background-image: -ms-linear-gradient(bottom, #FFFFFF 19%, #F0F0F0 65%, #E3E3E3 100%);
+		background-image: linear-gradient(to bottom, #FFFFFF 19%, #F0F0F0 65%, #E3E3E3 100%);
+    }
+    .sub-headers {
+    	padding: 8px 20px;
+    }
+    .followers, .reviews {
+    	float:left;
+    	width:152px;
+    	height:50px;
+    	color:royalblue;
+    	text-align: center; "
+    	font-size: 18px;
+    	font-weight: bold;
+    	background:#E3E3E3;
+		border-radius: 5px;
+    }
+    </style>
   </head>
   
   <body class="body">
@@ -56,8 +111,8 @@
 			
 			<div id="docinf" style="float:right;padding-left:20px;padding-top:10px;">	
 			<label id="docname"><b>Dr. ${doctor.name}</b></label><br>
-			<label id="specialisation"><i>${doctor.areaOfPractice}</i></label><br>
-			<label id="achievements"><i>${doctor.achievements}</i></label><br>
+			<label id="specialisation"><i>${doctor.areaOfPractice}</i></label><br />
+			<label id="achievements"><i>${doctor.qualifyingDegree}</i></label>
 			</div>
 		</div>
 			
@@ -73,103 +128,98 @@
 			<a href="askquestion.do?doctorid=${doctor.doctorId}"><img src="images/SendmsgBtn.png" alt="send " width="152" height="35"/></a>
 		</div>
 			
-		<div style="float:left;background-color:#E1E1E8;width:152px;height:50px;color:royalblue;font-size:18px;text-align: center; font-weight: bold;">${followercount} <br> FOLLOWERS</div>
+		<div class="followers">${followercount} <br/> FOLLOWERS</div>
 		
-		<div style="margin-left:160px;background-color:#E1E1E8;width:152px;height:50px;color:royalblue;font-size:18px;vertical-align:middle;text-align: center; font-weight: bold;">
-			<a href="reviewlist.do?doctorid=${doctor.doctorId}" style="text-decoration:none;">${reviewcount} <br> REVIEWS</a>
+		<div class="reviews" style="margin-left:5px;">
+			<a href="reviewlist.do?doctorid=${doctor.doctorId}" style="text-decoration:none;">${reviewcount} <br/> REVIEWS</a>
 		</div>
+		<div style="clear:both;"></div>
 		
 		</section>
 		
-<section class="bottomcontent">
-	<details>
+<section class="bottomcontent" style="padding:0px;">
+	<div id="bio-header" class="headers">BIOGRAPHY</div>
+	<div id="bio-detail">
+	    <div class="sub-headers">
+			<h4>SPECIALITIES/AREAS OF PRACTICE</h4>
+			  
+			${doctorDetails.areaOfPracticeName}
+			 
+			<p>
+			${doctorDetails.areaOfPracticeDetails}
+			</p>
+	    </div>
+	    <div class="sub-headers">
+		   <h4>SPECIAL HONORS</h4>
+		   <ul>
+		   	  <c:if test="${not empty doctorDetails.specialHonors1}"><li>${doctorDetails.specialHonors1}</li></c:if>	
+		   	  <c:if test="${not empty doctorDetails.specialHonors2}"><li>${doctorDetails.specialHonors2}</li></c:if>	
+		   	  <c:if test="${not empty doctorDetails.specialHonors3}"><li>${doctorDetails.specialHonors3}</li></c:if>	
+		   </ul>
+	  	</div>
+  	</div>
 
-    <summary>BIO</summary>
 
-    <div>
-     <h5>SPECIALITIES/AREAS OF PRACTICE</h5>
-      <ul>
-      <li>Family Medicine</li>
-      </ul>
-    </div>
-     
-     <p><strong>Types of dental treatment: </strong> <em> ozone dentisty, laser, implants.</em><br>
-    I was formerly an Assistant Professor at university of Illinois.<br>  Aenean ultricies mi vitae est.
-    Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, 
-    ornare sit amet, wisi. </p>
-    
-    <div>
-    <h5>SPECIAL HONORS</h5>
-    <ul>
-      <li>Top Doctor, Chicago,IL - Winter 2013</li>
-      <li>Top Doctor, Chicago Region, IL - Summer 2013</li>
-    </ul>
-  </div>
 
-</details>
-
-<details>
-
-  <summary>PRACTICE INFORMATION</summary>
-     
-     <div>
-     <p><h5>PRACTICE LOCATION</h5>
-      Dentistry at Millenium Park<br>
-      8 S Michigan Avenue, Suite 1800<br>
-      Chicago, IL<br>
-      <b>P</b> 312750-900
-     </div></p>
+  <div  id="practice-header" class="headers">PRACTICE INFORMATION</div>
+     <div id="practice-detail">
+		<div class="sub-headers">
+		   <h4>PRACTICE LOCATION</h4>
+		    <p>
+		    ${doctorDetails.practiceName}<br/>
+		    ${doctorDetails.practiceAddress}<br/>
+		    ${doctorDetails.practiceCity}, ${doctorDetails.practiceState}<br/>
+		    ${doctorDetails.practiceZip}
+		   </p>
+		</div>
+		
+		<div class="sub-headers">
+		  <h4>OFFICE HOURS</h4>
+		  <p>
+		    <c:if test="${not empty doctorDetails.practiceHours1}">${doctorDetails.practiceHours1}</c:if><br/>
+		    <c:if test="${not empty doctorDetails.practiceHours2}">${doctorDetails.practiceHours2}</c:if>
+		  </p>
+		</div>
+		
+		<div class="sub-headers">
+		  <h4>PRACTICE WEBSITE</h4>
+		  <c:if test="${not empty doctorDetails.website}"><a href="${doctorDetails.website}">${doctorDetails.website}</a></c:if>
+		</div>
+	</div>
   
-  <div>
-    <h5>OFFICE HOURS</h5>
-    <ul>
-      <li>Mon - Wed 8am - 5pm</li>
-      <li>Thurs & Fri 8am - 3pm</li>
-    </ul>
-  </div>
-  
-  <div>
-    <h5>PRACTICE WEBSITE</h5>
-    <a href="www.test.com">www.test.com</a>
-  </div>
-  
-  <div>
-    <h5>LANGUAGES SPOKEN</h5>
-    English, Spanish
-  </div>
-</details>
 
-<details>
-
-    <summary>EDUCATION & EXPERIENCE</summary>
-
-    <div>
-    <h5>RESIDENCIES</h5>
-    <ul>
-      <li>St Michael Medical Center, Newark, NJ</li>
-    </ul>
-  </div>
-  
-    <div>
-    <h5>MEDICAL/GRADUATE SCHOOL</h5>
-    <ul>
-      <li>University of illinois College of Dentistry, Class of 1970</li>
-    </ul>
-  </div>
-  
-  <div>
-    <h5>AFFILIATIONS</h5>
-    <ul>
-      <li>WEST ESSEX MEDICAL GROUP</li>
-    </ul>
+    <div id="education-header" class="headers">EDUCATION &amp; EXPERIENCE</div>
+	<div id="education-detail">
+		<div class="sub-headers">
+	    <h4>RESIDENCIES</h4>
+	    <ul>
+	       <c:if test="${not empty doctorDetails.residencies1}"><li>${doctorDetails.residencies1}</li></c:if>
+	       <c:if test="${not empty doctorDetails.residencies2}"><li>${doctorDetails.residencies2}</li></c:if>
+	       <c:if test="${not empty doctorDetails.residencies3}"><li>${doctorDetails.residencies3}</li></c:if>
+	    </ul>
+	  </div>
+	  
+	    <div class="sub-headers">
+	    <h4>MEDICAL/GRADUATE SCHOOL</h4>
+	    <ul>
+	      <c:if test="${not empty doctorDetails.medicalSchool1}"><li>${doctorDetails.medicalSchool1}</li></c:if>
+	      <c:if test="${not empty doctorDetails.medicalSchool2}"><li>${doctorDetails.medicalSchool2}</li></c:if>
+	      <c:if test="${not empty doctorDetails.medicalSchool3}"><li>${doctorDetails.medicalSchool3}</li></c:if>
+	    </ul>
+	  </div>
+	  
+	  <div class="sub-headers">
+	    <h4>AFFILIATIONS</h4>
+	    <ul>
+	      <c:if test="${not empty doctorDetails.affiliations1}"><li>${doctorDetails.affiliations1}</li></c:if>
+	      <c:if test="${not empty doctorDetails.affiliations2}"><li>${doctorDetails.affiliations2}</li></c:if>
+	      <c:if test="${not empty doctorDetails.affiliations3}"><li>${doctorDetails.affiliations3}</li></c:if>
+	    </ul>
+	  </div>
   </div>
   
-</details>
 </section>
 </div></div>
 
-<!--  	<footer class="mainFooter">
-	  <p>Copyright &copy; <a href="#" title="2ndhtml"></a></p>
-	</footer> -->
 	 </body>
 </html>
