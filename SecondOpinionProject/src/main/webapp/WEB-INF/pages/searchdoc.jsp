@@ -45,7 +45,7 @@
 	</header>
 
     <div class="mainContent" style="padding:10px;">
-	    <form action="doctorsearchbyname.do" method="GET">
+	    <form action="doctorsearchbyname.do" method="get">
 			<input type="search" name="docname" placeholder="Search by doctor name..." style="width:100%; font-size:18px;font-style:italic;" />
 			<input type="submit" style="display:none;">
 		</form>	

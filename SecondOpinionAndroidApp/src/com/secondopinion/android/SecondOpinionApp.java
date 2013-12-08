@@ -21,7 +21,7 @@ import android.widget.ProgressBar;
 
 public class SecondOpinionApp extends Activity {
     /** Special IP in Android to access the host machine. */
-    public static final String LOCALHOST = "10.0.2.2";
+    public static final String LOCALHOST = "http://10.0.2.2/";
 
     private final static int FILECHOOSER_REQUEST_CODE = 1;
 
@@ -39,6 +39,7 @@ public class SecondOpinionApp extends Activity {
 
         webView.setWebViewClient(new MyWebViewClient());
         webView.loadUrl("http://jinsudev-edwemmgfpw.elasticbeanstalk.com/"); // "file:///android_asset/www/home2.html"
+        //webView.loadUrl(LOCALHOST);
         webView.setWebChromeClient(new MyWebChromeClient());
     }
 
