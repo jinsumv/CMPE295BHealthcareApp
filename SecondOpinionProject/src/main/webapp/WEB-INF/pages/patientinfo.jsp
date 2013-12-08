@@ -4,31 +4,35 @@
 	<div id = "profile-picture" style="float:left; padding-right: 20px;padding-left: 15px;" >		
 			
 			<img class="userpic" src="${patient.profilePicUrl}"  style="border:2px solid grey;"/>
+			
+			
 	</div>	
 	
 	    <div style="float:left; padding-right: 20px;" >  
 	    
-	     <form id="profile-picture-upload-form" action="patientnewprofilepic.do" method="post" enctype="multipart/form-data">
-                <input id="profile-picture-upload" type="file" name="file" accept="image/*" capture="camera" class="hidden"/>
-                <!-- <input class="hidden" type="submit" name="Upload" value="Upload"/> -->
-            </form>  
+	    <form id="profile-picture-upload-form" action="patientnewprofilepic.do" method="post" enctype="multipart/form-data">
+                <input id="profile-picture-upload" onchange="javascript:console.log('Submitting form');$('#profile-picture-upload-form').submit();" type="file" name="file" accept="image/*" capture="camera" class="hidden"/>
+         </form>  
 
-<script type="text/javascript">	    
+<script type="text/javascript">     
 $(function() {
     $('#profile-picture').bind('click', function() {
-    	
         console.log("Inside click of hidden");
         $('#profile-picture-upload').click();
     });
 });
 
-$(function() {
-    $("#profile-picture-upload").change(function() {
-        console.log("Inside change of file upload. Submitting form");
-        $("#profile-picture-upload-form").submit();
-    });
-});
-</script>           
+
+// Does not work on Android webview. Commenting it out.
+// $("document").ready(function() {
+//    $('#profile-picture-upload2').change(function() {
+//        console.log("Inside change of file upload. Submitting form");
+//        $('#profile-picture-upload-form').submit();
+//    });
+//});
+</script>     
+            
+	           
         </div>  
 		<div id = "userinf">
 			<p > Name: ${patient.name} </p>

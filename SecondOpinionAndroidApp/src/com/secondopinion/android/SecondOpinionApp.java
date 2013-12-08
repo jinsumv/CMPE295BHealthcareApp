@@ -45,13 +45,16 @@ public class SecondOpinionApp extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        Log.i("info", "Inside onctivityResult");
+        Log.e("info", "Inside onctivityResult. requestCode=" + requestCode);
         if (requestCode == FILECHOOSER_REQUEST_CODE) {
+            Log.e("info", "requestCode is FILECHOOSER_REQUEST_CODE");
             if (null == uploadMessage) {
+                Log.e("info", "uploadMessage is null. returning");
                 return;
             }
 
             Uri result = intent == null || resultCode != RESULT_OK ? null : intent.getData();
+            Log.e("info", result.toString());
             uploadMessage.onReceiveValue(result);
             uploadMessage = null;
         }
@@ -96,7 +99,6 @@ public class SecondOpinionApp extends Activity {
             filePickerIntent.setType("image/*,video/*");
             SecondOpinionApp.this.startActivityForResult(Intent.createChooser(filePickerIntent, "File Chooser"),
                     SecondOpinionApp.FILECHOOSER_REQUEST_CODE);
-
         }
     }
 
