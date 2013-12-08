@@ -13,12 +13,12 @@
 		<property name="username" value="secondopinion" />
 		<property name="password" value="password" />
 		
-		<!-- 
-
+	<!-- 
 		<property name="url" value="jdbc:mysql://localhost:3306/secondopinion" />
 		<property name="username" value="root" /> 
-		<property name="password" value="" /> -->  
-		
+		<property name="password" value="" />  
+	 -->
+	 	
 	</bean>
 
 </beans>

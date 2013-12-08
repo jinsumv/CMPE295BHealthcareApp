@@ -11,7 +11,6 @@
     <link href="css/main.css" media="screen" rel="stylesheet" type="text/css"/>
     <title>Healthcare App</title>
 
-
     <!-- Popup related includes -->
     <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" src="js/jquery.jmpopups-0.5.1.js"></script>
@@ -36,7 +35,7 @@
     <script type="text/javascript" src="js/travellog.js"></script>
     <script type="text/javascript">
 		$( document ).ready(function() {
-			$("#bio-detail").hide();
+			$("#bio-detail").show();
 		    $("#bio-header").click(function() {
 		    	$("#bio-detail").toggle();
 		    });
@@ -74,6 +73,7 @@
 		background-image: -webkit-linear-gradient(bottom, #FFFFFF 19%, #F0F0F0 65%, #E3E3E3 100%);
 		background-image: -ms-linear-gradient(bottom, #FFFFFF 19%, #F0F0F0 65%, #E3E3E3 100%);
 		background-image: linear-gradient(to bottom, #FFFFFF 19%, #F0F0F0 65%, #E3E3E3 100%);
+		border-top: 1px solid #E3E3E3;
     }
     .sub-headers {
     	padding: 8px 20px;
@@ -95,6 +95,7 @@
 	    border: none;
 	    font-size: 14px;
 	    width: 90%;
+	    background-color: #F0F0F0;
   	}
   	.basicdetails td {
   		width: 30%;
@@ -139,7 +140,7 @@
 	<div id="bio-detail">	
 		<form action="updatedoctorbiography.do" method="post">
 	    <div class="sub-headers">
-	    	<h4>SPECIALITIES/AREAS OF PRACTICE</h4>
+	    	<h4>SPECIALITIES</h4>
 	    	<table class = "usertable">
 	    		<tr class = "basicdetails">
               		<td> Speciality </td>

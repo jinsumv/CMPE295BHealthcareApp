@@ -12,7 +12,6 @@
     <link href="css/main.css" media="screen" rel="stylesheet" type="text/css"/>
     <title>${journal.title}</title>
 
-
     <!-- Popup related includes -->
     <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" src="js/jquery.jmpopups-0.5.1.js"></script>
@@ -99,12 +98,12 @@
 			 <select name="areaofpractice" style='width: 100%' required>
 				<option value="">Area of practice</option>
 				<option value="Cardiology">Cardiology</option>
-				<option value="Endocrinology">Dermatology</option>
-				<option value="Gastroenterology">Dentistry</option>
-				<option value="Internal Medicine">Gastroentrology</option>
-				<option value="Neurology">General Surgery</option>
-				<option value="Neurosurgery">Gynecology</option>
-				<option value="Opthalmology">Internal Medicine</option>
+				<option value="Dermatology">Dermatology</option>
+				<option value="Dentistry">Dentistry</option>
+				<option value="Gastroentrology">Gastroentrology</option>
+				<option value="General Surgery">General Surgery</option>
+				<option value="Gynecology">Gynecology</option>
+				<option value="Internal Medicine">Internal Medicine</option>
 				<option value="Orthopaedics">Orthopaedics</option>
 				<option value="Pediatrics">Pediatrics</option>
 			</select><br><br>
@@ -121,12 +120,7 @@
 			<input type="image" src="images/SignUpBtn.jpg" name="Submit Form" width="100%" height="50px" style="padding-top:10px;"/>
 		</form></p>
     	</div>
-    	  			  
-		
-
-             
-			  
-	</div>
+   	</div>
   </div>
 </div>
 	

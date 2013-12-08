@@ -58,8 +58,8 @@
 				   			 	<br/>
 			   					${conversation.firstComment.text}
 			   					<br/>
-			   					Likes: ${conversation.likes}&nbsp;<img src="images/like.jpg" width=30px height=30px>&nbsp;&nbsp;
-			   					Dislikes: ${conversation.dislikes}&nbsp;<img src="images/dislike.jpg" width=30px height=30px>
+			   					Likes: ${conversation.likes}&nbsp;<img src="images/like.jpg" width=30px height=30px style="opacity:0.4;">&nbsp;&nbsp;
+			   					Dislikes: ${conversation.dislikes}&nbsp;<img src="images/dislike.jpg" width=30px height=30px style="opacity:0.4;">
 				   			</div>
 				   			
 						</c:forEach>

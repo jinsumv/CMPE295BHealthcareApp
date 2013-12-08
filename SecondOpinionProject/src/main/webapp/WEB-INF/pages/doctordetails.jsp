@@ -11,7 +11,6 @@
     <link href="css/main.css" media="screen" rel="stylesheet" type="text/css"/>
     <title>Healthcare App</title>
 
-
     <!-- Popup related includes -->
     <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" src="js/jquery.jmpopups-0.5.1.js"></script>
@@ -146,7 +145,7 @@
 	    		<img src="images/doc_speciality.png" width=50px height=60px />
 	    	</div>
 	    	<div style="float:left;">
-			<h4>SPECIALITIES/AREAS OF PRACTICE</h4>
+			<h4>SPECIALITIES</h4>
 			  
 			${doctorDetails.areaOfPracticeName}
 			 

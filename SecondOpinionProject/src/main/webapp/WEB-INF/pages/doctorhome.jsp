@@ -40,7 +40,8 @@
   <body class="body">
 	<header class="mainheader">
           <img src="images/Header.jpg" style="z-index=-1;">
-          <a href="<c:url value="/j_spring_security_logout"/>"><img src="images/power_blue.png" style="position:absolute; top:8px;right:12px;width:35px;height:35px;"></a>	
+          <a href="<c:url value="/j_spring_security_logout"/>">
+          <img src="images/power_blue.png" style="position:absolute; top:8px;right:12px;width:35px;height:35px;"></a>	
 	</header>
 
  	<div class="mainContent">
