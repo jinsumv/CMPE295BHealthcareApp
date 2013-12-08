@@ -46,9 +46,12 @@
 		<div class="content">
 		<section class ="topcontent" >
 		
-		<div id="doc_pic" class="doc_details">
+		<div id="doc_pic" class="doc_details" style="position:relative;">
 			<div style="float:left;">
-			<img src="images/doctor1.jpg" alt="doc profile" width="92" height="92"/></a> 	
+			<c:if test="${not showfollowbutton}">
+				<img src="images/blue-ribbon.png" width=30px height=30px style="position:absolute;top:5px;">
+			</c:if>
+			<img src="images/doctor1.jpg" alt="doc profile" width="92" height="92" style="border:2px solid grey;" /></a> 	
 			</div>
 			
 			<div id="docinf" style="float:right;padding-left:20px;padding-top:10px;">	

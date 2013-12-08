@@ -116,33 +116,59 @@ public class DoctorController {
     @RequestMapping(value="/doctorsearchlist.do", method={RequestMethod.GET})
     public void doDocSearchList (ModelMap model,
     		@RequestParam("speciality") String speciality) {
+    	Patient patient = patientService.getCurrentPatient();
+		List<Doctor> followedDoctorsList = doctorService.getFollowedDoctors(patient.getPatientId());
+    	
     	List<Doctor> doctorList = doctorService.findDoctorBySpeciality(speciality);
     	for (Doctor doctor : doctorList)
     	{
 	    	List<Review> reviewList = doctorService.getReviewsForDoctor(doctor.getDoctorId());
-	    		int sumofratings = 0;
-		    	for (Review review : reviewList) {
-		    		sumofratings = sumofratings + review.getRate();
-		    	}
-		    	int docrating = sumofratings/reviewList.size();
-		    	doctor.setRating(docrating);
+    		int sumofratings = 0;
+	    	for (Review review : reviewList) {
+	    		sumofratings = sumofratings + review.getRate();
+	    	}
+	    	if (reviewList.size() > 0) {
+	    		int docrating = sumofratings/reviewList.size();
+	    		doctor.setRating(docrating);
+	    	}
+	    	
+			for (Doctor followeddoctor : followedDoctorsList)
+			{
+				if (doctor.getDoctorId() == followeddoctor.getDoctorId()) {
+					doctor.setFollowed(true);
+					break;
+				}
+			}
 	    }
+    	
     	model.addAttribute("doctorList", doctorList);
     }
     
     @RequestMapping(value="/doctorsearchbyname.do", method={RequestMethod.GET})
     public String doDocSearchByName (ModelMap model,
     		@RequestParam("docname") String doctorname) {
+    	Patient patient = patientService.getCurrentPatient();
+		List<Doctor> followedDoctorsList = doctorService.getFollowedDoctors(patient.getPatientId());
+    	
     	List<Doctor> doctorList = doctorService.findDoctorByName(doctorname);
     	for (Doctor doctor : doctorList)
     	{
 	    	List<Review> reviewList = doctorService.getReviewsForDoctor(doctor.getDoctorId());
-	    		int sumofratings = 0;
-		    	for (Review review : reviewList) {
-		    		sumofratings = sumofratings + review.getRate();
-		    	}
-		    	int docrating = sumofratings/reviewList.size();
-		    	doctor.setRating(docrating);
+    		int sumofratings = 0;
+	    	for (Review review : reviewList) {
+	    		sumofratings = sumofratings + review.getRate();
+	    	}
+	    	if (reviewList.size() > 0) {
+	    		int docrating = sumofratings/reviewList.size();
+	    		doctor.setRating(docrating);
+	    	}
+	    	for (Doctor followeddoctor : followedDoctorsList)
+			{
+				if (doctor.getDoctorId() == followeddoctor.getDoctorId()) {
+					doctor.setFollowed(true);
+					break;
+				}
+			}
 	    }
     	model.addAttribute("doctorList", doctorList);
     	return "doctorsearchlist";
@@ -160,9 +186,10 @@ public class DoctorController {
     	for (Review review : reviewList) {
     		sumofratings = sumofratings + review.getRate();
     	}
-    	int docrating = sumofratings/reviewList.size();
-    	doctor.setRating(docrating);
-    	
+    	if (reviewList.size() > 0) {
+    		int docrating = sumofratings/reviewList.size();
+    		doctor.setRating(docrating);
+    	}
     	model.addAttribute("doctor", doctor);
 		
 		Patient patient = patientService.getCurrentPatient();
@@ -207,8 +234,11 @@ public class DoctorController {
 	    	for (Review review : reviewList) {
 	    		sumofratings = sumofratings + review.getRate();
 	    	}
-	    	int docrating = sumofratings/reviewList.size();
-	    	doctor.setRating(docrating);
+	    	if (reviewList.size() > 0) {
+	    		int docrating = sumofratings/reviewList.size();
+	    		doctor.setRating(docrating);
+	    	}
+	    	doctor.setFollowed(true);
     	}
     	model.addAttribute("doctorList", doctorList);
     	return "doctorsearchlist";
