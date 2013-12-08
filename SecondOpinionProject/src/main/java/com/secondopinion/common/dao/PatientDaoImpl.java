@@ -138,14 +138,15 @@ public class PatientDaoImpl implements PatientDao{
 		Connection conn = null;
  
 		try {
+			System.out.println("pic " + patient.getProfilePicUrl());
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, patient.getName());
 			ps.setDate(2, new java.sql.Date(patient.getDateOfBirth().getTime()));
 			ps.setString(3, patient.getGender());
 			ps.setString(4, patient.getLocation());
-			ps.setInt(5, patient.getPatientId());
-			ps.setString(6, patient.getProfilePicUrl());
+			ps.setString(5, patient.getProfilePicUrl());
+			ps.setInt(6, patient.getPatientId());
 			ps.executeUpdate();
 			ps.close();
  

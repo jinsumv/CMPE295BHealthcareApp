@@ -99,8 +99,8 @@ public class PatientController {
 	public ModelAndView doPatientNewProfilePicUpload(ModelMap model, 
 									   @RequestParam("file") MultipartFile file) throws IOException {
 		Patient patient = patientService.getCurrentPatient();
-		System.out.println("Patient: " + patient.getName() + " uploaded a file.");
-		System.out.println("Original file name: " + file.getOriginalFilename());
+		System.out.println("Controller says :Patient: " + patient.getName() + " uploaded a file.");
+		System.out.println("Controller says : Original file name: " + file.getOriginalFilename());
 		
 		patientService.updateProfilePic(patient, file);
 		return new ModelAndView("redirect:patientprofile.do");

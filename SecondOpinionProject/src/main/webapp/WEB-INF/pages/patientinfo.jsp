@@ -2,14 +2,31 @@
 <div class = "userprofile_top" >
 
 	<c:if test="${not empty patient}">
-	    <div style="float:left; padding-right: 20px;" onclick="location.href='patientprofile.do;'">    
-	     <img class="userpic" src="${patient.profilePicUrl}"/>
-	     <form action="patientnewprofilepic.do" method="post" enctype="multipart/form-data">
-                <input type="file" name="file" accept="image/*" capture="camera" />
-                <input type="submit" name="Upload" value="Upload"/>
+	    <div style="float:left; padding-right: 20px;" >  
+	    <div id="profile-picture">  
+	       <img class="userpic" src="${patient.profilePicUrl}"/>
+	     </div>
+	     <form id="profile-picture-upload-form" action="patientnewprofilepic.do" method="post" enctype="multipart/form-data">
+                <input id="profile-picture-upload" type="file" name="file" accept="image/*" capture="camera" class="hidden"/>
+                <!-- <input class="hidden" type="submit" name="Upload" value="Upload"/> -->
             </form>  
-	     
-           
+
+<script type="text/javascript">	    
+$(function() {
+    $('#profile-picture').bind('click', function() {
+    	
+        console.log("Inside click of hidden");
+        $('#profile-picture-upload').click();
+    });
+});
+
+$(function() {
+    $("#profile-picture-upload").change(function() {
+        console.log("Inside change of file upload. Submitting form");
+        $("#profile-picture-upload-form").submit();
+    });
+});
+</script>           
         </div>  
 		<div id = "userinf">
 			<p > Name: ${patient.name} </p>

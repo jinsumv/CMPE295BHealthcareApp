@@ -188,6 +188,7 @@ public class PatientService {
 						+ keyName;
 				
 				patient.setProfilePicUrl(url);
+				System.out.println(patient.getProfilePicUrl());
 				patientDao.updatePatient(patient);
 			}
 
