@@ -11,8 +11,9 @@
 
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <link href="css/main.css" media="screen" rel="stylesheet" type="text/css"/>
-    <title>${journal.title}</title>
+    <title>Second Opinion</title>
 
 
     <!-- Popup related includes -->
@@ -77,6 +78,7 @@
 			<b>Sign Up</b> Its helpful, private, and FREE!</p>
 			<p>
 			<form action="patientsignup.do" method="post" modelAttribute="addPatientForm">
+			  <c:if test="${param.userNameError == 'true'}"><div style="color:red;">User with email already exists!</div></c:if>
   			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com" pattern="[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]{2,4}" autofocus style="width: 100%" required >
   			  <input type="password" name="pwd" placeholder="New Password" pattern="(?=(.*[A-Z]){1,})(?=(.*[a-z]){1,})(?=(.*[^A-Za-z0-9]){1,}).{7,24}" title="Minimum 1Upper, 1Lower, 1 Special" style='width: 100%' required >
   			  <input type="text" name="fullname" placeholder="Full Name" pattern="([A-Za-z]+\s?)*" title="Alphabets only" style='width: 100%' required >

@@ -81,7 +81,8 @@ public class DoctorDaoImpl implements DoctorDao{
 					rs.getString("QUALIFYING_DEGREE"),
 					rs.getString("AREA_OF_PRACTICE"),
 					rs.getString("LICENSE_NUMBER"),
-					rs.getString("ACHIEVEMENTS")
+					rs.getString("ACHIEVEMENTS"),
+					rs.getString("PROFILE_PIC_URL")
 				);
 			}
 			rs.close();
@@ -147,7 +148,8 @@ public class DoctorDaoImpl implements DoctorDao{
 					rs.getString("QUALIFYING_DEGREE"),
 					rs.getString("AREA_OF_PRACTICE"),
 					rs.getString("LICENSE_NUMBER"),
-					rs.getString("ACHIEVEMENTS")
+					rs.getString("ACHIEVEMENTS"),
+					rs.getString("PROFILE_PIC_URL")
 				);
 			}
 			rs.close();
@@ -186,7 +188,8 @@ public class DoctorDaoImpl implements DoctorDao{
 					rs.getString("QUALIFYING_DEGREE"),
 					rs.getString("AREA_OF_PRACTICE"),
 					rs.getString("LICENSE_NUMBER"),
-					rs.getString("ACHIEVEMENTS")
+					rs.getString("ACHIEVEMENTS"),
+					rs.getString("PROFILE_PIC_URL")
 				);
 			}
 			rs.close();
@@ -225,7 +228,8 @@ public class DoctorDaoImpl implements DoctorDao{
 					rs.getString("QUALIFYING_DEGREE"),
 					rs.getString("AREA_OF_PRACTICE"),
 					rs.getString("LICENSE_NUMBER"),
-					rs.getString("ACHIEVEMENTS")
+					rs.getString("ACHIEVEMENTS"),
+					rs.getString("PROFILE_PIC_URL")
 				);
 				doctorList.add(doctor);
 			}
@@ -265,7 +269,8 @@ public class DoctorDaoImpl implements DoctorDao{
 					rs.getString("QUALIFYING_DEGREE"),
 					rs.getString("AREA_OF_PRACTICE"),
 					rs.getString("LICENSE_NUMBER"),
-					rs.getString("ACHIEVEMENTS")
+					rs.getString("ACHIEVEMENTS"),
+					rs.getString("PROFILE_PIC_URL")
 				);
 				doctorList.add(doctor);
 			}
@@ -331,7 +336,8 @@ public class DoctorDaoImpl implements DoctorDao{
 					rs.getString("QUALIFYING_DEGREE"),
 					rs.getString("AREA_OF_PRACTICE"),
 					rs.getString("LICENSE_NUMBER"),
-					rs.getString("ACHIEVEMENTS")
+					rs.getString("ACHIEVEMENTS"),
+					rs.getString("PROFILE_PIC_URL")
 				);
 				doctorList.add(doctor);
 			}
@@ -597,4 +603,42 @@ public class DoctorDaoImpl implements DoctorDao{
 			}
 		}
 	}
+	
+	@Override
+	public void updateDoctor(Doctor doctor) {
+		String sql = "UPDATE doctor " +
+				"SET DOCTOR_NAME=?, DATE_OF_BIRTH=?, GENDER=?, QUALIFYING_DEGREE=?, AREA_OF_PRACTICE=?, LICENSE_NUMBER=?, ACHIEVEMENTS=?, PROFILE_PIC_URL=? " +
+				"WHERE DOCTOR_ID=?";
+		Connection conn = null;
+ 
+		try {
+			System.out.println("pic " + doctor.getProfilePicUrl());
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, doctor.getName());
+			ps.setDate(2, new java.sql.Date(doctor.getDateOfBirth().getTime()));
+			ps.setString(3, doctor.getGender());
+			ps.setString(4, doctor.getQualifyingDegree());
+			ps.setString(5, doctor.getAreaOfPractice());
+			ps.setString(6, doctor.getLicenseNumber());
+			ps.setString(7, doctor.getAchievements());
+			ps.setString(8, doctor.getProfilePicUrl());
+			ps.setInt(9, doctor.getDoctorId());
+			
+			ps.executeUpdate();
+			ps.close();
+ 
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+ 
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
 }
+
+

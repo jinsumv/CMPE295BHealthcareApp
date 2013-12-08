@@ -8,6 +8,7 @@
 <%@page import="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter"%><html><head>
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <link href="css/main.css" media="screen" rel="stylesheet" type="text/css"/>
     <title>Healthcare App</title>
 
@@ -106,7 +107,7 @@
 			<c:if test="${not showfollowbutton}">
 				<img src="images/blue-ribbon.png" width=30px height=30px style="position:absolute;top:5px;">
 			</c:if>
-			<img src="images/doctor1.jpg" alt="doc profile" width="92" height="92" style="border:2px solid grey;" /></a> 	
+			<img src="${doctor.profilePicUrl}" alt="doc profile" width="92" height="92" style="border:2px solid grey;" /></a> 	
 			</div>
 			
 			<div id="docinf" style="float:right;padding-left:20px;padding-top:10px;">	

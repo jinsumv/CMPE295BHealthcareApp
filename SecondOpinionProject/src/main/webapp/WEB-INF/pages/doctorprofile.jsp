@@ -8,6 +8,7 @@
 <%@page import="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter"%><html><head>
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <link href="css/main.css" media="screen" rel="stylesheet" type="text/css"/>
     <title>Healthcare App</title>
 
@@ -114,9 +115,10 @@
 		<section class ="topcontent" >
 		
 		<div id="doc_pic" class="doc_details" style="position:relative;">
-			<div style="float:left;">
-			<img src="images/doctor1.jpg" alt="doc profile" width="92" height="92" style="border:2px solid grey;" /></a> 	
+			<div id = "dr-profile-picture" style="float:left;">
+			<img src="${doctor.profilePicUrl}"  alt="doc profile" width="92" height="92" style="border:2px solid grey;" /></a> 	
 			</div>
+			
 			
 			<div id="docinf" style="float:right;padding-left:20px;padding-top:10px;">	
 			<label id="docname"><b>Dr. ${doctor.name}</b></label><br>
@@ -125,6 +127,20 @@
 			</div>
 		</div>
 		<div style="clear:both;padding-bottom:10px;"></div>
+		
+		<form id="dr-profile-picture-upload-form" action="doctornewprofilepic.do" method="post" enctype="multipart/form-data">
+                <input id="dr-profile-picture-upload" onchange="javascript:console.log('Submitting form');$('#dr-profile-picture-upload-form').submit();" type="file" name="file" accept="image/*" capture="camera" class="hidden"/>
+            </form>  
+
+<script type="text/javascript">     
+$(function() {
+    $('#dr-profile-picture').bind('click', function() {
+        console.log("Inside click of hidden");
+        $('#dr-profile-picture-upload').click();
+    });
+});
+</script>           
+            
 			
 		<div class="followers">${followercount} <br/> FOLLOWERS</div>
 		

@@ -25,4 +25,5 @@ public interface DoctorDao {
 	public DoctorDetails getDoctorDetails(int doctorId);
 	Doctor getNewDoctor();
 	void insertDoctorDetails(Doctor doctor);
+	public void updateDoctor(Doctor doctor);
 }

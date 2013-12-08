@@ -1,5 +1,6 @@
 package com.secondopinion.common.controller;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.secondopinion.common.model.Comment;
@@ -83,15 +85,21 @@ public class DoctorController {
 			ModelAndView modelView = new ModelAndView("redirect:doctorregistration.do");
 			return modelView;
         }
-
         System.out.println("Captcha Answer is correct");
+        
+        User existignUser = userService.findUserByUserName(email);
+        if (existignUser != null){
+        	model.addAttribute("userNameError", true);
+			ModelAndView modelView = new ModelAndView("redirect:doctorregistration.do");
+			return modelView;
+        }
 
     	User user = new User( -1, email, password, true);
         user = userService.createUser(user);
         
         SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy");
         Date dob = dateFormatter.parse(dateOfBirth);
-        doctor = new Doctor(-1, -1, fullName, dob, gender, qualifyingDegree, areaOfPractice, licenseNumber, achievements);
+        doctor = new Doctor(-1, -1, fullName, dob, gender, qualifyingDegree, areaOfPractice, licenseNumber, achievements, null);
         
         doctorService.createDoctor(user, doctor);
         return new ModelAndView("redirect:welcome.do");
@@ -99,6 +107,8 @@ public class DoctorController {
     
     @RequestMapping(value="/doctorprofile.do", method={RequestMethod.GET})
     public void doDoctorProfile (ModelMap model) {
+    	
+    	
     	Doctor doctor = doctorService.getCurrentDoctor();
 		model.addAttribute("doctor", doctor);
 		
@@ -216,6 +226,17 @@ public class DoctorController {
 		List<Review> reviewList1 = doctorService.getReviewsForDoctor(doctorId);
 		model.addAttribute("reviewcount", reviewList1.size());
     }
+    
+    @RequestMapping(value="/doctornewprofilepic.do", method={RequestMethod.POST})
+	public ModelAndView doDoctorNewProfilePicUpload(ModelMap model, 
+									   @RequestParam("file") MultipartFile file) throws IOException {
+    	Doctor doctor = doctorService.getCurrentDoctor();
+		System.out.println("Controller says :Patient: " + doctor.getName() + " uploaded a file.");
+		System.out.println("Controller says : Original file name: " + file.getOriginalFilename());
+		
+		doctorService.updateProfilePic(doctor, file);
+		return new ModelAndView("redirect:doctorprofile.do");
+	}
     
     @RequestMapping(value = "/followdoctor.do", method = RequestMethod.GET)
     public ModelAndView doPatientAccount (ModelMap map,

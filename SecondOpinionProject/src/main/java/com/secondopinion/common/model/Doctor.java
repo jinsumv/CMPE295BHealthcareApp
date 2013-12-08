@@ -14,12 +14,13 @@ public class Doctor implements Person {
 	String achievements;
 	int rating;
 	boolean isFollowed;
+	String profilePicUrl;
 	
 	public Doctor() { } // Default constructor needed for Captcha
 	
 	public Doctor(int doctorId, int userId, String name, Date dateOfBirth,
 			String gender, String qualifyingDegree, String areaOfPractice,
-			String licenseNumber, String achievements) {
+			String licenseNumber, String achievements, String profilePicUrl) {
 		super();
 		this.doctorId = doctorId;
 		this.userId = userId;
@@ -30,6 +31,7 @@ public class Doctor implements Person {
 		this.areaOfPractice = areaOfPractice;
 		this.licenseNumber = licenseNumber;
 		this.achievements = achievements;
+		this.profilePicUrl = profilePicUrl;
 	}
 	public int getDoctorId() {
 		return doctorId;
@@ -62,6 +64,10 @@ public class Doctor implements Person {
 	public int getRating() {
 		return rating;
 	}
+	
+	public String getProfilePicUrl() {
+		return profilePicUrl;
+	}
 
 	public void setRating(int rating) {
 		this.rating = rating;
@@ -75,6 +81,9 @@ public class Doctor implements Person {
 		this.isFollowed = isFollowed;
 	}
 	
+	public void setProfilePicUrl(String profilePicUrl) {
+		this.profilePicUrl = profilePicUrl;
+	}
 	
 	
 }

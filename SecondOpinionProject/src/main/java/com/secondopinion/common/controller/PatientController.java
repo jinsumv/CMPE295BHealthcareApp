@@ -81,9 +81,16 @@ public class PatientController {
 			return modelView;
         	//FieldError fieldError = new FieldError(objectName, field, defaultMessage)
         } 
-        
         System.out.println("Captcha Answer is correct");
         //System.out.println("Captcha Answer is correct");
+        
+        User existignUser = userService.findUserByUserName(email);
+        if (existignUser != null){
+        	model.addAttribute("userNameError", true);
+			ModelAndView modelView = new ModelAndView("redirect:patientregistration.do");
+			return modelView;
+        }
+        
         User user = new User( -1, email, password, true);
         user = userService.createUser(user);
             
