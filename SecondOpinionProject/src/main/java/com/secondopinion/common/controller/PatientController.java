@@ -87,7 +87,7 @@ public class PatientController {
         User user = new User( -1, email, password, true);
         user = userService.createUser(user);
             
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy");
         Date dob = dateFormatter.parse(dateOfBirth);
         patient = new Patient(-1, -1, fullName, dob, gender, location);
         patientService.createPatient(user, patient);
