@@ -8,16 +8,16 @@
 
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		
-		
+	<!--  	  
 		<property name="url" value="jdbc:mysql://aa17i4a3uffjdw0.cxrmlfsl2tut.us-west-2.rds.amazonaws.com:3306/secondopinion" />
 		<property name="username" value="secondopinion" />
-		<property name="password" value="password" />
+		<property name="password" value="password" /> -->
 		
-		<!-- 
+	
 
 		<property name="url" value="jdbc:mysql://localhost:3306/secondopinion" />
 		<property name="username" value="root" /> 
-		<property name="password" value="" /> -->  
+		<property name="password" value="" /> 
 		
 	</bean>
 

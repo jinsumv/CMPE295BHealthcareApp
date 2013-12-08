@@ -53,10 +53,10 @@
 		   					<c:if test="${doctor.followed}">
 		   						<img src="images/blue-ribbon.png" width=30px height=30px style="position:absolute;top:5px;">
 		   					</c:if>
-							<img src="images/doctor1.jpg" width=100px height=100px style="border:2px solid grey;">
+							<img src="${doctor.profilePicUrl}" width=100px height=100px style="border:2px solid grey;">
 						</div>
 						<h3>Dr. ${doctor.name}</h3>
-						
+					
 						<p>${doctor.areaOfPractice}<br>${doctor.qualifyingDegree}<br>
 						<div class="rating">
 						    <input type="radio" name="rating${outer.index}" value="0" <c:if test="${doctor.rating == 0}">checked</c:if> disabled/><span id="hide"></span>
