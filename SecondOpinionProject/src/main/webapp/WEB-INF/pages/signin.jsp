@@ -9,8 +9,10 @@
 
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png"/>
     <link href="css/main.css" media="screen" rel="stylesheet" type="text/css"/>
-    <title>${journal.title}</title>
+    <title>Second Opinion</title>
 
 
     <!-- Popup related includes -->
@@ -51,7 +53,6 @@
   
 	<header class="mainheader">
           <img src="images/Header.jpg">		
-	  
 	</header>
 
  	<div class="mainContent">

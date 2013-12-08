@@ -9,8 +9,9 @@
 <%@ page import="net.tanesha.recaptcha.ReCaptchaFactory" %>
 <%@page import="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter"%><html><head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <link href="css/main.css" media="screen" rel="stylesheet" type="text/css"/>
-    <title>${journal.title}</title>
+    <title>Second Opinion</title>
 
 
     <!-- Popup related includes -->
@@ -75,9 +76,10 @@
 			<b>Sign Up</b> Volunteer! Your opportunity to serve and connect with your patients for FREE!</p>
 			<p>
 			<form action="doctorsignup.do" method="post" modelAttribute="addDoctorForm">
-  			  <input type="text" name="fullname" placeholder="Full Name" pattern="+[A-Za-z]" required autofocus>
-  			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com"  pattern="[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]{2,4}" required>
+			  <c:if test="${param.userNameError == 'true'}"><div style="color:red;">User with email already exists!</div></c:if>
+  			  <input type="email" name="email" placeholder="Email  Eg: user@gmail.com"  pattern="[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]{2,4}" required  autofocus>
   			  <input type="password" name="pwd" placeholder="New Password" pattern="(?=(.*[A-Z]){1,})(?=(.*[a-z]){1,})(?=(.*[^A-Za-z0-9]){1,}).{7,24}" title="Minimum 1Upper, 1Lower, 1 Special"  required>
+  			  <input type="text" name="fullname" placeholder="Full Name" pattern="+[A-Za-z]" required >
   			  <input type="text" name="dateofbirth" placeholder="Date of Birth (MM/DD/YYYY)" pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}" title="MM/DD/YYYY" required >
   			  Gender&nbsp;&nbsp;&nbsp;
   			  <input type="radio" name="gender" value="Male" checked >&nbsp;Male&nbsp;&nbsp;
