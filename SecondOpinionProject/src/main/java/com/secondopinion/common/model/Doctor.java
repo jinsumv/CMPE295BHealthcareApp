@@ -13,6 +13,7 @@ public class Doctor implements Person {
 	String licenseNumber;
 	String achievements;
 	int rating;
+	boolean isFollowed;
 	
 	public Doctor() { } // Default constructor needed for Captcha
 	
@@ -65,5 +66,15 @@ public class Doctor implements Person {
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
+
+	public boolean isFollowed() {
+		return isFollowed;
+	}
+
+	public void setFollowed(boolean isFollowed) {
+		this.isFollowed = isFollowed;
+	}
+	
+	
 	
 }
