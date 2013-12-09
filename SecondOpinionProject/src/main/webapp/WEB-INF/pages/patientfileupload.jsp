@@ -70,7 +70,7 @@
                    <c:if test="${not empty patientFiles}">
                         <c:forEach var="file" items="${patientFiles}">
                             <tr>
-                                <td class = "borderbottom" style="width:40%;"><a href="${file.fileUrl}">${file.fileName}</a></td>
+                                <td class = "borderbottom" style="width:40%;"><a href="${file.fileUrl}">${file.fileUrl}</a></td>
                                 <td class = "borderbottom" style="width:50%;"><a href="${file.fileUrl}">${file.description}</a></td>
                                 <td class = "borderbottom" style="width:10%;">
                                     <form name="deleteForm_${file.patientFileId}" action="removepatientfile.do" method="post">
