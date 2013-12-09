@@ -67,7 +67,8 @@
 					<img class="menuimage" src="images/message.png"/></a>
 				</td>
 				<td>
-					
+					<a href="reviewlist.do?doctorid=${doctor.doctorId}">
+					<img  height="80px" width="80px" style="margin-left: 1em;" src="images/doc_review.gif"/></a>
 				</td>
 			<tr>
 			<tr>

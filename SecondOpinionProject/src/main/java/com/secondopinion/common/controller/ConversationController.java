@@ -141,7 +141,7 @@ public class ConversationController {
     	
     	Doctor doctor = doctorService.getCurrentDoctor();
     	Patient patient2 = patientService.getCurrentPatient();
-    	if (doctor != null || (patient != null && patient2.getPatientId() == conversation.getPatientId())) {
+    	if (doctor != null || (patient2 != null && patient2.getPatientId() == conversation.getPatientId())) {
     		model.addAttribute("showreplybox", true);
     	}
     	else {

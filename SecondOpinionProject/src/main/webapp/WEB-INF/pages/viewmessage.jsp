@@ -69,7 +69,7 @@
 			      	<c:set var="author" value="${commentList[0].commenter.name}" />
 			      	<c:forEach var="comment" items="${commentList}" varStatus="outer">
 			   			<div class="comment">
-			   				
+			   				<img class="userpic" src="${comment.commenter.profilePicUrl}" style="width:40px;height:40px;border:1px solid grey;border-radius: 22px;"/>
 			   				<c:choose>
 			   					<c:when test="${author == comment.commenter.name}">
 			   						<span class="commenter">${comment.commenter.name}</span> asked
@@ -99,7 +99,7 @@
 								<textarea name="replytext" placeholder="Reply.." rows="5" rows="5" style="resize: none;display: table-cell;vertical-align: top;width: 100%;"></textarea>
 								<br>
 								<input type="hidden" name="conversationid" value="${conversation.conversationId}" />
-								<input type="submit" value="Send"/>
+								<input class="new-button" style="margin-top:10px;"type="submit" value="Send"/>
 							</form> 
 						</div>
 					</c:if>	

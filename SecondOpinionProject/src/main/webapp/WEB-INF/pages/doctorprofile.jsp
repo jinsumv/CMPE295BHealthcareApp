@@ -186,7 +186,7 @@ $(function() {
                 </tr>
 			</table>
 	  	</div>
-	  	<div style="padding-left:20px;"><input class="new-button" type="submit" value="UPDATE" /></div>
+	  	<div style="padding-left:20px;margin-bottom: 10px;"><input class="new-button" type="submit" value="UPDATE" /></div>
 	  	</form>
   	</div>
 
@@ -238,7 +238,7 @@ $(function() {
                 </tr>
 			</table>
 		</div>
-		<div style="padding-left:20px;"><input class="new-button" type="submit" value="UPDATE" /></div>
+		<div style="padding-left:20px;margin-bottom: 10px;"><input class="new-button" type="submit" value="UPDATE" /></div>
 		</form>
 	</div>
   
@@ -299,7 +299,7 @@ $(function() {
                </tr>
 		</table>
 	  </div>
-	  <div style="padding-left:20px;"><input class="new-button" type="submit" value="UPDATE" /></div>
+	  <div style="padding-left:20px;margin-bottom: 10px;"><input class="new-button" type="submit" value="UPDATE" /></div>
 	  </form>
   </div>
   

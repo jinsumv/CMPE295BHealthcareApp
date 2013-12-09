@@ -8,4 +8,5 @@ public interface Person {
 	String getName();
 	Date getDateOfBirth();
 	String getGender();
+	String getProfilePicUrl();
 }

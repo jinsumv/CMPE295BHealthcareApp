@@ -60,7 +60,7 @@
 				     <c:if test="${not empty doctor}">
 							<div id="doc_pic" class="doc_details">
 							<div style="float:left;">
-							<img src="images/doctor1.jpg" alt="doc profile" style="border:2px solid grey;" width="92" height="92"/></a> 	
+							<img src="${doctor.profilePicUrl}" alt="doc profile" width="92" height="92" style="border:2px solid grey;" /></a> 	
 							</div>
 							
 							<div id="docinf" style="float:right;padding-left:20px;padding-top:10px;">	
